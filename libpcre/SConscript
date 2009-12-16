@@ -1,0 +1,113 @@
+#!/usr/bin/env python
+
+Import('env')
+
+# Pcre
+PCRE_HEADERS = 'limits.h sys/types.h sys/stat.h windows.h'
+PCRE_CFUNCS = 'strtoq strtoll _strtoi64 bcopy memmove'
+
+pcreEnv = env.Clone()
+pcreEnv.Replace(CPPFLAGS='-DHAVE_CONFIG_H')
+pcreConf = Configure(pcreEnv, config_h="config.h")
+
+for cheader in PCRE_HEADERS.split():
+  pcreConf.CheckCHeader(cheader)
+
+for cfunc in (PCRE_CFUNCS).split():
+  pcreConf.CheckFunc(cfunc)
+
+pcreConf.CheckType('long long')
+pcreConf.CheckType('unsigned long long')
+pcreConf.CheckType('size_t', "sys/types.h")
+
+pcreConf.Define('LINK_SIZE', 2, 
+"""The value of LINK_SIZE determines the number of bytes used to store links
+  as offsets within the compiled regex. The default is 2, which allows for
+  compiled patterns up to 64K long. This covers the vast majority of cases.
+  However, PCRE can also be compiled to use 3 or 4 bytes instead. This allows
+  for longer patterns in extreme cases. On systems that support it,
+  "configure" can be used to override this default.
+""")
+
+
+pcreConf.Define('MATCH_LIMIT', 10000000, 
+"""The value of MATCH_LIMIT determines the default number of times the
+   internal match() function can be called during a single execution of
+   pcre_exec(). There is a runtime interface for setting a different limit.
+   The limit exists in order to catch runaway regular expressions that take
+   for ever to determine that they do not match.
+""")
+
+pcreConf.Define('MATCH_LIMIT_RECURSION', 'MATCH_LIMIT', 
+"""The above limit applies to all calls of match(), whether or not they
+   increase the recursion depth. In some environments it is desirable to limit
+   the depth of recursive calls of match() more strictly, in order to restrict
+   the maximum amount of stack (or heap, if NO_RECURSE is defined) that is
+   used. The value of MATCH_LIMIT_RECURSION applies only to recursive calls of
+   match(). To have any useful effect, it must be less than the value of
+   MATCH_LIMIT. The default is to use the same value as MATCH_LIMIT. There is
+   a runtime method for setting a different limit.
+""")
+pcreConf.Define('MAX_NAME_COUNT', 10000, 
+"""This limit is parameterized just in case anybody ever wants to change it.
+   Care must be taken if it is increased, because it guards against integer
+   overflow caused by enormously large patterns.
+""")
+pcreConf.Define('MAX_NAME_SIZE', 32, 
+"""This limit is parameterized just in case anybody ever wants to change it.
+   Care must be taken if it is increased, because it guards against integer
+   overflow caused by enormously large patterns.
+""")
+
+pcreConf.Define('NEWLINE', 10, 
+"""The value of NEWLINE determines the newline character sequence. On systems
+   that support it, "configure" can be used to override the default, which is
+   10. The possible values are 10 (LF), 13 (CR), 3338 (CRLF), -1 (ANY), or -2
+   (ANYCRLF).
+""")
+
+pcreConf.Define('POSIX_MALLOC_THRESHOLD', 10, 
+"""When calling PCRE via the POSIX interface, additional working storage is
+   required for holding the pointers to capturing substrings because PCRE
+   requires three integers per substring, whereas the POSIX interface provides
+   only two. If the number of expected substrings is small, the wrapper
+   function uses space on the stack, because this is faster than using
+   malloc() for each call. The threshold above which the stack is no longer
+   used is defined by POSIX_MALLOC_THRESHOLD. On systems that support it,
+   "configure" can be used to override this default. 
+""")
+
+pcreConf.Define("SUPPORT_UTF8", "/**/", 
+"Define to enable support for the UTF-8 Unicode encoding. ")
+pcreConf.Define("PCRE_STATIC", 1, "Define if linking statically")
+pcreConf.Finish()
+
+pcreSources = [
+  "pcre_compile.c",
+  "pcre_config.c",
+  "pcre_dfa_exec.c",
+  "pcre_exec.c",
+  "pcre_fullinfo.c",
+  "pcre_get.c",
+  "pcre_globals.c",
+  "pcre_info.c",
+  "pcre_internal.h",
+  "pcre_maketables.c",
+  "pcre_newline.c",
+  "pcre_ord2utf8.c",
+  "pcre_refcount.c",
+  "pcre_study.c",
+  "pcre_tables.c",
+  "pcre_try_flipped.c",
+  "pcre_ucd.c",
+  "pcre_valid_utf8.c",
+  "pcre_version.c",
+  "pcre_xclass.c",
+  "ucp.h",
+  "pcre_chartables.c"
+]
+
+libpcre = pcreEnv.StaticLibrary('pcre', pcreSources)
+
+Return('libpcre')
+
