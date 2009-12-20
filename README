@@ -1,1 +1,3 @@
-MLFoundation — библиотека для разработки сетевых приложений первоначально разработанная для внутренних проектов компании undev. Язык - Objective-C + Foundation.
+MLFoundation is a library for building fast, event-driven network applications in Objective-C.
+
+See http://wiki.github.com/bofh/MLFoundation for details.
