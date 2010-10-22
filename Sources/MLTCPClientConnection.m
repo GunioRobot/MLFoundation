@@ -62,7 +62,7 @@
 
 - (NSString *)host
 {
-	return [NSString stringWithCString:inet_ntoa(addr_.sin_addr)];
+	return [NSString stringWithCString:inet_ntoa(addr_.sin_addr) encoding:[NSString defaultCStringEncoding]];
 }
 
 - (void)setPort:(uint16_t)port
