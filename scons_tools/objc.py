@@ -21,14 +21,14 @@ def generate(env):
   static_obj.add_emitter('.m', SCons.Defaults.StaticObjectEmitter)
   shared_obj.add_emitter('.m', SCons.Defaults.SharedObjectEmitter)
 
-  if sys.platform == 'darwin' and platform.uname()[2] == '10.0.0':
-    env['OBJC'] = 'gcc-4.0'
-  else:
-    env['OBJC'] = 'gcc'
+#  if sys.platform == 'darwin' and platform.uname()[2] == '10.0.0':
+#    env['OBJC'] = 'gcc-4.0'
+#  else:
+  env['OBJC'] = 'gcc -m64'
 
   # What a hack!
-  if sys.platform == 'darwin' and platform.uname()[2] == '10.0.0':
-    env['CC'] = 'gcc-4.0'
+#  if sys.platform == 'darwin' and platform.uname()[2] == '10.0.0':
+#    env['CC'] = 'gcc-4.0'
 
   env['OBJCFLAGS'] = SCons.Util.CLVar('')
   env['OBJCPPPATH'] = []
