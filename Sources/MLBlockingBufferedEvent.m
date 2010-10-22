@@ -45,7 +45,11 @@ const char *be_last_error(be_fd fd) {
 
 int be_signal_pending(be_fd fd)
 {
-    return ((struct { @defs( MLBlockingBufferedEvent ) } *) fd)->signalPending_;
+#if !__OBJC2__
+	return ((struct { @defs( MLBlockingBufferedEvent ) } *) fd)->signalPending_;
+#else
+	return ((MLBlockingBufferedEvent *) fd).signalPending;
+#endif
 }
 
 int be_wait_event(be_fd fd)
@@ -58,6 +62,11 @@ int be_wait_event(be_fd fd)
 @end
 
 @implementation MLBlockingBufferedEvent
+
+#if __OBJC2__
+@synthesize signalPending = signalPending_;
+#endif
+
 - (id)initWithBufferedEvent:(id <MLBufferedEvent>)bufEv
 {
 	if (!(self = [super init])) return nil;
@@ -133,8 +142,11 @@ int be_wait_event(be_fd fd)
 	// Если bufferedEvent stopped - к возврату ошибки
 	if ([bufEv_ isStarted]) {	
 		MLStreamAppendBytes(bufEv_, (uint8_t *)buf, (uint64_t)count);
-
+#if !__OBJC2__
 		while (MLBufferLength(MLS_OPEN(bufEv_)->outputBuffer_) > 0 && !error_) {
+#else
+		while (MLBufferLength(((MLStream *)bufEv_).outputBuffer) > 0 && !error_) {
+#endif
 			state_ = MLBBEWriting;
 			[self goToEventLoop];
 		}

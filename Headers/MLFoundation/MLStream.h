@@ -31,5 +31,6 @@ typedef void (*WRITECB_IMP)(id);
 
 #if __OBJC2__
 @property (assign, readonly, nonatomic) MLBuffer *inputBuffer;
+@property (assign, readonly, nonatomic) MLBuffer *outputBuffer;
 #endif
 @end

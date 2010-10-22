@@ -70,5 +70,9 @@ enum {
 - (NSError *)lastError;
 
 - (void)signal;
+
+#if __OBJC2__
+@property (assign, nonatomic) BOOL signalPending;
+#endif
 @end
 
