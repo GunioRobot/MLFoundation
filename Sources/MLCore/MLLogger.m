@@ -325,7 +325,7 @@ void MLLogAssertion2(MLLogger *logger, const char *what, char *file, int line, c
 
 	char *format = va_arg(arg_ptr, char *);
 	NSString *reason = format ? 
-		[[NSString alloc] initWithFormat:[NSString stringWithCString:format] arguments:arg_ptr] : 
+		[[NSString alloc] initWithFormat:[NSString stringWithCString:format encoding:[NSString defaultCStringEncoding]] arguments:arg_ptr] : 
 		[[NSString alloc] initWithUTF8String:condition];
 
 	MLLog2(logger, LOG_FATAL, "%s failed at %s:%d (%s)", what, file, line, [reason UTF8String]);

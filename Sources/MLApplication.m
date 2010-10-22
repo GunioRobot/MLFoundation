@@ -201,7 +201,7 @@ static MLApplication *sharedApp = nil;
 			char *componentString = (char *)[[components objectAtIndex:i] UTF8String];
 			if (islower(componentString[0])) componentString[0] = toupper(componentString[0]);
 			retval = [retval stringByAppendingString:
-				[NSString stringWithCString:componentString]];
+					  [NSString stringWithCString:componentString encoding:[NSString defaultCStringEncoding]]];
 		}
 		return retval;
 	}
