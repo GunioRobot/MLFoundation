@@ -22,10 +22,9 @@
 @class MLSessionSet;
 
 @interface MLSessionSetEnumerator : NSEnumerator {
-	MLSessionSet *set_;
+	NSHashTable *hashTable_;
 	NSHashEnumerator e_;
 }
-- initWithSessionSet:(MLSessionSet *)set;
 @end
 
 /** Неретейнящий массив для обслуживания списка сессий/соединений.
@@ -46,7 +45,7 @@
 	NSHashTable *sessions_;
 }
 /** Создать список сессий с заданым начальным объёмом. */
-- initWithCapacity:(unsigned int)capacity;
+- (id)initWithCapacity:(unsigned int)capacity;
 
 /** Добавить сессию в список. */
 - (void)addObject:(id)object;

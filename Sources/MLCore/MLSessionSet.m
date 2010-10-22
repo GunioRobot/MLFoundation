@@ -17,7 +17,11 @@
 #import <MLFoundation/MLCore/MLSessionSet.h>
 #import <MLFoundation/MLCore/MLAssert.h>
 
-#define MLSESSIONSET_OPEN(mlb) ((struct { @defs( MLSessionSet ) } *) mlb)
+@interface MLSessionSetEnumerator(private)
+- (id)initWithHashTable:(NSHashTable *)table;
+@end
+
+
 
 @implementation MLSessionSet
 - init
@@ -70,7 +74,7 @@
 
 - (NSEnumerator *)objectEnumerator
 {
-	return [[[MLSessionSetEnumerator alloc] initWithSessionSet:self] autorelease];
+	return [[[MLSessionSetEnumerator alloc] initWithHashTable:sessions_] autorelease];
 }
 
 - (void)makeObjectsPerformSelector:(SEL)selector
@@ -102,20 +106,21 @@
 }
 @end
 
-@implementation MLSessionSetEnumerator 
-- initWithSessionSet:(MLSessionSet *)set
+@implementation MLSessionSetEnumerator(private)
+- (id)initWithHashTable:(NSHashTable *)table
 {
 	if (!(self = [super init])) return nil;
 
-	set_ = set;
-	e_ = NSEnumerateHashTable(MLSESSIONSET_OPEN(set_)->sessions_);
-
+	hashTable_ = table;
+	e_ = NSEnumerateHashTable(hashTable_);
 	return self;
 }
+@end
 
+@implementation MLSessionSetEnumerator
 - allObjects
 {
-	return NSAllHashTableObjects(MLSESSIONSET_OPEN(set_)->sessions_);
+	return NSAllHashTableObjects(hashTable_);
 }
 
 - nextObject
