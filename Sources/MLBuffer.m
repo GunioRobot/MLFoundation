@@ -63,33 +63,54 @@ static MLSessionSet *AllBuffers = nil;
 @synthesize transactionKind = transactionKind_;
 @synthesize maxSize = maxSize_;
 @synthesize capacity = capacity_;
+@synthesize mmapAllocated = mmapAllocated_;
+@synthesize reallocationsCount = reallocationsCount_;
+
 #endif
 static inline BOOL MLBufferAllocCapacity(MLBuffer *buf, uint64_t size)
 {
 	// Округляем до размера страницы
 	if ((size & ~(PageSize - 1)) != size) 
 		size = PageSize + (size & ~(PageSize -1));
-	
+#if !__OBJC2__
 	MLB_OPEN(buf)->capacity_ = size;
+#else
+	buf.capacity = size;
+#endif
 
 	if (size < MMAP_THRESHOLD) {
+#if !__OBJC2__
 		MLB_OPEN(buf)->data_ = malloc(size);
 		MLB_OPEN(buf)->mmapAllocated_ = NO;
+#else
+		buf.data = malloc(size);
+		buf.mmapAllocated = NO;
+#endif
 	} else {
+#if __OBJC2__
+		buf.data = mmap(0, size, PROT_READ | PROT_WRITE, MAP_ANON| MAP_PRIVATE, 0, 0);
+		MLAssert(buf.data != MAP_FAILED);
+		buf.mmapAllocated = YES;
+#else
 		MLB_OPEN(buf)->data_ = mmap(0, size, PROT_READ | PROT_WRITE, 
-			MAP_ANON| MAP_PRIVATE, 0, 0);
+									MAP_ANON| MAP_PRIVATE, 0, 0);
 		MLAssert(MLB_OPEN(buf)->data_ != MAP_FAILED);
-		MLB_OPEN(buf)->mmapAllocated_ = YES;
+		MLB_OPEN(buf)->mmapAllocated_ = YES;		
+#endif
 	}
 	return YES;
 }
 
 static inline BOOL MLBufferReallocCapacity(MLBuffer *buf, uint64_t size)
 {
+#if !__OBJC2__
 	if (size <= MLB_OPEN(buf)->capacity_) return YES;
+#else
+	if (size <= buf.capacity) return YES;
+#endif
 
 	MLAssert(size);
-
+#if !__OBJC2__
 	uint64_t newCapacity = (MLB_OPEN(buf)->capacity_) << 1;
 	while (newCapacity < (MLB_OPEN(buf)->length_ + size)) newCapacity <<= 1;
 
@@ -145,18 +166,82 @@ static inline BOOL MLBufferReallocCapacity(MLBuffer *buf, uint64_t size)
 	MLAssert(rv == 0);
 #endif
 	MLB_OPEN(buf)->capacity_ = newCapacity;
+#else // !__OBJC2__
+	uint64_t newCapacity = (buf.capacity) << 1;
+	while (newCapacity < (buf.length + size)) newCapacity <<= 1;
 
+	// 3 случая: 1) realloc из malloc в malloc 2) realloc из malloc в mmap 3) mremap :)
+	buf.reallocationsCount++;
+
+#if MLDEBUG > 1
+	[buf.lastReallocationTrace release];
+	buf.lastReallocationTrace = [MLRawBacktrace() retain];
+#endif
+
+	if (!buf.mmapAllocated && newCapacity < MMAP_THRESHOLD) {
+		MLLog(LOG_VVDEBUG, "%p reallocating malloc %lld -> malloc %lld", buf, buf.capacity, newCapacity);
+
+		buf.data = realloc(buf.data, newCapacity);
+		MLAssert(buf.data);
+		buf.capacity = newCapacity;
+
+		return YES;
+	} 
+	
+	if (!buf.mmapAllocated && newCapacity >= MMAP_THRESHOLD) {
+		MLLog(LOG_VVDEBUG, "%p reallocating malloc %lld -> mmap %lld", buf, buf.capacity, newCapacity);
+		
+		uint8_t *oldData = buf.data;
+		uint64_t oldLength = buf.capacity;
+		
+		MLBufferAllocCapacity(buf, newCapacity);
+		memcpy(buf.data, oldData, oldLength);
+		
+		free(oldData);
+		
+		buf.capacity = newCapacity;
+		buf.mmapAllocated = YES;
+		return YES;
+	}
+	
+	// mremap
+	MLLog(LOG_VVDEBUG, "%p reallocating mmap %lld -> mmap %lld", buf, buf.capacity, newCapacity);
+#if HAVE_MREMAP
+	buf.data_ = mremap(buf.data, buf.capacity, newCapacity, MREMAP_MAYMOVE);
+	MLAssert(buf.data != MAP_FAILED);
+#else
+	// Naive test implementaiton
+	uint8_t *oldData = buf.data;
+	uint64_t oldLength = buf.capacity;
+
+	MLBufferAllocCapacity(buf, newCapacity);
+	memcpy(buf.data, oldData, oldLength);
+
+	int rv = munmap(oldData, oldLength);
+	MLAssert(rv == 0);
+#endif
+	buf.capacity = newCapacity;	
+#endif
 	return YES;
 }
 
 static inline void MLBufferFreeCapacity(MLBuffer *buf)
 {
+#if !__OBJC2__
 	if (MLB_OPEN(buf)->mmapAllocated_) {
 		int rv = munmap(MLB_OPEN(buf)->data_, MLB_OPEN(buf)->capacity_);
 		MLAssert(rv == 0);
 	} else {
 		free(MLB_OPEN(buf)->data_);
 	}
+#else
+	if (buf.mmapAllocated) {
+		int rv = munmap(buf.data, buf.capacity);
+		MLAssert(rv == 0);
+	} else {
+		free(buf.data);
+	}	
+#endif
 }
 
 + (void)load
@@ -301,21 +386,21 @@ static inline void MLBufferFreeCapacity(MLBuffer *buf)
 	return length_;
 }
 
-- (BOOL)     drainBytes:(uint64_t)count
+- (BOOL)drainBytes:(uint64_t)count
 {
 	return MLStreamDrain(self, count);
 }
-
-- (NSData *) dataNoCopy
+/* // LOL WUT?!
+- (NSData *)dataNoCopy
 {
 	return [NSData dataWithBytesNoCopy:(data_ + pointer_) length:length_ freeWhenDone:NO];
 }
 
-- (NSData *) data
+- (NSData *)data
 {
 	return [NSData dataWithBytes:(data_ + pointer_) length:length_];
 }
-
+*/
 - (uint8_t *)reserveBytes:(uint64_t)count
 {
 	// Return place for new bytes if everything is okay
@@ -393,7 +478,7 @@ static inline void MLBufferFreeCapacity(MLBuffer *buf)
 	[super dealloc];
 }
 
-- (BOOL) dumpToFile:(NSString *)fname
+- (BOOL)dumpToFile:(NSString *)fname
 {
 
 	FILE *f = fopen([fname UTF8String], "wb");

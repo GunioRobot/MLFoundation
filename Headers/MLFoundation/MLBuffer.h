@@ -108,6 +108,8 @@ enum {
 @property (assign, readonly, nonatomic) uint8_t transactionKind;
 @property (assign, nonatomic) uint64_t maxSize;
 @property (assign, nonatomic) uint64_t capacity;
+@property (assign, nonatomic) BOOL mmapAllocated;
+@property (assign, nonatomic) uint16_t reallocationsCount;
 #endif
 
 @end
