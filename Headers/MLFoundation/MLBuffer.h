@@ -99,6 +99,17 @@ enum {
 /** Dump debug info to log. */
 + (void)dumpDebugInfo;
 #endif
+
+#if __OBJC2__
+@property (assign, nonatomic) uint64_t length;
+@property (assign, nonatomic) uint64_t pointer;
+@property (assign, nonatomic) uint8_t *data;
+@property (assign, readonly, nonatomic) MLBuffer *parentTransaction;
+@property (assign, readonly, nonatomic) uint8_t transactionKind;
+@property (assign, nonatomic) uint64_t maxSize;
+@property (assign, nonatomic) uint64_t capacity;
+#endif
+
 @end
 
 extern Class MLBufferClass;

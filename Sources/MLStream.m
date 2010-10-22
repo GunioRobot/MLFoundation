@@ -21,6 +21,7 @@
 #if __OBJC2__
 @synthesize inputBuffer = inputBuffer_;
 @synthesize outputBuffer = outputBuffer_;
+@synthesize writeCallBack = writeCallBack_;
 #endif
 
 @implementation MLStream

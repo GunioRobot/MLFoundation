@@ -55,6 +55,15 @@ static MLSessionSet *AllBuffers = nil;
 #endif
 
 @implementation MLBuffer
+#if __OBJC2__
+@synthesize length = length_;
+@synthesize pointer = pointer_;
+@synthesize data = data_;
+@synthesize parentTransaction = parentTransaction_;
+@synthesize transactionKind = transactionKind_;
+@synthesize maxSize = maxSize_;
+@synthesize capacity = capacity_;
+#endif
 static inline BOOL MLBufferAllocCapacity(MLBuffer *buf, uint64_t size)
 {
 	// Округляем до размера страницы
