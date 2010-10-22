@@ -170,7 +170,7 @@
 	return MLObjectLCExtGet(self);
 }
 
-- (void)finalize
+- (void)finalizeObject
 {
 	if (MLObjectLCExtGet(self) && MLObjectRetainCountGet(self) > 0) {
 		[self dealloc];
@@ -189,12 +189,13 @@
 	default:
 		MLFail("Unknown allocation class %d!", MLObjectAllocClassGet(self));
 	}
+	
 }
 
 - (void)dealloc
 {
 	if (!MLObjectLCExtGet(self)) {
-		[self finalize];
+		[self finalizeObject];
 	} else {
 		// LCExt включен, значит мы используем этот retainCount.
 		// unreify us :)

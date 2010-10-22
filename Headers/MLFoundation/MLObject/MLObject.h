@@ -41,7 +41,7 @@ typedef MLObject *md;
 - (BOOL)isReified;
 - (void)reify;
 - (void)dealloc;
-- (void)finalize;
+- (void)finalizeObject;
 @end
 
 enum {
@@ -97,7 +97,7 @@ typedef int MLObjectAllocationClass;
 - (void)dealloc;
 
 /** Убрать этот объект вместе с памятью. */
-- (void)finalize;
+- (void)finalizeObject;
 @end
 
 @interface MLObject (StackAllocationCallbacks)

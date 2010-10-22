@@ -85,7 +85,7 @@ md *MLObjectBulkReallocWrapped(md *bulkAllocatedObjects, uint32_t newCapacity, B
 	// перефинализировать, чем недофинализировать.
 	if (newCapacity < oldObjectsZoneSize) {
 		for (i=newObjectsZoneSize; i< oldObjectsZoneSize; i++) {
-			if ([bulkAllocatedObjects[i] isReified]) [bulkAllocatedObjects[i] finalize];
+			if ([bulkAllocatedObjects[i] isReified]) [bulkAllocatedObjects[i] finalizeObject];
 		}
 	}
 
@@ -168,7 +168,7 @@ void MLObjectBulkFree(md *objects)
 	if (!objects) return;
 
 	for (i=0; i<linksZone[-1].objectsZoneCapacity; i++) {
-		[objects[i] finalize];
+		[objects[i] finalizeObject];
 	}
 
 	free(linksZone[-1].objectsZone);
