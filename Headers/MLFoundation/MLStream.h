@@ -28,4 +28,8 @@ typedef void (*WRITECB_IMP)(id);
 	MLBuffer *inputBuffer_, *outputBuffer_;
 	WRITECB_IMP writeCallBack_;
 }
+
+#if __OBJC2__
+@property (assign, readonly, nonatomic) MLBuffer *inputBuffer;
+#endif
 @end

@@ -176,6 +176,7 @@ inline static BOOL MLStreamWritten(id<MLStream> buf, uint64_t m)
 
 inline static MLBuffer *MLStreamExtractData(id<MLStream> buf1)
 {
+#if !__OBJC2__
 	MLStreamWillRead(buf1);
 	MLBuffer *buf2 = [[MLBuffer new] autorelease];
 
@@ -185,5 +186,14 @@ inline static MLBuffer *MLStreamExtractData(id<MLStream> buf1)
 	memcpy(buf2, &temp, sizeof(temp));
 
 	return buf2;
+#else
+	MLBuffer *ret;
+	if (![(NSObject *)buf1 isMemberOfClass:[MLBuffer class]]) {
+		ret = [((MLStream *)buf1).inputBuffer copy];
+		[((MLStream *)buf1).inputBuffer reset];
+	} else {
+		ret = (MLBuffer *)buf1;
+	}
+	return ret;
+#endif
 }
-

@@ -18,6 +18,10 @@
 
 #import <MLFoundation/MLCore/MLCategories.h>
 
+#if __OBJC2__
+@synthesize inputBuffer = inputBuffer_;
+#endif
+
 @implementation MLStream
 - (uint64_t)length
 {
