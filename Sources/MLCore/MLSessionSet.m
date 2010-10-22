@@ -29,7 +29,7 @@
 	return [self initWithCapacity:DEFAULT_SESSION_SET_CAPACITY];
 }
 
-- initWithCapacity:(unsigned int)capacity
+- (id)initWithCapacity:(NSUInteger)capacity
 {
 	if (!(self = [super init])) return nil;
 

@@ -32,15 +32,24 @@
 
 void MLConnectionQueueWrite(MLConnection *ev)
 {
+#if !__OBJC2__
 	struct ev_io *io = (struct ev_io *)(MLCONN_OPEN(ev)->ioWatcher_);
 	if ((!(io->events & EV_WRITE)) && ev_is_active((struct ev_watcher *)io)) {
 		ev_io_stop((struct ev_loop *)(MLCONN_OPEN(ev)->loop_), io);
 		io->events = EV_READ | EV_WRITE;
 		ev_io_start((struct ev_loop *)(MLCONN_OPEN(ev)->loop_), io);
 	}
+#else
+	struct ev_io *io = (struct ev_io *)(ev.ioWatcher);
+	if ((!(io->events & EV_WRITE)) && ev_is_active((struct ev_watcher *)io)) {
+		ev_io_stop((struct ev_loop *)(ev.loop), io);
+		io->events = EV_READ | EV_WRITE;
+		ev_io_start((struct ev_loop *)(ev.loop), io);
+	}	
+#endif
 }
 
-@interface MLConnection (private)
+@interface MLConnection(private)
 - (void)loop:(EVLoop *)loop ioWatcher:(EVIoWatcher *)w eventOccured:(int)event;
 - (void)loop:(EVLoop *)loop timerWatcher:(EVTimerWatcher *)w eventOccured:(int)event;
 
@@ -49,7 +58,10 @@ void MLConnectionQueueWrite(MLConnection *ev)
 
 #define MIN_NONZERO(a,b) ( ((a)>0.0) ? (((b)>0.0) ? (((a)<(b))?(a):(b)) : (a) ): (b) )
 
-@implementation MLConnection 
+@implementation MLConnection
+#if __OBJC2__
+@synthesize ioWatcher = ioWatcher_;
+#endif
 static NSError *ReadEofError() 
 {
 	static NSError *readEofError = NULL;
@@ -506,7 +518,7 @@ static NSError *InputOverflowError()
 
 - (void)rescheduleRead
 {
-	struct ev_watcher *io = (struct ev_watcher *)(MLCONN_OPEN(self)->ioWatcher_);
+	struct ev_watcher *io = (struct ev_watcher *)(self.ioWatcher);
 	if (ev_is_active(io) && (MLBufferLength(inputBuffer_) > 0)) {
 		ev_feed_event(EVLOOP_LOOP(loop_), io, EV_ASYNC_READ);
 	}

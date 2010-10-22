@@ -23,4 +23,7 @@
 @interface MLEvLoopActivity : NSObject <MLEvLoopActivity> {
 	EVLoop *loop_; /*!< Process's event loop. */
 }
+#if __OBJC2__
+@property (assign, nonatomic, readonly) EVLoop *loop;
+#endif
 @end

@@ -45,7 +45,7 @@
 	NSHashTable *sessions_;
 }
 /** Создать список сессий с заданым начальным объёмом. */
-- (id)initWithCapacity:(unsigned int)capacity;
+- (id)initWithCapacity:(NSUInteger)capacity;
 
 /** Добавить сессию в список. */
 - (void)addObject:(id)object;

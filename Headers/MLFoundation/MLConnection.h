@@ -80,4 +80,7 @@
 /** Закрыть ненужное соединение в чайлде после форка. После этого приходит в негодность и может
  * быть только released. */
 - (void)dropAfterFork;
+#if __OBJC2__
+@property (assign, nonatomic, readonly) EVIoWatcher *ioWatcher;
+#endif
 @end

@@ -20,6 +20,9 @@
 #import <MLFoundation/MLCore/MLAssert.h>
 
 @implementation MLEvLoopActivity
+#if __OBJC2__
+@synthesize loop = loop_;
+#endif
 - (void)setLoop:(EVLoop *)loop
 {
 	loop_ = loop;
