@@ -62,7 +62,11 @@
 + (md)allocatedOnStack:(md)obj
 {
 	memset(obj, 0, MLObject_instance_size(self));
+#if !__OBJC2__
 	MLO_OPEN(obj)->isa = self;
+#else
+	
+#endif
 	MLObjectAllocClassSet(obj, MLObjectStackAllocation);
 	// Здесь класс аллокации известен заранее.
 	MLObjectRetainCountSet(obj, 1);
@@ -80,7 +84,11 @@
 
 + (void)bulkAllocated:(md)obj
 {
+#if !__OBJC2__
 	MLO_OPEN(obj)->isa = self;
+#else
+	
+#endif
 	MLObjectAllocClassSet(obj, MLObjectBulkAllocation);
 	// Bulk всегда с lifecycle extensions.
 	MLObjectLCExtSet(obj, YES);
@@ -159,7 +167,7 @@
 }
 
 
-- (unsigned int)retainCount
+- (NSUInteger)retainCount
 {
 	if (MLObjectUseNativeRetainCount(self)) {
 		return [super retainCount];
