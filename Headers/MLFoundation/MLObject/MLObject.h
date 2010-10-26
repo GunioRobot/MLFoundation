@@ -115,7 +115,11 @@ typedef int MLObjectAllocationClass;
 + (md)allocatedOnStack:(md)obj reified:(BOOL)reificationMark;
 @end
 
+#if !__OBJC2__
 #define MLObject_instance_size(klass) (((Class)[klass class])->instance_size)
+#else
+#define MLObject_instance_size(klass) (class_getInstanceSize([(NSObject *)klass class]))
+#endif
 
 // Stack allocation:
 #define MLObjectStackAlloc(klass) \

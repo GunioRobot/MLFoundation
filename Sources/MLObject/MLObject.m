@@ -24,7 +24,7 @@
 #define MLO_OPEN(mlo) ((struct { @defs( MLObject ) } *) mlo)
 #define MLO_AP(mlo) (MLO_OPEN(mlo)->allocPrefs_)
 #else
-#define MLO_OPEN(mlo) (MLFail("MLO_OPEN is deprecated"))
+#define MLO_OPEN(mlo) (MLFail("MLO_OPEN is deprecated"); mlo)
 #define MLO_AP(mlo) (((MLObject *)mlo).allocPrefs)
 #endif
 
