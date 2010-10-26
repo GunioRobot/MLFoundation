@@ -20,15 +20,19 @@
 #import <MLFoundation/MLCore/MLCategories.h>
 #import <MLFoundation/MLCore/MLIdioms.h>
 
-
+#if !__OBJC2__
 #define MLO_OPEN(mlo) ((struct { @defs( MLObject ) } *) mlo)
 #define MLO_AP(mlo) (MLO_OPEN(mlo)->allocPrefs_)
+#else
+#define MLO_OPEN(mlo) (MLFail("MLO_OPEN is deprecated"))
+#define MLO_AP(mlo) (((MLObject *)mlo).allocPrefs)
+#endif
 
 #define MLObjectAllocClassGet(o) (MLO_AP(o) & 0x0f)
 #define MLObjectAllocClassSet(o,val) do { MLO_AP(o) = (MLO_AP(o) & 0xfffffff0) | (val & 0x0f); } while (0)
 
 #define MLObjectLCExtGet(o) ((MLO_AP(o) & 0x10) >> 4)
-#define MLObjectLCExtSet(o,val) do { MLO_AP(o) = (MLO_AP(o) & 0xffffffef) | ((val & 0x01) << 4); } while(0)
+#define MLObjectLCExtSet(o, val) do { MLO_AP(o) = (MLO_AP(o) & 0xffffffef) | ((val & 0x01) << 4); } while(0)
 
 #define MLObjectRetainCountGet(o) (MLO_AP(o) >> 8)
 #define MLObjectRetainCountSet(o,val) do { MLO_AP(o) = (MLO_AP(o) & 0xff) | ((val & 0xffffff) << 8); } while(0)
@@ -40,11 +44,16 @@
 
 
 @implementation MLObject
+
+@synthesize allocPrefs = allocPrefs_;
+
 + (md)allocReified:(BOOL)reificationMark
 {
 	md retval = (md)[super alloc];
 
 	MLObjectLCExtSet(retval, YES);
+//	MLO_AP(retval) = (MLO_AP(retval) & 0xffffffef) | ((YES & 0x01) << 4);
+
 	// Здесь класс аллокации известен заранее.
 	if (reificationMark) MLObjectRetainCountSet(retval, 1);
 

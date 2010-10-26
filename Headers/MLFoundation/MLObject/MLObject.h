@@ -98,6 +98,10 @@ typedef int MLObjectAllocationClass;
 
 /** Убрать этот объект вместе с памятью. */
 - (void)finalizeObject;
+
+#if __OBJC2__
+@property (readwrite, nonatomic, assign) uint32_t allocPrefs;
+#endif
 @end
 
 @interface MLObject (StackAllocationCallbacks)
