@@ -65,7 +65,7 @@
 #if !__OBJC2__
 	MLO_OPEN(obj)->isa = self;
 #else
-	
+	((struct objc_object *)obj)->isa = self;
 #endif
 	MLObjectAllocClassSet(obj, MLObjectStackAllocation);
 	// Здесь класс аллокации известен заранее.
@@ -87,7 +87,7 @@
 #if !__OBJC2__
 	MLO_OPEN(obj)->isa = self;
 #else
-	
+	((struct objc_object *)obj)->isa = self;
 #endif
 	MLObjectAllocClassSet(obj, MLObjectBulkAllocation);
 	// Bulk всегда с lifecycle extensions.
