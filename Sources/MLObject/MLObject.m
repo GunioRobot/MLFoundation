@@ -52,7 +52,6 @@
 	md retval = (md)[super alloc];
 
 	MLObjectLCExtSet(retval, YES);
-//	MLO_AP(retval) = (MLO_AP(retval) & 0xffffffef) | ((YES & 0x01) << 4);
 
 	// Здесь класс аллокации известен заранее.
 	if (reificationMark) MLObjectRetainCountSet(retval, 1);
