@@ -48,10 +48,16 @@ typedef int (*FILEFUNC_IMP)(int, void *, int);
 	BOOL readCycle_;
 }
 
+- (void)setReadFunction:(FILEFUNC_IMP)func;
+- (void)setWriteFunction:(FILEFUNC_IMP)func;
+
 /** [RO, MANDATORY] Sets file descriptor to work on. */
 - (void)setFd:(int)fd;
 /** File descriptor to work on. */
 - (int)fd;
+
+/* При смене fd, надо сбрасывать буферы */
+- (void)resetBuffers;
 
 /** Вызывается во время деаллока для закрытия дескриптора. Вызывает close на дескрипторе и устанавливает дескриптор в 0. При наследовании необходимо вызывать метод родителя в конце метода наследника */
 - (void)closeFd;

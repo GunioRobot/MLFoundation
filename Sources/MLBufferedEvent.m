@@ -41,9 +41,6 @@ void MLBufferedEventQueueWrite(MLBufferedEvent *ev)
 @interface MLBufferedEvent (private)
 - (void)loop:(EVLoop *)loop ioWatcher:(EVIoWatcher *)w eventOccured:(int)event;
 - (void)loop:(EVLoop *)loop timerWatcher:(EVTimerWatcher *)w eventOccured:(int)event;
-
-/* При смене fd, надо сбрасывать буферы */
-- (void)resetBuffers;
 @end
 
 #define MIN_NONZERO(a,b) ( ((a)>0.0) ? (((b)>0.0) ? (((a)<(b))?(a):(b)) : (a) ): (b) )
@@ -469,6 +466,16 @@ static NSError *InputOverflowError()
 	return self;
 }
 
+- (void)setReadFunction:(FILEFUNC_IMP)func
+{
+	readFunction_ = func;
+}
+
+- (void)setWriteFunction:(FILEFUNC_IMP)func
+{
+	writeFunction_ = func;
+}
+
 - (int)fd
 {
 	return [ioWatcher_ fd];
@@ -477,7 +484,6 @@ static NSError *InputOverflowError()
 - (void)setFd:(int)fd
 {
 	MLAssert(![ioWatcher_ isActive]);
-	[self resetBuffers];
 	[ioWatcher_ setFd:fd];
 }
 
@@ -486,7 +492,6 @@ static NSError *InputOverflowError()
 	close([self fd]);
 	[self setFd:0];
 }
-
 
 - (NSError *)readingError
 {

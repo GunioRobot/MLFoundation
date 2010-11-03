@@ -18,19 +18,12 @@
 #include <Foundation/Foundation.h>
 
 #import <portability/normalized_networking.h>
-#import <MLFoundation/EVBindings/EVIoWatcher.h>
-#import <MLFoundation/EVBindings/EVTimerWatcher.h>
 
-#import <MLFoundation/MLStream.h>
-#import <MLFoundation/MLBuffer.h>
-#import <MLFoundation/MLEvLoopActivity.h>
-
-#import <MLFoundation/Protocols/MLBufferedEvent.h>
-#import <MLFoundation/Protocols/MLBufferedEventDelegate.h>
+#import <MLFoundation/MLBufferedEvent.h>
 
 /** MLStream-compliant абстракция SOCK_STREAM соединения.
  *
- * Имплементирует MLBufferedEvent со всеми вытекающими.
+ * Является подклассом MLBufferedEvent со всеми вытекающими.
  *
  * При деллокации закрывает за собой fd. 
  *
@@ -39,40 +32,14 @@
  *
  * Copyright 2009 undev
  */
-@interface MLConnection : MLEvLoopActivity <MLBufferedEvent> {
-@private /* MLStream interface */
-	MLBuffer *inputBuffer_, *outputBuffer_;
-	WRITECB_IMP writeCallBack_;
-@protected
-	id <MLBufferedEventDelegate>delegate_; /*!< Delegate. */
-@private
-	IMP delegateNewData_, delegateWritten_;
-
-	EVIoWatcher *ioWatcher_;
-	EVTimerWatcher *timeoutWatcher_;
-
-	ev_tstamp readTimeout_, writeTimeout_;
-	ev_tstamp lastRead_, lastWrite_;
-
-	NSUInteger readSize_;
-	BOOL flushing_;
-	BOOL readCycle_;
-
+@interface MLConnection : MLBufferedEvent {
 	NSString *description_;
 }
 /** Создаёт AF_UNIX SOCK_STREAM сокетпару и оборачивает её концы в MLConnection. */
 + (BOOL)newSocketpair:(MLConnection **)connections;
 
-/** [RO, MANDATORY] Sets file descriptor to work on. */
-- (void)setFd:(int)fd;
-/** File descriptor to work on. */
-- (int)fd;
-
 /* порт соединения */
 - (uint16_t)port;
-
-/* При смене fd, надо сбрасывать буферы */
-- (void)resetBuffers;
 
 /** Установить описание соединения в понятной человеку форме. */
 - (void)setDescription:(NSString *)description;
