@@ -76,6 +76,7 @@
 #import <MLFoundation/Protocols/MLBufferedEvent.h>
 #import <MLFoundation/Protocols/MLAcceptorDelegate.h>
 #import <MLFoundation/Protocols/MLAcceptor.h>
+#import <MLFoundation/MLBufferedEvent.h>
 #import <MLFoundation/MLTCPAcceptor.h>
 #import <MLFoundation/MLConnection.h>
 #import <MLFoundation/MLTCPClientConnection.h>
