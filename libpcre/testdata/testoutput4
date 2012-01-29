@@ -9,40 +9,40 @@ No match
  0: acb
     a\x7fb
  0: a\x{7f}b
-    a\x{100}b 
+    a\x{100}b
  0: a\x{100}b
     *** Failers
 No match
-    a\nb  
+    a\nb
 No match
 
 /a(.{3})b/8
-    a\x{4000}xyb 
+    a\x{4000}xyb
  0: a\x{4000}xyb
  1: \x{4000}xy
-    a\x{4000}\x7fyb 
+    a\x{4000}\x7fyb
  0: a\x{4000}\x{7f}yb
  1: \x{4000}\x{7f}y
-    a\x{4000}\x{100}yb 
+    a\x{4000}\x{100}yb
  0: a\x{4000}\x{100}yb
  1: \x{4000}\x{100}y
     *** Failers
 No match
-    a\x{4000}b 
+    a\x{4000}b
 No match
-    ac\ncb 
+    ac\ncb
 No match
 
 /a(.*?)(.)/
     a\xc0\x88b
  0: a\xc0
- 1: 
+ 1:
  2: \xc0
 
 /a(.*?)(.)/8
     a\x{100}b
  0: a\x{100}
- 1: 
+ 1:
  2: \x{100}
 
 /a(.*)(.)/
@@ -84,130 +84,130 @@ No match
 /a(.??)(.)/
     a\xc0\x92bcd
  0: a\xc0
- 1: 
+ 1:
  2: \xc0
 
 /a(.??)(.)/8
     a\x{240}bcd
  0: a\x{240}
- 1: 
+ 1:
  2: \x{240}
 
 /a(.{3})b/8
-    a\x{1234}xyb 
+    a\x{1234}xyb
  0: a\x{1234}xyb
  1: \x{1234}xy
-    a\x{1234}\x{4321}yb 
+    a\x{1234}\x{4321}yb
  0: a\x{1234}\x{4321}yb
  1: \x{1234}\x{4321}y
-    a\x{1234}\x{4321}\x{3412}b 
+    a\x{1234}\x{4321}\x{3412}b
  0: a\x{1234}\x{4321}\x{3412}b
  1: \x{1234}\x{4321}\x{3412}
     *** Failers
 No match
-    a\x{1234}b 
+    a\x{1234}b
 No match
-    ac\ncb 
+    ac\ncb
 No match
 
 /a(.{3,})b/8
-    a\x{1234}xyb 
+    a\x{1234}xyb
  0: a\x{1234}xyb
  1: \x{1234}xy
-    a\x{1234}\x{4321}yb 
+    a\x{1234}\x{4321}yb
  0: a\x{1234}\x{4321}yb
  1: \x{1234}\x{4321}y
-    a\x{1234}\x{4321}\x{3412}b 
+    a\x{1234}\x{4321}\x{3412}b
  0: a\x{1234}\x{4321}\x{3412}b
  1: \x{1234}\x{4321}\x{3412}
-    axxxxbcdefghijb 
+    axxxxbcdefghijb
  0: axxxxbcdefghijb
  1: xxxxbcdefghij
-    a\x{1234}\x{4321}\x{3412}\x{3421}b 
+    a\x{1234}\x{4321}\x{3412}\x{3421}b
  0: a\x{1234}\x{4321}\x{3412}\x{3421}b
  1: \x{1234}\x{4321}\x{3412}\x{3421}
     *** Failers
 No match
-    a\x{1234}b 
+    a\x{1234}b
 No match
 
 /a(.{3,}?)b/8
-    a\x{1234}xyb 
+    a\x{1234}xyb
  0: a\x{1234}xyb
  1: \x{1234}xy
-    a\x{1234}\x{4321}yb 
+    a\x{1234}\x{4321}yb
  0: a\x{1234}\x{4321}yb
  1: \x{1234}\x{4321}y
-    a\x{1234}\x{4321}\x{3412}b 
+    a\x{1234}\x{4321}\x{3412}b
  0: a\x{1234}\x{4321}\x{3412}b
  1: \x{1234}\x{4321}\x{3412}
-    axxxxbcdefghijb 
+    axxxxbcdefghijb
  0: axxxxb
  1: xxxx
-    a\x{1234}\x{4321}\x{3412}\x{3421}b 
+    a\x{1234}\x{4321}\x{3412}\x{3421}b
  0: a\x{1234}\x{4321}\x{3412}\x{3421}b
  1: \x{1234}\x{4321}\x{3412}\x{3421}
     *** Failers
 No match
-    a\x{1234}b 
+    a\x{1234}b
 No match
 
 /a(.{3,5})b/8
-    a\x{1234}xyb 
+    a\x{1234}xyb
  0: a\x{1234}xyb
  1: \x{1234}xy
-    a\x{1234}\x{4321}yb 
+    a\x{1234}\x{4321}yb
  0: a\x{1234}\x{4321}yb
  1: \x{1234}\x{4321}y
-    a\x{1234}\x{4321}\x{3412}b 
+    a\x{1234}\x{4321}\x{3412}b
  0: a\x{1234}\x{4321}\x{3412}b
  1: \x{1234}\x{4321}\x{3412}
-    axxxxbcdefghijb 
+    axxxxbcdefghijb
  0: axxxxb
  1: xxxx
-    a\x{1234}\x{4321}\x{3412}\x{3421}b 
+    a\x{1234}\x{4321}\x{3412}\x{3421}b
  0: a\x{1234}\x{4321}\x{3412}\x{3421}b
  1: \x{1234}\x{4321}\x{3412}\x{3421}
-    axbxxbcdefghijb 
+    axbxxbcdefghijb
  0: axbxxb
  1: xbxx
-    axxxxxbcdefghijb 
+    axxxxxbcdefghijb
  0: axxxxxb
  1: xxxxx
     *** Failers
 No match
-    a\x{1234}b 
+    a\x{1234}b
 No match
-    axxxxxxbcdefghijb 
+    axxxxxxbcdefghijb
 No match
 
 /a(.{3,5}?)b/8
-    a\x{1234}xyb 
+    a\x{1234}xyb
  0: a\x{1234}xyb
  1: \x{1234}xy
-    a\x{1234}\x{4321}yb 
+    a\x{1234}\x{4321}yb
  0: a\x{1234}\x{4321}yb
  1: \x{1234}\x{4321}y
-    a\x{1234}\x{4321}\x{3412}b 
+    a\x{1234}\x{4321}\x{3412}b
  0: a\x{1234}\x{4321}\x{3412}b
  1: \x{1234}\x{4321}\x{3412}
-    axxxxbcdefghijb 
+    axxxxbcdefghijb
  0: axxxxb
  1: xxxx
-    a\x{1234}\x{4321}\x{3412}\x{3421}b 
+    a\x{1234}\x{4321}\x{3412}\x{3421}b
  0: a\x{1234}\x{4321}\x{3412}\x{3421}b
  1: \x{1234}\x{4321}\x{3412}\x{3421}
-    axbxxbcdefghijb 
+    axbxxbcdefghijb
  0: axbxxb
  1: xbxx
-    axxxxxbcdefghijb 
+    axxxxxbcdefghijb
  0: axxxxxb
  1: xxxxx
     *** Failers
 No match
-    a\x{1234}b 
+    a\x{1234}b
 No match
-    axxxxxxbcdefghijb 
+    axxxxxxbcdefghijb
 No match
 
 /^[a\x{c0}]/8
@@ -227,21 +227,21 @@ No match
 /(?<=a\x{100000}b)cd/8
     a\x{100000}bcd
  0: cd
-    
+
 /(?:\x{100}){3}b/8
     \x{100}\x{100}\x{100}b
  0: \x{100}\x{100}\x{100}b
-    *** Failers 
+    *** Failers
 No match
     \x{100}\x{100}b
 No match
 
 /\x{ab}/8
-    \x{ab} 
+    \x{ab}
  0: \x{ab}
     \xc2\xab
  0: \x{ab}
-    *** Failers 
+    *** Failers
 No match
     \x00{ab}
 No match
@@ -250,12 +250,12 @@ No match
     WXYZ
  0: X
  1: W
-    \x{256}XYZ 
+    \x{256}XYZ
  0: X
  1: \x{256}
     *** Failers
 No match
-    XYZ 
+    XYZ
 No match
 
 /X(\C{3})/8
@@ -267,48 +267,48 @@ No match
     X\x{1234}YZ
  0: X\x{1234}Y
  1: \x{1234}Y
-    
+
 /X\C*/8
     XYZabcdce
  0: XYZabcdce
-    
+
 /X\C*?/8
     XYZabcde
  0: X
-    
+
 /X\C{3,5}/8
-    Xabcdefg   
+    Xabcdefg
  0: Xabcde
-    X\x{1234} 
+    X\x{1234}
  0: X\x{1234}
     X\x{1234}YZ
  0: X\x{1234}YZ
-    X\x{1234}\x{512}  
+    X\x{1234}\x{512}
  0: X\x{1234}\x{512}
     X\x{1234}\x{512}YZ
  0: X\x{1234}\x{512}
 
 /X\C{3,5}?/8
-    Xabcdefg   
+    Xabcdefg
  0: Xabc
-    X\x{1234} 
+    X\x{1234}
  0: X\x{1234}
     X\x{1234}YZ
  0: X\x{1234}
-    X\x{1234}\x{512}  
+    X\x{1234}\x{512}
  0: X\x{1234}
 
 /[^a]+/8g
     bcd
  0: bcd
-    \x{100}aY\x{256}Z 
+    \x{100}aY\x{256}Z
  0: \x{100}
  0: Y\x{256}Z
-    
+
 /^[^a]{2}/8
     \x{100}bc
  0: \x{100}b
- 
+
 /^[^a]{2,}/8
     \x{100}bcAa
  0: \x{100}bcA
@@ -320,14 +320,14 @@ No match
 /[^a]+/8ig
     bcd
  0: bcd
-    \x{100}aY\x{256}Z 
+    \x{100}aY\x{256}Z
  0: \x{100}
  0: Y\x{256}Z
-    
+
 /^[^a]{2}/8i
     \x{100}bc
  0: \x{100}b
- 
+
 /^[^a]{2,}/8i
     \x{100}bcAa
  0: \x{100}bc
@@ -338,36 +338,36 @@ No match
 
 /\x{100}{0,0}/8
     abcd
- 0: 
- 
+ 0:
+
 /\x{100}?/8
     abcd
- 0: 
-    \x{100}\x{100} 
+ 0:
+    \x{100}\x{100}
  0: \x{100}
 
-/\x{100}{0,3}/8 
-    \x{100}\x{100} 
+/\x{100}{0,3}/8
+    \x{100}\x{100}
  0: \x{100}\x{100}
-    \x{100}\x{100}\x{100}\x{100} 
+    \x{100}\x{100}\x{100}\x{100}
  0: \x{100}\x{100}\x{100}
-    
+
 /\x{100}*/8
     abce
- 0: 
-    \x{100}\x{100}\x{100}\x{100} 
+ 0:
+    \x{100}\x{100}\x{100}\x{100}
  0: \x{100}\x{100}\x{100}\x{100}
 
 /\x{100}{1,1}/8
-    abcd\x{100}\x{100}\x{100}\x{100} 
+    abcd\x{100}\x{100}\x{100}\x{100}
  0: \x{100}
 
 /\x{100}{1,3}/8
-    abcd\x{100}\x{100}\x{100}\x{100} 
+    abcd\x{100}\x{100}\x{100}\x{100}
  0: \x{100}\x{100}\x{100}
 
 /\x{100}+/8
-    abcd\x{100}\x{100}\x{100}\x{100} 
+    abcd\x{100}\x{100}\x{100}\x{100}
  0: \x{100}\x{100}\x{100}\x{100}
 
 /\x{100}{3}/8
@@ -398,29 +398,29 @@ No match
 /\D/8
     1X2
  0: X
-    1\x{100}2 
+    1\x{100}2
  0: \x{100}
-  
+
 />\S/8
     > >X Y
  0: >X
     > >\x{100} Y
  0: >\x{100}
-  
+
 /\d/8
     \x{100}3
  0: 3
-    
+
 /\s/8
     \x{100} X
- 0:  
-    
+ 0:
+
 /\D+/8
     12abcd34
  0: abcd
     *** Failers
  0: *** Failers
-    1234  
+    1234
 No match
 
 /\D{2,3}/8
@@ -428,11 +428,11 @@ No match
  0: abc
     12ab34
  0: ab
-    *** Failers  
+    *** Failers
  0: ***
     1234
 No match
-    12a34  
+    12a34
 No match
 
 /\D{2,3}?/8
@@ -440,11 +440,11 @@ No match
  0: ab
     12ab34
  0: ab
-    *** Failers  
+    *** Failers
  0: **
     1234
 No match
-    12a34  
+    12a34
 No match
 
 /\d+/8
@@ -458,9 +458,9 @@ No match
  0: 12
     1234abcd
  0: 123
-    *** Failers  
+    *** Failers
 No match
-    1.4 
+    1.4
 No match
 
 /\d{2,3}?/8
@@ -468,9 +468,9 @@ No match
  0: 12
     1234abcd
  0: 12
-    *** Failers  
+    *** Failers
 No match
-    1.4 
+    1.4
 No match
 
 /\S+/8
@@ -478,7 +478,7 @@ No match
  0: 12abcd34
     *** Failers
  0: ***
-    \    \ 
+    \    \
 No match
 
 /\S{2,3}/8
@@ -488,7 +488,7 @@ No match
  0: 123
     *** Failers
  0: ***
-    \     \  
+    \     \
 No match
 
 /\S{2,3}?/8
@@ -498,7 +498,7 @@ No match
  0: 12
     *** Failers
  0: **
-    \     \  
+    \     \
 No match
 
 />\s+</8+
@@ -517,7 +517,7 @@ No match
  0+ ce
     *** Failers
 No match
-    ab>    <cd 
+    ab>    <cd
 No match
 
 />\s{2,3}?</8+
@@ -529,7 +529,7 @@ No match
  0+ ce
     *** Failers
 No match
-    ab>    <cd 
+    ab>    <cd
 No match
 
 /\w+/8
@@ -537,7 +537,7 @@ No match
  0: 12
     *** Failers
  0: Failers
-    +++=*! 
+    +++=*!
 No match
 
 /\w{2,3}/8
@@ -564,8 +564,8 @@ No match
     12====34
  0: ====
     *** Failers
- 0: *** 
-    abcd 
+ 0: ***
+    abcd
 No match
 
 /\W{2,3}/8
@@ -595,7 +595,7 @@ No match
  0: \x{100}
     \x{100}Z
  0: \x{100}
-    *** Failers 
+    *** Failers
 No match
 
 /[Z\x{100}]/8
@@ -605,7 +605,7 @@ No match
  0: \x{100}
     \x{100}Z
  0: \x{100}
-    *** Failers 
+    *** Failers
 No match
 
 /[\x{100}\x{200}]/8
@@ -613,7 +613,7 @@ No match
  0: \x{100}
    ab\x{200}cd
  0: \x{200}
-   *** Failers  
+   *** Failers
 No match
 
 /[\x{100}-\x{200}]/8
@@ -621,9 +621,9 @@ No match
  0: \x{100}
    ab\x{200}cd
  0: \x{200}
-   ab\x{111}cd 
+   ab\x{111}cd
  0: \x{111}
-   *** Failers  
+   *** Failers
 No match
 
 /[z-\x{200}]/8
@@ -631,13 +631,13 @@ No match
  0: \x{100}
    ab\x{200}cd
  0: \x{200}
-   ab\x{111}cd 
+   ab\x{111}cd
  0: \x{111}
    abzcd
  0: z
-   ab|cd  
+   ab|cd
  0: |
-   *** Failers  
+   *** Failers
 No match
 
 /[Q\x{100}\x{200}]/8
@@ -645,9 +645,9 @@ No match
  0: \x{100}
    ab\x{200}cd
  0: \x{200}
-   Q? 
+   Q?
  0: Q
-   *** Failers  
+   *** Failers
 No match
 
 /[Q\x{100}-\x{200}]/8
@@ -655,11 +655,11 @@ No match
  0: \x{100}
    ab\x{200}cd
  0: \x{200}
-   ab\x{111}cd 
+   ab\x{111}cd
  0: \x{111}
-   Q? 
+   Q?
  0: Q
-   *** Failers  
+   *** Failers
 No match
 
 /[Qz-\x{200}]/8
@@ -667,15 +667,15 @@ No match
  0: \x{100}
    ab\x{200}cd
  0: \x{200}
-   ab\x{111}cd 
+   ab\x{111}cd
  0: \x{111}
    abzcd
  0: z
-   ab|cd  
+   ab|cd
  0: |
-   Q? 
+   Q?
  0: Q
-   *** Failers  
+   *** Failers
 No match
 
 /[\x{100}\x{200}]{1,3}/8
@@ -685,7 +685,7 @@ No match
  0: \x{200}
    ab\x{200}\x{100}\x{200}\x{100}cd
  0: \x{200}\x{100}\x{200}
-   *** Failers  
+   *** Failers
 No match
 
 /[\x{100}\x{200}]{1,3}?/8
@@ -695,7 +695,7 @@ No match
  0: \x{200}
    ab\x{200}\x{100}\x{200}\x{100}cd
  0: \x{200}
-   *** Failers  
+   *** Failers
 No match
 
 /[Q\x{100}\x{200}]{1,3}/8
@@ -705,7 +705,7 @@ No match
  0: \x{200}
    ab\x{200}\x{100}\x{200}\x{100}cd
  0: \x{200}\x{100}\x{200}
-   *** Failers  
+   *** Failers
 No match
 
 /[Q\x{100}\x{200}]{1,3}?/8
@@ -715,29 +715,29 @@ No match
  0: \x{200}
    ab\x{200}\x{100}\x{200}\x{100}cd
  0: \x{200}
-   *** Failers  
+   *** Failers
 No match
 
 /(?<=[\x{100}\x{200}])X/8
     abc\x{200}X
  0: X
-    abc\x{100}X 
+    abc\x{100}X
  0: X
     *** Failers
 No match
-    X  
+    X
 No match
 
 /(?<=[Q\x{100}\x{200}])X/8
     abc\x{200}X
  0: X
-    abc\x{100}X 
+    abc\x{100}X
  0: X
-    abQX 
+    abQX
  0: X
     *** Failers
 No match
-    X  
+    X
 No match
 
 /(?<=[\x{100}\x{200}]{3})X/8
@@ -747,7 +747,7 @@ No match
 No match
     abc\x{200}X
 No match
-    X  
+    X
 No match
 
 /[^\x{100}\x{200}]X/8
@@ -755,13 +755,13 @@ No match
  0: AX
     \x{150}X
  0: \x{150}X
-    \x{500}X 
+    \x{500}X
  0: \x{500}X
     *** Failers
 No match
     \x{100}X
 No match
-    \x{200}X   
+    \x{200}X
 No match
 
 /[^Q\x{100}\x{200}]X/8
@@ -769,21 +769,21 @@ No match
  0: AX
     \x{150}X
  0: \x{150}X
-    \x{500}X 
+    \x{500}X
  0: \x{500}X
     *** Failers
 No match
     \x{100}X
 No match
-    \x{200}X   
+    \x{200}X
 No match
-    QX 
+    QX
 No match
 
 /[^\x{100}-\x{200}]X/8
     AX
  0: AX
-    \x{500}X 
+    \x{500}X
  0: \x{500}X
     *** Failers
 No match
@@ -791,7 +791,7 @@ No match
 No match
     \x{150}X
 No match
-    \x{200}X   
+    \x{200}X
 No match
 
 /a\Cb/
@@ -799,21 +799,21 @@ No match
  0: aXb
     a\nb
  0: a\x0ab
-  
+
 /a\Cb/8
     aXb
  0: aXb
     a\nb
  0: a\x{0a}b
-    *** Failers 
+    *** Failers
 No match
-    a\x{100}b 
+    a\x{100}b
 No match
 
 /[z-\x{100}]/8i
     z
  0: z
-    Z 
+    Z
  0: Z
     \x{100}
  0: \x{100}
@@ -821,7 +821,7 @@ No match
 No match
     \x{102}
 No match
-    y    
+    y
 No match
 
 /[\xFF]/
@@ -839,7 +839,7 @@ No match
 /[^\xff]/8
     XYZ
  0: X
-    \x{123} 
+    \x{123}
  0: \x{123}
 
 /^[ac]*b/8
@@ -857,53 +857,53 @@ No match
 /^[^x]*b/8
   xb
 No match
-  
+
 /^\d*b/8
-  xb 
+  xb
 No match
 
 /(|a)/g8
     catac
- 0: 
- 1: 
- 0: 
- 1: 
+ 0:
+ 1:
+ 0:
+ 1:
  0: a
  1: a
- 0: 
- 1: 
- 0: 
- 1: 
+ 0:
+ 1:
+ 0:
+ 1:
  0: a
  1: a
- 0: 
- 1: 
- 0: 
- 1: 
-    a\x{256}a 
- 0: 
- 1: 
+ 0:
+ 1:
+ 0:
+ 1:
+    a\x{256}a
+ 0:
+ 1:
  0: a
  1: a
- 0: 
- 1: 
- 0: 
- 1: 
+ 0:
+ 1:
+ 0:
+ 1:
  0: a
  1: a
- 0: 
- 1: 
+ 0:
+ 1:
 
 /^\x{85}$/8i
     \x{85}
  0: \x{85}
 
 /^ሴ/8
-    ሴ 
+    ሴ
  0: \x{1234}
 
 /^\ሴ/8
-    ሴ 
+    ሴ
  0: \x{1234}
 
 "(?s)(.{1,5})"8
@@ -915,26 +915,26 @@ No match
  1: ab
 
 /a*\x{100}*\w/8
-    a 
+    a
  0: a
 
 /\S\S/8g
     A\x{a3}BC
  0: A\x{a3}
  0: BC
-    
+
 /\S{2}/8g
     A\x{a3}BC
  0: A\x{a3}
  0: BC
-    
+
 /\W\W/8g
-    +\x{a3}== 
+    +\x{a3}==
  0: +\x{a3}
  0: ==
 
 /\W{2}/8g
-    +\x{a3}== 
+    +\x{a3}==
  0: +\x{a3}
  0: ==
 
@@ -979,9 +979,9 @@ No match
  0: \x{2435}
  0: \x{2441}
  0: \x{2442}
-    
+
 /[\S\s]*/8
-    abc\n\r\x{442}\x{435}\x{441}\x{442}xyz 
+    abc\n\r\x{442}\x{435}\x{441}\x{442}xyz
  0: abc\x{0a}\x{0d}\x{442}\x{435}\x{441}\x{442}xyz
 
 /[\x{41f}\S]/8g
@@ -1000,70 +1000,70 @@ No match
     abc def\x{442}\x{443}xyz\npqr
  0: c d
 
-/[[:^alnum:]]/8g  
+/[[:^alnum:]]/8g
     +\x{2442}
  0: +
  0: \x{2442}
-    
-/[[:^alpha:]]/8g 
+
+/[[:^alpha:]]/8g
     +\x{2442}
  0: +
  0: \x{2442}
-    
-/[[:^ascii:]]/8g 
+
+/[[:^ascii:]]/8g
     A\x{442}
  0: \x{442}
-    
-/[[:^blank:]]/8g 
-    A\x{442}
- 0: A
- 0: \x{442}
-    
-/[[:^cntrl:]]/8g 
+
+/[[:^blank:]]/8g
     A\x{442}
  0: A
  0: \x{442}
-    
-/[[:^digit:]]/8g 
+
+/[[:^cntrl:]]/8g
     A\x{442}
  0: A
  0: \x{442}
-    
-/[[:^graph:]]/8g 
+
+/[[:^digit:]]/8g
+    A\x{442}
+ 0: A
+ 0: \x{442}
+
+/[[:^graph:]]/8g
     \x19\x{e01ff}
  0: \x{19}
  0: \x{e01ff}
-    
-/[[:^lower:]]/8g 
+
+/[[:^lower:]]/8g
     A\x{422}
  0: A
  0: \x{422}
-    
-/[[:^print:]]/8g 
+
+/[[:^print:]]/8g
     \x{19}\x{e01ff}
  0: \x{19}
  0: \x{e01ff}
-    
-/[[:^punct:]]/8g 
+
+/[[:^punct:]]/8g
     A\x{442}
  0: A
  0: \x{442}
-    
-/[[:^space:]]/8g 
+
+/[[:^space:]]/8g
     A\x{442}
  0: A
  0: \x{442}
-    
-/[[:^upper:]]/8g 
+
+/[[:^upper:]]/8g
     a\x{442}
  0: a
  0: \x{442}
-    
-/[[:^word:]]/8g  
+
+/[[:^word:]]/8g
     +\x{2442}
  0: +
  0: \x{2442}
-    
+
 /[[:^xdigit:]]/8g
     M\x{442}
  0: M

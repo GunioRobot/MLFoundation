@@ -1,19 +1,19 @@
 /*
- 
+
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
- 
+
  */
 
 #import <Foundation/Foundation.h>
@@ -24,16 +24,16 @@
 
 /** Обработчик соединения с HTTP-сервером.
  *
- * HTTP-сервер в приложении устраивается на базе MLHTTPAcceptor таким, например, образом 
+ * HTTP-сервер в приложении устраивается на базе MLHTTPAcceptor таким, например, образом
  *
  * @code
  * - (void)acceptor:(MLAcceptor *)acceptor receivedConnection:(id)connection
  * {
- *	MyHTTPServerConnectionDelegateImpl *client = 
+ *	MyHTTPServerConnectionDelegateImpl *client =
  *		[[MyHTTPServerConnectionDelegateImpl alloc] init];
- *  
+ *
  *  [client setConnection:connection];
- *	
+ *
  *	[client start];
  * }
  * @endcode
@@ -42,10 +42,10 @@
  * но отдаёт их на делегата по-одному. Поэтому для пользователя ведёт себя подобно
  * реюзабельному HTTPResponse.
  *
- * Процесс взаимодействия с пользователем: 
+ * Процесс взаимодействия с пользователем:
  *
  *  - setConnection:, validateForStart:, start. Начинает обрабатываться первый запрос.
- * 
+ *
  *  - Если в запросе попадается какая-то ошибка - отдаётся 500 или 501,
  *    делегат не трогается, соединение тихо разрывается.
  *  - Вызывается receivedRequestWithPath делегата
@@ -68,12 +68,12 @@
  *
  * TODO: Сделать настоящий разбор заголовков запроса
  *
- * TODO: Возможность задавать заголовки ответа.  
+ * TODO: Возможность задавать заголовки ответа.
  *
  * TODO: По-настоящему определять, есть ли body у запроса, и читать его, если есть.
  *
  * TODO: Всё, связаное с хедерами ответа.
- *       Для ответа потоком проверять, что стоит либо connection: close, либо 
+ *       Для ответа потоком проверять, что стоит либо connection: close, либо
  *       CTE: Chunked (и пользователь обязуется сам поддерживать chunked encoding)
  *
  * Copyright 2009 undev
@@ -89,12 +89,12 @@
 
 	NSString *description_;
 }
-/** Установить полученое от MLTCPAcceptor'а соединение. */ 
+/** Установить полученое от MLTCPAcceptor'а соединение. */
 - (void)setConnection:(MLConnection *)connection;
 /** Underyling TCP-соединение. */
 - (MLConnection *)connection;
 
-/** Установить делегата. Делегат может быть в любой момент 
+/** Установить делегата. Делегат может быть в любой момент
  * но делегат может быть в любой момент изменён - например, если в соединение нужно
  * отдавать поток. */
 - (void)setDelegate:(id<MLHTTPServerConnectionDelegate>)delegate;
@@ -121,8 +121,8 @@
 
 /** Начать отправлять ответ. Требуется, чтобы в headers: было либо Connection: close
  * (и тогда после finishSendResponse соединение будет закрыто), либо Content-Transfer-Encoding:
- * chunked (и тогда пользователь обязуется сам правильно форматировать чанки), либо 
- * Content-Length (и тогда пользователь обязуется её соблюсти). 
+ * chunked (и тогда пользователь обязуется сам правильно форматировать чанки), либо
+ * Content-Length (и тогда пользователь обязуется её соблюсти).
  */
 - (void)beginSendResponseWithStatus:(NSUInteger)status reason:(NSString *)reason
 	headers:(NSDictionary *)headers;

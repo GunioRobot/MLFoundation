@@ -29,7 +29,7 @@ Build your own pcre lib or grab it from: http://sourceforge.net/projects/objpcre
 //
 //		Regular expression support is provided by the PCRE library package,
 //   which is open source software, written by Philip Hazel, and copyright
-//			 by the University of Cambridge, England. 
+//			 by the University of Cambridge, England.
 //		(PCRE available at ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/)
 ///////////////////////////////////////////////////////////////////////////////
 /* v. 0.3.5 */

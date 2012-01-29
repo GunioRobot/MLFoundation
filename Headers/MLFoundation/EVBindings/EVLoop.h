@@ -1,13 +1,13 @@
 /*
 
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,11 +23,11 @@
 
 /** Обёртка над ev_loop.
  *
- * EVLoop * можно свободно тайпкастить к struct ev_loop *, если не хватает 
+ * EVLoop * можно свободно тайпкастить к struct ev_loop *, если не хватает
  * реализованых методов-обёрток.
  *
  * Default event loop, на которую можно вешать обработчики сигналов, всегда
- * доступна как 
+ * доступна как
  *
  * @code
  * extern EVLoop *EVReactor;
@@ -35,7 +35,7 @@
  *
  * На неё стоит полагаться только в корневых классах приложения, а в графах
  * объектов использовать протокол <MLEvLoopActivity>, и учить объекты привязывать
- * детей к своему event loop. 
+ * детей к своему event loop.
  *
  *
  * Copyright 2009 undev
@@ -59,7 +59,7 @@
 @end
 
 /** Асинхронные сообщения.
- * 
+ *
  * @code
  * [[myObject async] errorOccured:anError];
  * @endcode

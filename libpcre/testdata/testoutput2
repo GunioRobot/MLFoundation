@@ -140,7 +140,7 @@ Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: c d e 
+Starting byte set: c d e
     this sentence eventually mentions a cat
  0: cat
     this sentences rambles on and on for a while and then reaches elephant
@@ -151,7 +151,7 @@ Capturing subpattern count = 0
 Options: caseless
 No first char
 No need char
-Starting byte set: C D E c d e 
+Starting byte set: C D E c d e
     this sentence eventually mentions a CAT cat
  0: CAT
     this sentences rambles on and on for a while to elephant ElePhant
@@ -162,34 +162,34 @@ Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: a b c d 
+Starting byte set: a b c d
 
 /(a|[^\dZ])/IS
 Capturing subpattern count = 1
 No options
 No first char
 No need char
-Starting byte set: \x00 \x01 \x02 \x03 \x04 \x05 \x06 \x07 \x08 \x09 \x0a 
-  \x0b \x0c \x0d \x0e \x0f \x10 \x11 \x12 \x13 \x14 \x15 \x16 \x17 \x18 \x19 
-  \x1a \x1b \x1c \x1d \x1e \x1f \x20 ! " # $ % & ' ( ) * + , - . / : ; < = > 
-  ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y [ \ ] ^ _ ` a b c d 
-  e f g h i j k l m n o p q r s t u v w x y z { | } ~ \x7f \x80 \x81 \x82 \x83 
-  \x84 \x85 \x86 \x87 \x88 \x89 \x8a \x8b \x8c \x8d \x8e \x8f \x90 \x91 \x92 
-  \x93 \x94 \x95 \x96 \x97 \x98 \x99 \x9a \x9b \x9c \x9d \x9e \x9f \xa0 \xa1 
-  \xa2 \xa3 \xa4 \xa5 \xa6 \xa7 \xa8 \xa9 \xaa \xab \xac \xad \xae \xaf \xb0 
-  \xb1 \xb2 \xb3 \xb4 \xb5 \xb6 \xb7 \xb8 \xb9 \xba \xbb \xbc \xbd \xbe \xbf 
-  \xc0 \xc1 \xc2 \xc3 \xc4 \xc5 \xc6 \xc7 \xc8 \xc9 \xca \xcb \xcc \xcd \xce 
-  \xcf \xd0 \xd1 \xd2 \xd3 \xd4 \xd5 \xd6 \xd7 \xd8 \xd9 \xda \xdb \xdc \xdd 
-  \xde \xdf \xe0 \xe1 \xe2 \xe3 \xe4 \xe5 \xe6 \xe7 \xe8 \xe9 \xea \xeb \xec 
-  \xed \xee \xef \xf0 \xf1 \xf2 \xf3 \xf4 \xf5 \xf6 \xf7 \xf8 \xf9 \xfa \xfb 
-  \xfc \xfd \xfe \xff 
+Starting byte set: \x00 \x01 \x02 \x03 \x04 \x05 \x06 \x07 \x08 \x09 \x0a
+  \x0b \x0c \x0d \x0e \x0f \x10 \x11 \x12 \x13 \x14 \x15 \x16 \x17 \x18 \x19
+  \x1a \x1b \x1c \x1d \x1e \x1f \x20 ! " # $ % & ' ( ) * + , - . / : ; < = >
+  ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y [ \ ] ^ _ ` a b c d
+  e f g h i j k l m n o p q r s t u v w x y z { | } ~ \x7f \x80 \x81 \x82 \x83
+  \x84 \x85 \x86 \x87 \x88 \x89 \x8a \x8b \x8c \x8d \x8e \x8f \x90 \x91 \x92
+  \x93 \x94 \x95 \x96 \x97 \x98 \x99 \x9a \x9b \x9c \x9d \x9e \x9f \xa0 \xa1
+  \xa2 \xa3 \xa4 \xa5 \xa6 \xa7 \xa8 \xa9 \xaa \xab \xac \xad \xae \xaf \xb0
+  \xb1 \xb2 \xb3 \xb4 \xb5 \xb6 \xb7 \xb8 \xb9 \xba \xbb \xbc \xbd \xbe \xbf
+  \xc0 \xc1 \xc2 \xc3 \xc4 \xc5 \xc6 \xc7 \xc8 \xc9 \xca \xcb \xcc \xcd \xce
+  \xcf \xd0 \xd1 \xd2 \xd3 \xd4 \xd5 \xd6 \xd7 \xd8 \xd9 \xda \xdb \xdc \xdd
+  \xde \xdf \xe0 \xe1 \xe2 \xe3 \xe4 \xe5 \xe6 \xe7 \xe8 \xe9 \xea \xeb \xec
+  \xed \xee \xef \xf0 \xf1 \xf2 \xf3 \xf4 \xf5 \xf6 \xf7 \xf8 \xf9 \xfa \xfb
+  \xfc \xfd \xfe \xff
 
 /(a|b)*[\s]/IS
 Capturing subpattern count = 1
 No options
 No first char
 No need char
-Starting byte set: \x09 \x0a \x0c \x0d \x20 a b 
+Starting byte set: \x09 \x0a \x0c \x0d \x20 a b
 
 /(ab\2)/
 Failed: reference to non-existent subpattern at offset 6
@@ -387,7 +387,7 @@ No match: POSIX code 17: match failed
  0: abc
 
 /(abc)\2/IP
-Failed: POSIX code 15: bad back reference at offset 7     
+Failed: POSIX code 15: bad back reference at offset 7
 
 /(abc\1)/IP
     abc
@@ -532,21 +532,21 @@ Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: a b c d 
+Starting byte set: a b c d
 
 /(?i)[abcd]/IS
 Capturing subpattern count = 0
 Options: caseless
 No first char
 No need char
-Starting byte set: A B C D a b c d 
+Starting byte set: A B C D a b c d
 
 /(?m)[xy]|(b|c)/IS
 Capturing subpattern count = 1
 Options: multiline
 No first char
 No need char
-Starting byte set: b c x y 
+Starting byte set: b c x y
 
 /(^a|^b)/Im
 Capturing subpattern count = 1
@@ -620,7 +620,7 @@ Partial matching not supported
 No options
 No first char
 No need char
-Starting byte set: C a b c d 
+Starting byte set: C a b c d
 
 /a$/I
 Capturing subpattern count = 0
@@ -685,21 +685,21 @@ Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: a b 
+Starting byte set: a b
 
 /(?<!foo)(alpha|omega)/IS
 Capturing subpattern count = 1
 No options
 No first char
 Need char = 'a'
-Starting byte set: a o 
+Starting byte set: a o
 
 /(?!alphabet)[ab]/IS
 Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: a b 
+Starting byte set: a b
 
 /(?<=foo\n)^bar/Im
 Capturing subpattern count = 0
@@ -976,7 +976,7 @@ Failed: numbers out of order in {} quantifier at offset 7
 Failed: \ at end of pattern at offset 4
 
 /abc/\P
-Failed: POSIX code 9: bad escape sequence at offset 4     
+Failed: POSIX code 9: bad escape sequence at offset 4
 
 /abc/\i
 Failed: \ at end of pattern at offset 4
@@ -1067,7 +1067,7 @@ No need char
 get substring 4 failed -7
  0L adef
  1L a
- 2L 
+ 2L
  3L f
     bcdef\G1\G2\G3\G4\L
  0: bcdef
@@ -1328,7 +1328,7 @@ Need char = 'i'
     Missouri river
  0: Mis
  0+ souri river
- 0: ri 
+ 0: ri
  0+ river
  0: riv
  0+ er
@@ -1644,9 +1644,9 @@ No need char
     ab
  0: ab
     \
- 0: 
+ 0:
     *** Failers
- 0: 
+ 0:
     \N
 No match
 
@@ -1656,13 +1656,13 @@ No options
 No first char
 No need char
     abcd
- 0: 
+ 0:
     -abc
- 0: 
+ 0:
     \Nab-c
  0: -
     *** Failers
- 0: 
+ 0:
     \Nabc
 No match
 
@@ -1942,8 +1942,8 @@ Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
-  _ a b c d e f g h i j k l m n o p q r s t u v w x y z 
+Starting byte set: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+  _ a b c d e f g h i j k l m n o p q r s t u v w x y z
 
 /^[[:ascii:]]/DZ
 ------------------------------------------------------------------
@@ -2003,7 +2003,7 @@ Contains explicit CR or LF match
 No options
 No first char
 No need char
-Starting byte set: \x09 \x0a \x0b \x0c \x0d \x20 
+Starting byte set: \x09 \x0a \x0b \x0c \x0d \x20
 
 /^[[:cntrl:]]/DZ
 ------------------------------------------------------------------
@@ -2255,275 +2255,275 @@ No first char
 No need char
     \O900 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 ABC ABC
  0: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 ABC ABC
- 1: 1 
- 2: 2 
- 3: 3 
- 4: 4 
- 5: 5 
- 6: 6 
- 7: 7 
- 8: 8 
- 9: 9 
-10: 10 
-11: 11 
-12: 12 
-13: 13 
-14: 14 
-15: 15 
-16: 16 
-17: 17 
-18: 18 
-19: 19 
-20: 20 
-21: 21 
-22: 22 
-23: 23 
-24: 24 
-25: 25 
-26: 26 
-27: 27 
-28: 28 
-29: 29 
-30: 30 
-31: 31 
-32: 32 
-33: 33 
-34: 34 
-35: 35 
-36: 36 
-37: 37 
-38: 38 
-39: 39 
-40: 40 
-41: 41 
-42: 42 
-43: 43 
-44: 44 
-45: 45 
-46: 46 
-47: 47 
-48: 48 
-49: 49 
-50: 50 
-51: 51 
-52: 52 
-53: 53 
-54: 54 
-55: 55 
-56: 56 
-57: 57 
-58: 58 
-59: 59 
-60: 60 
-61: 61 
-62: 62 
-63: 63 
-64: 64 
-65: 65 
-66: 66 
-67: 67 
-68: 68 
-69: 69 
-70: 70 
-71: 71 
-72: 72 
-73: 73 
-74: 74 
-75: 75 
-76: 76 
-77: 77 
-78: 78 
-79: 79 
-80: 80 
-81: 81 
-82: 82 
-83: 83 
-84: 84 
-85: 85 
-86: 86 
-87: 87 
-88: 88 
-89: 89 
-90: 90 
-91: 91 
-92: 92 
-93: 93 
-94: 94 
-95: 95 
-96: 96 
-97: 97 
-98: 98 
-99: 99 
-100: 100 
-101: 101 
-102: 102 
-103: 103 
-104: 104 
-105: 105 
-106: 106 
-107: 107 
-108: 108 
-109: 109 
-110: 110 
-111: 111 
-112: 112 
-113: 113 
-114: 114 
-115: 115 
-116: 116 
-117: 117 
-118: 118 
-119: 119 
-120: 120 
-121: 121 
-122: 122 
-123: 123 
-124: 124 
-125: 125 
-126: 126 
-127: 127 
-128: 128 
-129: 129 
-130: 130 
-131: 131 
-132: 132 
-133: 133 
-134: 134 
-135: 135 
-136: 136 
-137: 137 
-138: 138 
-139: 139 
-140: 140 
-141: 141 
-142: 142 
-143: 143 
-144: 144 
-145: 145 
-146: 146 
-147: 147 
-148: 148 
-149: 149 
-150: 150 
-151: 151 
-152: 152 
-153: 153 
-154: 154 
-155: 155 
-156: 156 
-157: 157 
-158: 158 
-159: 159 
-160: 160 
-161: 161 
-162: 162 
-163: 163 
-164: 164 
-165: 165 
-166: 166 
-167: 167 
-168: 168 
-169: 169 
-170: 170 
-171: 171 
-172: 172 
-173: 173 
-174: 174 
-175: 175 
-176: 176 
-177: 177 
-178: 178 
-179: 179 
-180: 180 
-181: 181 
-182: 182 
-183: 183 
-184: 184 
-185: 185 
-186: 186 
-187: 187 
-188: 188 
-189: 189 
-190: 190 
-191: 191 
-192: 192 
-193: 193 
-194: 194 
-195: 195 
-196: 196 
-197: 197 
-198: 198 
-199: 199 
-200: 200 
-201: 201 
-202: 202 
-203: 203 
-204: 204 
-205: 205 
-206: 206 
-207: 207 
-208: 208 
-209: 209 
-210: 210 
-211: 211 
-212: 212 
-213: 213 
-214: 214 
-215: 215 
-216: 216 
-217: 217 
-218: 218 
-219: 219 
-220: 220 
-221: 221 
-222: 222 
-223: 223 
-224: 224 
-225: 225 
-226: 226 
-227: 227 
-228: 228 
-229: 229 
-230: 230 
-231: 231 
-232: 232 
-233: 233 
-234: 234 
-235: 235 
-236: 236 
-237: 237 
-238: 238 
-239: 239 
-240: 240 
-241: 241 
-242: 242 
-243: 243 
-244: 244 
-245: 245 
-246: 246 
-247: 247 
-248: 248 
-249: 249 
-250: 250 
-251: 251 
-252: 252 
-253: 253 
-254: 254 
-255: 255 
-256: 256 
-257: 257 
-258: 258 
-259: 259 
-260: 260 
-261: 261 
-262: 262 
-263: 263 
-264: 264 
-265: 265 
-266: 266 
-267: 267 
-268: 268 
-269: 269 
+ 1: 1
+ 2: 2
+ 3: 3
+ 4: 4
+ 5: 5
+ 6: 6
+ 7: 7
+ 8: 8
+ 9: 9
+10: 10
+11: 11
+12: 12
+13: 13
+14: 14
+15: 15
+16: 16
+17: 17
+18: 18
+19: 19
+20: 20
+21: 21
+22: 22
+23: 23
+24: 24
+25: 25
+26: 26
+27: 27
+28: 28
+29: 29
+30: 30
+31: 31
+32: 32
+33: 33
+34: 34
+35: 35
+36: 36
+37: 37
+38: 38
+39: 39
+40: 40
+41: 41
+42: 42
+43: 43
+44: 44
+45: 45
+46: 46
+47: 47
+48: 48
+49: 49
+50: 50
+51: 51
+52: 52
+53: 53
+54: 54
+55: 55
+56: 56
+57: 57
+58: 58
+59: 59
+60: 60
+61: 61
+62: 62
+63: 63
+64: 64
+65: 65
+66: 66
+67: 67
+68: 68
+69: 69
+70: 70
+71: 71
+72: 72
+73: 73
+74: 74
+75: 75
+76: 76
+77: 77
+78: 78
+79: 79
+80: 80
+81: 81
+82: 82
+83: 83
+84: 84
+85: 85
+86: 86
+87: 87
+88: 88
+89: 89
+90: 90
+91: 91
+92: 92
+93: 93
+94: 94
+95: 95
+96: 96
+97: 97
+98: 98
+99: 99
+100: 100
+101: 101
+102: 102
+103: 103
+104: 104
+105: 105
+106: 106
+107: 107
+108: 108
+109: 109
+110: 110
+111: 111
+112: 112
+113: 113
+114: 114
+115: 115
+116: 116
+117: 117
+118: 118
+119: 119
+120: 120
+121: 121
+122: 122
+123: 123
+124: 124
+125: 125
+126: 126
+127: 127
+128: 128
+129: 129
+130: 130
+131: 131
+132: 132
+133: 133
+134: 134
+135: 135
+136: 136
+137: 137
+138: 138
+139: 139
+140: 140
+141: 141
+142: 142
+143: 143
+144: 144
+145: 145
+146: 146
+147: 147
+148: 148
+149: 149
+150: 150
+151: 151
+152: 152
+153: 153
+154: 154
+155: 155
+156: 156
+157: 157
+158: 158
+159: 159
+160: 160
+161: 161
+162: 162
+163: 163
+164: 164
+165: 165
+166: 166
+167: 167
+168: 168
+169: 169
+170: 170
+171: 171
+172: 172
+173: 173
+174: 174
+175: 175
+176: 176
+177: 177
+178: 178
+179: 179
+180: 180
+181: 181
+182: 182
+183: 183
+184: 184
+185: 185
+186: 186
+187: 187
+188: 188
+189: 189
+190: 190
+191: 191
+192: 192
+193: 193
+194: 194
+195: 195
+196: 196
+197: 197
+198: 198
+199: 199
+200: 200
+201: 201
+202: 202
+203: 203
+204: 204
+205: 205
+206: 206
+207: 207
+208: 208
+209: 209
+210: 210
+211: 211
+212: 212
+213: 213
+214: 214
+215: 215
+216: 216
+217: 217
+218: 218
+219: 219
+220: 220
+221: 221
+222: 222
+223: 223
+224: 224
+225: 225
+226: 226
+227: 227
+228: 228
+229: 229
+230: 230
+231: 231
+232: 232
+233: 233
+234: 234
+235: 235
+236: 236
+237: 237
+238: 238
+239: 239
+240: 240
+241: 241
+242: 242
+243: 243
+244: 244
+245: 245
+246: 246
+247: 247
+248: 248
+249: 249
+250: 250
+251: 251
+252: 252
+253: 253
+254: 254
+255: 255
+256: 256
+257: 257
+258: 258
+259: 259
+260: 260
+261: 261
+262: 262
+263: 263
+264: 264
+265: 265
+266: 266
+267: 267
+268: 268
+269: 269
 270: ABC
 271: ABC
 
@@ -2851,7 +2851,7 @@ No options
 No first char
 No need char
     \
- 0: 
+ 0:
 
 /\Q\Ex/DZ
 ------------------------------------------------------------------
@@ -2868,7 +2868,7 @@ No need char
 / \Q\E/DZ
 ------------------------------------------------------------------
         Bra
-         
+
         Ket
         End
 ------------------------------------------------------------------
@@ -3497,7 +3497,7 @@ Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: a b 
+Starting byte set: a b
 
 /[^a]/I
 Capturing subpattern count = 0
@@ -3516,7 +3516,7 @@ Capturing subpattern count = 0
 No options
 No first char
 Need char = '6'
-Starting byte set: 0 1 2 3 4 5 6 7 8 9 
+Starting byte set: 0 1 2 3 4 5 6 7 8 9
 
 /a^b/I
 Capturing subpattern count = 0
@@ -3549,14 +3549,14 @@ Capturing subpattern count = 0
 Options: caseless
 No first char
 No need char
-Starting byte set: A B a b 
+Starting byte set: A B a b
 
 /[ab](?i)cd/IS
 Capturing subpattern count = 0
 No options
 No first char
 Need char = 'd' (caseless)
-Starting byte set: a b 
+Starting byte set: a b
 
 /abc(?C)def/I
 Capturing subpattern count = 0
@@ -3701,7 +3701,7 @@ No need char
     *** Failers
 --->*** Failers
   0 ^               (abc(?C1))*
- 0: 
+ 0:
     abcabcabc\C!1!3
 --->abcabcabc
   0 ^             (abc(?C1))*
@@ -3848,21 +3848,21 @@ First char = 'a'
 Need char = 'b'
     abbbbbccc\C*1
 --->abbbbbccc
-  1 ^        ^    
+  1 ^        ^
 Callout data = 1
-  1 ^       ^     
+  1 ^       ^
 Callout data = 1
-  1 ^      ^      
+  1 ^      ^
 Callout data = 1
-  1 ^     ^       
+  1 ^     ^
 Callout data = 1
-  1 ^    ^        
+  1 ^    ^
 Callout data = 1
-  1 ^   ^         
+  1 ^   ^
 Callout data = 1
-  1 ^  ^          
+  1 ^  ^
 Callout data = 1
-  1 ^ ^           
+  1 ^ ^
 Callout data = 1
 No match
 
@@ -3874,21 +3874,21 @@ First char = 'a'
 Need char = 'b'
     abbbbbccc\C*1
 --->abbbbbccc
-  1 ^ ^           
+  1 ^ ^
 Callout data = 1
-  1 ^  ^          
+  1 ^  ^
 Callout data = 1
-  1 ^   ^         
+  1 ^   ^
 Callout data = 1
-  1 ^    ^        
+  1 ^    ^
 Callout data = 1
-  1 ^     ^       
+  1 ^     ^
 Callout data = 1
-  1 ^      ^      
+  1 ^      ^
 Callout data = 1
-  1 ^       ^     
+  1 ^       ^
 Callout data = 1
-  1 ^        ^    
+  1 ^        ^
 Callout data = 1
 No match
 
@@ -3909,7 +3909,7 @@ Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: a b 
+Starting byte set: a b
 
 /(?R)/I
 Failed: recursive call could loop indefinitely at offset 3
@@ -4831,7 +4831,7 @@ Need char = 'e'
  +2 ^ ^       c
  +3 ^  ^      d
  +4 ^   ^     e
- +5 ^    ^    
+ +5 ^    ^
  0: abcde
   abcdfe
 --->abcdfe
@@ -4862,13 +4862,13 @@ Need char = 'b'
 --->ab
  +0 ^      a*
  +2 ^^     b
- +3 ^ ^    
+ +3 ^ ^
  0: ab
   aaaab
 --->aaaab
  +0 ^         a*
  +2 ^   ^     b
- +3 ^    ^    
+ +3 ^    ^
  0: aaaab
   aaaacb
 --->aaaacb
@@ -4884,7 +4884,7 @@ Need char = 'b'
  +2     ^      b
  +0      ^     a*
  +2      ^     b
- +3      ^^    
+ +3      ^^
  0: b
 
 /a+b/ICDZ
@@ -4907,13 +4907,13 @@ Need char = 'b'
 --->ab
  +0 ^      a+
  +2 ^^     b
- +3 ^ ^    
+ +3 ^ ^
  0: ab
   aaaab
 --->aaaab
  +0 ^         a+
  +2 ^   ^     b
- +3 ^    ^    
+ +3 ^    ^
  0: aaaab
   aaaacb
 --->aaaacb
@@ -4966,7 +4966,7 @@ Need char = 'x'
  +3 ^ ^      c
  +4 ^  ^     |
  +9 ^  ^     x
-+10 ^   ^    
++10 ^   ^
  0: abcx
  1: abc
   defx
@@ -4978,7 +4978,7 @@ Need char = 'x'
  +7 ^ ^      f
  +8 ^  ^     )
  +9 ^  ^     x
-+10 ^   ^    
++10 ^   ^
  0: defx
  1: def
   abcdefzx
@@ -5036,7 +5036,7 @@ No need char
  +3 ^     ^    |
  +1 ^     ^    a
  +4 ^     ^    c
-+12 ^     ^    
++12 ^     ^
  0: ababab
  1: ab
   abcdabcd
@@ -5056,7 +5056,7 @@ No need char
  +4 ^     ^      c
  +5 ^      ^     d
  +6 ^       ^    )
-+12 ^       ^    
++12 ^       ^
  0: abcdabcd
  1: cd
   abcdcdcdcdcd
@@ -5077,7 +5077,7 @@ No need char
  +4 ^     ^          c
  +5 ^      ^         d
  +6 ^       ^        )
-+12 ^       ^        
++12 ^       ^
  0: abcdcdcd
  1: cd
 
@@ -5363,7 +5363,7 @@ Need char = '3'
 +21 ^              ^       1
 +22 ^               ^      2
 +23 ^                ^     3
-+24 ^                 ^    
++24 ^                 ^
  0: aacaacaacaacaac123
  1: aac
 
@@ -5578,7 +5578,7 @@ Capturing subpattern count = 1
 No options
 No first char
 No need char
-Starting byte set: a b 
+Starting byte set: a b
 Compiled regex written to testsavedregex
 Study data written to testsavedregex
 <testsavedregex
@@ -5598,7 +5598,7 @@ Capturing subpattern count = 1
 No options
 No first char
 No need char
-Starting byte set: a b 
+Starting byte set: a b
 Compiled regex written to testsavedregex
 Study data written to testsavedregex
 <testsavedregex
@@ -5928,7 +5928,7 @@ No options
 No first char
 No need char
     (this(and)that
- 0: 
+ 0:
     (this(and)that)
  0: (this(and)that)
     (this(and)that)stuff
@@ -5941,7 +5941,7 @@ No options
 No first char
 No need char
     (this(and)that
- 0: 
+ 0:
     (this(and)that)
  0: (this(and)that)
 
@@ -5952,7 +5952,7 @@ No options
 No first char
 No need char
     (this(and)that
- 0: 
+ 0:
     (this(and)that)
  0: (this(and)that)
 
@@ -5963,9 +5963,9 @@ No options
 No first char
 No need char
     (this(and)that
- 0: 
+ 0:
     (this(and)that)
- 0: 
+ 0:
     ((this))
  0: ((this))
 
@@ -5976,9 +5976,9 @@ No options
 No first char
 No need char
     (this(and)that
- 0: 
+ 0:
     (this(and)that)
- 0: 
+ 0:
     (this)
  0: (this)
     ((this))
@@ -6297,15 +6297,15 @@ No first char
 No need char
     bXXaYYaY
  0: bXXaYYaY
- 1: 
- 2: 
- 3: 
- 4: 
- 5: 
- 6: 
- 7: 
- 8: 
- 9: 
+ 1:
+ 2:
+ 3:
+ 4:
+ 5:
+ 6:
+ 7:
+ 8:
+ 9:
 10: Y
 
 /\777/I
@@ -6317,7 +6317,7 @@ Partial matching not supported
 No options
 No first char
 Need char = ','
-Starting byte set: \x09 \x0a \x0c \x0d \x20 , 
+Starting byte set: \x09 \x0a \x0c \x0d \x20 ,
     \x0b,\x0b
  0: ,
     \x0c,\x0d
@@ -6516,106 +6516,106 @@ No first char
 No need char
     XY\O400
  0: XY
- 1: 
- 2: 
- 3: 
- 4: 
- 5: 
- 6: 
- 7: 
- 8: 
- 9: 
-10: 
-11: 
-12: 
-13: 
-14: 
-15: 
-16: 
-17: 
-18: 
-19: 
-20: 
-21: 
-22: 
-23: 
-24: 
-25: 
-26: 
-27: 
-28: 
-29: 
-30: 
-31: 
-32: 
-33: 
-34: 
-35: 
-36: 
-37: 
-38: 
-39: 
-40: 
-41: 
-42: 
-43: 
-44: 
-45: 
-46: 
-47: 
-48: 
-49: 
-50: 
-51: 
-52: 
-53: 
-54: 
-55: 
-56: 
-57: 
-58: 
-59: 
-60: 
-61: 
-62: 
-63: 
-64: 
-65: 
-66: 
-67: 
-68: 
-69: 
-70: 
-71: 
-72: 
-73: 
-74: 
-75: 
-76: 
-77: 
-78: 
-79: 
-80: 
-81: 
-82: 
-83: 
-84: 
-85: 
-86: 
-87: 
-88: 
-89: 
-90: 
-91: 
-92: 
-93: 
-94: 
-95: 
-96: 
-97: 
-98: 
-99: 
-100: 
+ 1:
+ 2:
+ 3:
+ 4:
+ 5:
+ 6:
+ 7:
+ 8:
+ 9:
+10:
+11:
+12:
+13:
+14:
+15:
+16:
+17:
+18:
+19:
+20:
+21:
+22:
+23:
+24:
+25:
+26:
+27:
+28:
+29:
+30:
+31:
+32:
+33:
+34:
+35:
+36:
+37:
+38:
+39:
+40:
+41:
+42:
+43:
+44:
+45:
+46:
+47:
+48:
+49:
+50:
+51:
+52:
+53:
+54:
+55:
+56:
+57:
+58:
+59:
+60:
+61:
+62:
+63:
+64:
+65:
+66:
+67:
+68:
+69:
+70:
+71:
+72:
+73:
+74:
+75:
+76:
+77:
+78:
+79:
+80:
+81:
+82:
+83:
+84:
+85:
+86:
+87:
+88:
+89:
+90:
+91:
+92:
+93:
+94:
+95:
+96:
+97:
+98:
+99:
+100:
 101: XY
 102: Y
 
@@ -6625,49 +6625,49 @@ Partial matching not supported
 No options
 No first char
 No need char
-Starting byte set: C a b c d 
+Starting byte set: C a b c d
 
 /()[ab]xyz/IS
 Capturing subpattern count = 1
 No options
 No first char
 Need char = 'z'
-Starting byte set: a b 
+Starting byte set: a b
 
 /(|)[ab]xyz/IS
 Capturing subpattern count = 1
 No options
 No first char
 Need char = 'z'
-Starting byte set: a b 
+Starting byte set: a b
 
 /(|c)[ab]xyz/IS
 Capturing subpattern count = 1
 No options
 No first char
 Need char = 'z'
-Starting byte set: a b c 
+Starting byte set: a b c
 
 /(|c?)[ab]xyz/IS
 Capturing subpattern count = 1
 No options
 No first char
 Need char = 'z'
-Starting byte set: a b c 
+Starting byte set: a b c
 
 /(d?|c?)[ab]xyz/IS
 Capturing subpattern count = 1
 No options
 No first char
 Need char = 'z'
-Starting byte set: a b c d 
+Starting byte set: a b c d
 
 /(d?|c)[ab]xyz/IS
 Capturing subpattern count = 1
 No options
 No first char
 Need char = 'z'
-Starting byte set: a b c d 
+Starting byte set: a b c d
 
 /^a*b\d/DZ
 ------------------------------------------------------------------
@@ -6765,7 +6765,7 @@ Partial matching not supported
 No options
 No first char
 No need char
-Starting byte set: a b c d 
+Starting byte set: a b c d
 
 /(a+|b*)[cd]/IS
 Capturing subpattern count = 1
@@ -6773,7 +6773,7 @@ Partial matching not supported
 No options
 No first char
 No need char
-Starting byte set: a b c d 
+Starting byte set: a b c d
 
 /(a*|b+)[cd]/IS
 Capturing subpattern count = 1
@@ -6781,7 +6781,7 @@ Partial matching not supported
 No options
 No first char
 No need char
-Starting byte set: a b c d 
+Starting byte set: a b c d
 
 /(a+|b+)[cd]/IS
 Capturing subpattern count = 1
@@ -6789,7 +6789,7 @@ Partial matching not supported
 No options
 No first char
 No need char
-Starting byte set: a b 
+Starting byte set: a b
 
 /((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
  ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
@@ -7833,7 +7833,7 @@ Matched, but too many substrings
  0: a\x0db
     a\nb\<cr>
  0: a\x0ab
-    a\x85b\<anycrlf> 
+    a\x85b\<anycrlf>
  0: a\x85b
     ** Failers
 No match
@@ -7845,7 +7845,7 @@ No match
 No match
     a\rb\<any>
 No match
-    a\x85b\<any> 
+    a\x85b\<any>
 No match
     a\rb\<anycrlf>
 No match
@@ -8130,37 +8130,37 @@ No match
  0: \x0d\x0afoo
     \nfoo
  0: \x0afoo
-    
+
 /^$/mg<any>
     abc\r\rxyz
- 0: 
-    abc\n\rxyz  
- 0: 
-    ** Failers 
+ 0:
+    abc\n\rxyz
+ 0:
+    ** Failers
 No match
     abc\r\nxyz
 No match
 
 /(?m)^$/<any>g+
     abc\r\n\r\n
- 0: 
+ 0:
  0+ \x0d\x0a
 
-/(?m)^$|^\r\n/<any>g+ 
+/(?m)^$|^\r\n/<any>g+
     abc\r\n\r\n
- 0: 
+ 0:
  0+ \x0d\x0a
  0: \x0d\x0a
- 0+ 
-    
-/(?m)$/<any>g+ 
+ 0+
+
+/(?m)$/<any>g+
     abc\r\n\r\n
- 0: 
+ 0:
  0+ \x0d\x0a\x0d\x0a
- 0: 
+ 0:
  0+ \x0d\x0a
- 0: 
- 0+ 
+ 0:
+ 0+
 
 /abc.$/mgx<anycrlf>
     abc1\x0a abc2\x0b abc3\x0c abc4\x0d abc5\x0d\x0a abc6\x85 abc9
@@ -8172,7 +8172,7 @@ No match
 /^X/m
     XABC
  0: X
-    ** Failers 
+    ** Failers
 No match
     XABC\B
 No match
@@ -8213,16 +8213,16 @@ No match
  1: abc
     ** Failers
 No match
-    xyabc  
+    xyabc
 No match
-    
+
 /x(?-0)y/
 Failed: a numbered reference must not be zero at offset 5
 
 /x(?-1)y/
 Failed: reference to non-existent subpattern at offset 5
 
-/x(?+0)y/ 
+/x(?+0)y/
 Failed: a numbered reference must not be zero at offset 5
 
 /x(?+1)y/
@@ -8252,10 +8252,10 @@ Failed: reference to non-existent subpattern at offset 5
  0: Y
     ** Failers
 No match
-    abcY   
+    abcY
 No match
-    
-/^((?(+1)X|Y)(abc))+/BZ 
+
+/^((?(+1)X|Y)(abc))+/BZ
 ------------------------------------------------------------------
         Bra
         ^
@@ -8283,7 +8283,7 @@ No match
  2: abc
     ** Failers
 No match
-    XabcXabc  
+    XabcXabc
 No match
 
 /(?(-1)a)/BZ
@@ -8329,13 +8329,13 @@ Failed: reference to non-existent subpattern at offset 7
     foobar
  0: bar
  1: foo
-   
+
 /(foo)(\Kbar|baz)/
     foobar
  0: bar
  1: foo
  2: bar
-    foobaz 
+    foobaz
  0: foobaz
  1: foo
  2: baz
@@ -8349,23 +8349,23 @@ Failed: reference to non-existent subpattern at offset 7
     tom-tom
  0: tom-tom
  1: tom
-    bon-bon 
+    bon-bon
  0: bon-bon
  1: bon
     ** Failers
 No match
-    tom-bon  
+    tom-bon
 No match
 
 /(?<A>tom|bon)-\g{A}/
     tom-tom
  0: tom-tom
  1: tom
-    bon-bon 
+    bon-bon
  0: bon-bon
  1: bon
-    
-/\g{A/ 
+
+/\g{A/
 Failed: syntax error in subpattern name (missing terminator) at offset 4
 
 /(?|(abc)|(xyz))/BZ
@@ -8386,7 +8386,7 @@ Failed: syntax error in subpattern name (missing terminator) at offset 4
    >abc<
  0: abc
  1: abc
-   >xyz< 
+   >xyz<
  0: xyz
  1: xyz
 
@@ -8416,7 +8416,7 @@ Failed: syntax error in subpattern name (missing terminator) at offset 4
  1: x
  2: abc
  3: x
-    xxyzx 
+    xxyzx
  0: xxyzx
  1: x
  2: xyz
@@ -8452,7 +8452,7 @@ Failed: syntax error in subpattern name (missing terminator) at offset 4
  2: abc
  3: pqr
  4: x
-    xxyzx 
+    xxyzx
  0: xxyzx
  1: x
  2: xyz
@@ -8463,28 +8463,28 @@ Failed: syntax error in subpattern name (missing terminator) at offset 4
     abcabc
  0: abcabc
  1: abc
-    xyzxyz 
+    xyzxyz
  0: xyzxyz
  1: xyz
     ** Failers
 No match
     abcxyz
 No match
-    xyzabc   
+    xyzabc
 No match
-    
+
 /(?|(abc)|(xyz))(?1)/
     abcabc
  0: abcabc
  1: abc
-    xyzabc 
+    xyzabc
  0: xyzabc
  1: xyz
-    ** Failers 
+    ** Failers
 No match
-    xyzxyz 
+    xyzxyz
 No match
- 
+
 /\H\h\V\v/
     X X\x0a
  0: X X\x0a
@@ -8492,27 +8492,27 @@ No match
  0: X\x09X\x0b
     ** Failers
 No match
-    \xa0 X\x0a   
+    \xa0 X\x0a
 No match
-    
-/\H*\h+\V?\v{3,4}/ 
+
+/\H*\h+\V?\v{3,4}/
     \x09\x20\xa0X\x0a\x0b\x0c\x0d\x0a
  0: \x09 \xa0X\x0a\x0b\x0c\x0d
     \x09\x20\xa0\x0a\x0b\x0c\x0d\x0a
  0: \x09 \xa0\x0a\x0b\x0c\x0d
     \x09\x20\xa0\x0a\x0b\x0c
  0: \x09 \xa0\x0a\x0b\x0c
-    ** Failers 
+    ** Failers
 No match
     \x09\x20\xa0\x0a\x0b
 No match
-     
+
 /\H{3,4}/
     XY  ABCDE
  0: ABCD
-    XY  PQR ST 
+    XY  PQR ST
  0: PQR
-    
+
 /.\h{3,4}./
     XY  AB    PQRS
  0: B    P
@@ -8524,7 +8524,7 @@ No match
  0:   X NYQZ
     ** Failers
 No match
-    >XYZ   
+    >XYZ
 No match
     >  X NY Z
 No match
@@ -8607,7 +8607,7 @@ No match
 No match
     XXXX
 No match
-    
+
 /\H+\hY/BZ
 ------------------------------------------------------------------
         Bra
@@ -8617,7 +8617,7 @@ No match
         Ket
         End
 ------------------------------------------------------------------
-    XXXX Y 
+    XXXX Y
  0: XXXX Y
 
 /\H+ Y/BZ
@@ -8834,7 +8834,7 @@ Failed: missing terminating ] for character class at offset 10
 /^a+(*FAIL)/
     aaaaaa
 No match
-    
+
 /a+b?c+(*FAIL)/
     aaabccc
 No match
@@ -8846,7 +8846,7 @@ No match
 /a+b?(*COMMIT)c+(*FAIL)/
     aaabccc
 No match
-    
+
 /a+b?(*SKIP)c+(*FAIL)/
     aaabcccaaabccc
 No match
@@ -8854,39 +8854,39 @@ No match
 /^(?:aaa(*THEN)\w{6}|bbb(*THEN)\w{5}|ccc(*THEN)\w{4}|\w{3})/
     aaaxxxxxx
  0: aaaxxxxxx
-    aaa++++++ 
+    aaa++++++
  0: aaa
     bbbxxxxx
  0: bbbxxxxx
-    bbb+++++ 
+    bbb+++++
  0: bbb
     cccxxxx
  0: cccxxxx
-    ccc++++ 
+    ccc++++
  0: ccc
-    dddddddd   
+    dddddddd
  0: ddd
 
 /^(aaa(*THEN)\w{6}|bbb(*THEN)\w{5}|ccc(*THEN)\w{4}|\w{3})/
     aaaxxxxxx
  0: aaaxxxxxx
  1: aaaxxxxxx
-    aaa++++++ 
+    aaa++++++
  0: aaa
  1: aaa
     bbbxxxxx
  0: bbbxxxxx
  1: bbbxxxxx
-    bbb+++++ 
+    bbb+++++
  0: bbb
  1: bbb
     cccxxxx
  0: cccxxxx
  1: cccxxxx
-    ccc++++ 
+    ccc++++
  0: ccc
  1: ccc
-    dddddddd   
+    dddddddd
  0: ddd
  1: ddd
 
@@ -8909,9 +8909,9 @@ No match
  3: E
     ** Failers
 No match
-    AD 
+    AD
 No match
-        
+
 /^a+(*FAIL)/C
     aaaaaa
 --->aaaaaa
@@ -8924,7 +8924,7 @@ No match
  +3 ^ ^        (*FAIL)
  +3 ^^         (*FAIL)
 No match
-    
+
 /a+b?c+(*FAIL)/C
     aaabccc
 --->aaabccc
@@ -8994,7 +8994,7 @@ No match
 +15 ^     ^     (*FAIL)
 +15 ^    ^      (*FAIL)
 No match
-    
+
 /a+b?(*SKIP)c+(*FAIL)/C
     aaabcccaaabccc
 --->aaabcccaaabccc
@@ -9039,11 +9039,11 @@ No match
 +13   ^   ^     (*FAIL)
 +13   ^  ^      (*FAIL)
 No match
-    
+
 /a(*PRUNE:XXX)b/
 Failed: (*VERB) with an argument is not supported at offset 8
 
-/a(*MARK)b/ 
+/a(*MARK)b/
 Failed: (*VERB) not recognized at offset 7
 
 /(?i:A{1,}\6666666666)/
@@ -9061,17 +9061,17 @@ Failed: reference to non-existent subpattern at offset 3
 /.+A/<crlf>
     \r\nA
 No match
-    
+
 /\nA/<crlf>
-    \r\nA 
+    \r\nA
  0: \x0aA
 
 /[\r\n]A/<crlf>
-    \r\nA 
+    \r\nA
  0: \x0aA
 
 /(\r|\n)A/<crlf>
-    \r\nA 
+    \r\nA
  0: \x0aA
  1: \x0a
 
@@ -9083,7 +9083,7 @@ Failed: (*VERB) not recognized at offset 5
  0: a\x0ab
     ** Failers
 No match
-    a\rb  
+    a\rb
 No match
 
 /(*CR)a.b/<lf>
@@ -9091,7 +9091,7 @@ No match
  0: a\x0ab
     ** Failers
 No match
-    a\rb  
+    a\rb
 No match
 
 /(*LF)a.b/<CRLF>
@@ -9099,17 +9099,17 @@ No match
  0: a\x0db
     ** Failers
 No match
-    a\nb  
+    a\nb
 No match
 
 /(*CRLF)a.b/
     a\rb
  0: a\x0db
-    a\nb  
+    a\nb
  0: a\x0ab
     ** Failers
 No match
-    a\r\nb  
+    a\r\nb
 No match
 
 /(*ANYCRLF)a.b/<CR>
@@ -9117,9 +9117,9 @@ No match
 No match
     a\rb
 No match
-    a\nb  
+    a\nb
 No match
-    a\r\nb  
+    a\r\nb
 No match
 
 /(*ANY)a.b/<cr>
@@ -9127,11 +9127,11 @@ No match
 No match
     a\rb
 No match
-    a\nb  
+    a\nb
 No match
-    a\r\nb  
+    a\r\nb
 No match
-    a\x85b 
+    a\x85b
 No match
 
 /a\Rb/I<bsr_anycrlf>
@@ -9149,7 +9149,7 @@ Need char = 'b'
 No match
     a\x85b
 No match
-    a\x0bb     
+    a\x0bb
 No match
 
 /a\Rb/I<bsr_unicode>
@@ -9165,15 +9165,15 @@ Need char = 'b'
  0: a\x0d\x0ab
     a\x85b
  0: a\x85b
-    a\x0bb     
+    a\x0bb
  0: a\x0bb
-    ** Failers 
+    ** Failers
 No match
     a\x85b\<bsr_anycrlf>
 No match
     a\x0bb\<bsr_anycrlf>
 No match
-    
+
 /a\R?b/I<bsr_anycrlf>
 Capturing subpattern count = 0
 Options: bsr_anycrlf
@@ -9189,7 +9189,7 @@ Need char = 'b'
 No match
     a\x85b
 No match
-    a\x0bb     
+    a\x0bb
 No match
 
 /a\R?b/I<bsr_unicode>
@@ -9205,15 +9205,15 @@ Need char = 'b'
  0: a\x0d\x0ab
     a\x85b
  0: a\x85b
-    a\x0bb     
+    a\x0bb
  0: a\x0bb
-    ** Failers 
+    ** Failers
 No match
     a\x85b\<bsr_anycrlf>
 No match
     a\x0bb\<bsr_anycrlf>
 No match
-    
+
 /a\R{2,4}b/I<bsr_anycrlf>
 Capturing subpattern count = 0
 Partial matching not supported
@@ -9230,7 +9230,7 @@ Need char = 'b'
 No match
     a\x85\85b
 No match
-    a\x0b\0bb     
+    a\x0b\0bb
 No match
 
 /a\R{2,4}b/I<bsr_unicode>
@@ -9247,17 +9247,17 @@ Need char = 'b'
  0: a\x0d\x0a\x0a\x0d\x0db
     a\x85\85b
 No match
-    a\x0b\0bb     
+    a\x0b\0bb
 No match
-    ** Failers 
+    ** Failers
 No match
-    a\r\r\r\r\rb 
+    a\r\r\r\r\rb
 No match
     a\x85\85b\<bsr_anycrlf>
 No match
     a\x0b\0bb\<bsr_anycrlf>
 No match
- 
+
 /(*BSR_ANYCRLF)a\Rb/I
 Capturing subpattern count = 0
 Options: bsr_anycrlf
@@ -9265,7 +9265,7 @@ First char = 'a'
 Need char = 'b'
     a\nb
  0: a\x0ab
-    a\rb 
+    a\rb
  0: a\x0db
 
 /(*BSR_UNICODE)a\Rb/I
@@ -9284,7 +9284,7 @@ First char = 'a'
 Need char = 'b'
     a\nb
  0: a\x0ab
-    a\rb 
+    a\rb
  0: a\x0db
 
 /(*CRLF)(*BSR_UNICODE)a\Rb/I
@@ -9392,7 +9392,7 @@ Failed: unknown POSIX class name at offset 3
     bacxxx
  0: bac
  1: bac
-    bbaccxxx 
+    bbaccxxx
  0: bbacc
  1: bbacc
     bbbacccxx
@@ -9406,7 +9406,7 @@ Failed: unknown POSIX class name at offset 3
     bacxxx
  0: bac
  1: bac
-    bbaccxxx 
+    bbaccxxx
  0: bbacc
  1: bbacc
     bbbacccxx
@@ -9420,7 +9420,7 @@ Failed: unknown POSIX class name at offset 3
     bacxxx
  0: bac
  1: bac
-    bbaccxxx 
+    bbaccxxx
  0: bbacc
  1: bbacc
     bbbacccxx
@@ -9434,7 +9434,7 @@ Failed: unknown POSIX class name at offset 3
     bacxxx
  0: bac
  1: bac
-    bbaccxxx 
+    bbaccxxx
  0: bbacc
  1: bbacc
     bbbacccxx
@@ -9448,7 +9448,7 @@ Failed: unknown POSIX class name at offset 3
     bacxxx
  0: bac
  1: bac
-    bbaccxxx 
+    bbaccxxx
  0: bbacc
  1: bbacc
     bbbacccxx
@@ -9464,7 +9464,7 @@ Failed: unknown POSIX class name at offset 3
  0: bac
  1: bac
  2: bac
-    bbaccxxx 
+    bbaccxxx
  0: bbacc
  1: bbacc
  2: bbacc
@@ -9484,7 +9484,7 @@ No match
     XaaX
  0: aa
  1: a
-    XAAX 
+    XAAX
  0: AA
  1: A
 
@@ -9492,16 +9492,16 @@ No match
     XaaX
  0: aa
  1: a
-    ** Failers 
+    ** Failers
 No match
-    XAAX 
+    XAAX
 No match
 
 /(?-i:\g<+1>)(?i:(a))/
     XaaX
  0: aa
  1: a
-    XAAX 
+    XAAX
  0: AA
  1: A
 
@@ -9511,7 +9511,7 @@ No match
    abc
  0: abc
  1: a
-   accccbbb 
+   accccbbb
  0: accccbbb
  1: a
 
@@ -9519,12 +9519,12 @@ No match
     xzxx
  0: xz
  1: <unset>
-    yzyy 
+    yzyy
  0: yz
  1: <unset>
     ** Failers
 No match
-    xxz  
+    xxz
 No match
 
 /(\3)(\1)(a)/
@@ -9534,12 +9534,12 @@ No match
 /(\3)(\1)(a)/<JS>
     cat
  0: a
- 1: 
- 2: 
+ 1:
+ 2:
  3: a
-    
+
 /TA]/
-    The ACTA] comes 
+    The ACTA] comes
  0: TA]
 
 /TA]/<JS>
@@ -9555,7 +9555,7 @@ Failed: reference to non-existent subpattern at offset 3
     abcbabc
  0: abcbabc
  1: abc
-    ** Failers 
+    ** Failers
 No match
     abcXabc
 No match
@@ -9564,7 +9564,7 @@ No match
     abcXabc
  0: abcXabc
  1: abc
-    ** Failers 
+    ** Failers
 No match
     abcbabc
 No match
@@ -9596,33 +9596,33 @@ No match
 /a[]+b/<JS>
     ** Failers
 No match
-    ab 
+    ab
 No match
 
 /a[]*+b/<JS>
     ** Failers
 No match
-    ab 
+    ab
 No match
 
 /a[^]b/<JS>
     aXb
  0: aXb
-    a\nb 
+    a\nb
  0: a\x0ab
     ** Failers
 No match
-    ab  
+    ab
 No match
-    
-/a[^]+b/<JS> 
+
+/a[^]+b/<JS>
     aXb
  0: aXb
-    a\nX\nXb 
+    a\nX\nXb
  0: a\x0aX\x0aXb
     ** Failers
 No match
-    ab  
+    ab
 No match
 
 /a(?!)+b/
@@ -9636,7 +9636,7 @@ Capturing subpattern count = 1
 No options
 No first char
 No need char
-Starting byte set: x y z 
+Starting byte set: x y z
 
 /(?(?=.*b)b|^)/CI
 Capturing subpattern count = 0
@@ -9654,9 +9654,9 @@ No need char
  +7 ^^      b
  +7 ^       b
 +12 ^       )
-+13 ^       
- 0: 
-   abc 
++13 ^
+ 0:
+   abc
 --->abc
  +0 ^       (?(?=.*b)b|^)
  +2 ^       (?=.*b)
@@ -9675,9 +9675,9 @@ No need char
  +8  ^^     )
  +9  ^      b
 +10  ^^     |
-+13  ^^     
++13  ^^
  0: b
-   
+
 /(?(?=b).*b|^d)/I
 Capturing subpattern count = 0
 Partial matching not supported
@@ -9696,24 +9696,24 @@ No need char
     abc
  0: a
     ** Failers
- 0: 
-    ddd\N   
+ 0:
+    ddd\N
 No match: POSIX code 17: match failed
 
 /xyz/C
-  xyz 
+  xyz
 --->xyz
  +0 ^       x
  +1 ^^      y
  +2 ^ ^     z
- +3 ^  ^    
+ +3 ^  ^
  0: xyz
-  abcxyz 
+  abcxyz
 --->abcxyz
  +0    ^       x
  +1    ^^      y
  +2    ^ ^     z
- +3    ^  ^    
+ +3    ^  ^
  0: xyz
   abcxyz\Y
 --->abcxyz
@@ -9723,9 +9723,9 @@ No match: POSIX code 17: match failed
  +0    ^       x
  +1    ^^      y
  +2    ^ ^     z
- +3    ^  ^    
+ +3    ^  ^
  0: xyz
-  ** Failers 
+  ** Failers
 No match
   abc
 No match
@@ -9736,9 +9736,9 @@ No match
  +0   ^     x
  +0    ^    x
 No match
-  abcxypqr  
+  abcxypqr
 No match
-  abcxypqr\Y  
+  abcxypqr\Y
 --->abcxypqr
  +0 ^            x
  +0  ^           x
@@ -9777,14 +9777,14 @@ No match
  +8 ^  ^     [a]
 +21 ^  ^     "
 +22 ^   ^    $
-+23 ^   ^    
++23 ^   ^
  0: "ab"
- 1: 
+ 1:
 
 /^"((?(?=[a])[^"])|b)*"$/
     "ab"
  0: "ab"
- 1: 
+ 1:
 
 /^X(?5)(a)(?|(b)|(q))(c)(d)(Y)/
     XYabcdY
@@ -9806,7 +9806,7 @@ Failed: reference to non-existent subpattern at offset 5
  3: c
  4: d
  5: Y
- 
+
 /^X(?7)(a)(?|(b)|(q)(r)(s))(c)(d)(Y)/
     XYabcdY
  0: XYabcdY

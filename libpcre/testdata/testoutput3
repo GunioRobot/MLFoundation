@@ -20,7 +20,7 @@ No match
 
 /^[\W]+/Lfr_FR
     *** Failers
- 0: *** 
+ 0: ***
     École
 No match
 
@@ -59,7 +59,7 @@ No match
 /(.+)\b(.+)/Lfr_FR
     *** Failers
  0: *** Failers
- 1: *** 
+ 1: ***
  2: Failers
     École
 No match
@@ -83,18 +83,18 @@ Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: 0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P 
-  Q R S T U V W X Y Z _ a b c d e f g h i j k l m n o p q r s t u v w x y z 
+Starting byte set: 0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P
+  Q R S T U V W X Y Z _ a b c d e f g h i j k l m n o p q r s t u v w x y z
 
 /\w/ISLfr_FR
 Capturing subpattern count = 0
 No options
 No first char
 No need char
-Starting byte set: 0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P 
-  Q R S T U V W X Y Z _ a b c d e f g h i j k l m n o p q r s t u v w x y z 
-  ª µ º À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö Ø Ù Ú Û Ü Ý Þ ß à á â 
-  ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ø ù ú û ü ý þ ÿ 
+Starting byte set: 0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P
+  Q R S T U V W X Y Z _ a b c d e f g h i j k l m n o p q r s t u v w x y z
+  ª µ º À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö Ø Ù Ú Û Ü Ý Þ ß à á â
+  ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ø ù ú û ü ý þ ÿ
 
 /^[\xc8-\xc9]/iLfr_FR
     École
@@ -105,7 +105,7 @@ Starting byte set: 0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P
 /^[\xc8-\xc9]/Lfr_FR
     École
  0: É
-    *** Failers 
+    *** Failers
 No match
     école
 No match
@@ -113,40 +113,40 @@ No match
 /\W+/Lfr_FR
     >>>\xaa<<<
  0: >>>
-    >>>\xba<<< 
+    >>>\xba<<<
  0: >>>
 
 /[\W]+/Lfr_FR
     >>>\xaa<<<
  0: >>>
-    >>>\xba<<< 
+    >>>\xba<<<
  0: >>>
 
 /[^[:alpha:]]+/Lfr_FR
     >>>\xaa<<<
  0: >>>
-    >>>\xba<<< 
+    >>>\xba<<<
  0: >>>
 
 /\w+/Lfr_FR
     >>>\xaa<<<
  0: ª
-    >>>\xba<<< 
+    >>>\xba<<<
  0: º
 
 /[\w]+/Lfr_FR
     >>>\xaa<<<
  0: ª
-    >>>\xba<<< 
+    >>>\xba<<<
  0: º
 
 /[[:alpha:]]+/Lfr_FR
     >>>\xaa<<<
  0: ª
-    >>>\xba<<< 
+    >>>\xba<<<
  0: º
-    
-/[[:alpha:]][[:lower:]][[:upper:]]/DZLfr_FR 
+
+/[[:alpha:]][[:lower:]][[:upper:]]/DZLfr_FR
 ------------------------------------------------------------------
         Bra
         [A-Za-z\xaa\xb5\xba\xc0-\xd6\xd8-\xf6\xf8-\xff]

@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -49,8 +49,8 @@ void MLConnectionQueueWrite(MLConnection *ev)
 
 #define MIN_NONZERO(a,b) ( ((a)>0.0) ? (((b)>0.0) ? (((a)<(b))?(a):(b)) : (a) ): (b) )
 
-@implementation MLConnection 
-static NSError *ReadEofError() 
+@implementation MLConnection
+static NSError *ReadEofError()
 {
 	static NSError *readEofError = NULL;
 	if (!readEofError) readEofError = [[NSError alloc] initWithDomain:MLFoundationErrorDomain
@@ -60,7 +60,7 @@ static NSError *ReadEofError()
 	return readEofError;
 }
 
-static NSError *WriteEofError() 
+static NSError *WriteEofError()
 {
 	static NSError *writeEofError = NULL;
 	if (!writeEofError) writeEofError = [[NSError alloc] initWithDomain:MLFoundationErrorDomain
@@ -70,10 +70,10 @@ static NSError *WriteEofError()
 	return writeEofError;
 }
 
-static NSError *InputOverflowError() 
+static NSError *InputOverflowError()
 {
 	static NSError *inputOverflowError = NULL;
-	if (!inputOverflowError) inputOverflowError = 
+	if (!inputOverflowError) inputOverflowError =
 				[[NSError alloc] initWithDomain:MLFoundationErrorDomain
 				code: MLSocketBufferOverflowError
 				localizedDescriptionFormat: @"Connection input buffer overflow"];
@@ -98,7 +98,7 @@ static NSError *InputOverflowError()
 #ifndef WIN32
 	connections[0] = nil;
 	connections[1] = nil;
-	
+
 	int sockets[2];
 
 	if (socketpair(AF_UNIX, SOCK_STREAM, 0, sockets) < 0) {
@@ -137,7 +137,7 @@ static NSError *InputOverflowError()
 
 - init
 {
-	if (!(self = [super init])) return nil;	
+	if (!(self = [super init])) return nil;
 
 	ioWatcher_ = [[EVIoWatcher alloc] init];
 	MLReleaseSelfAndReturnNilUnless(ioWatcher_);
@@ -192,7 +192,7 @@ static NSError *InputOverflowError()
 #endif
 			if (bytes_read < 0) {
 				int lasterr = ev_last_error();
-				if (lasterr != EAGAIN && lasterr != EWOULDBLOCK && 
+				if (lasterr != EAGAIN && lasterr != EWOULDBLOCK &&
 					lasterr != EINPROGRESS && lasterr != EINTR) {
 					error = [NSError errorWithDomain:MLFoundationErrorDomain
 						code: MLSocketReadError
@@ -226,7 +226,7 @@ static NSError *InputOverflowError()
 #endif
 			if (bytes_written < 0) {
 				int lasterr = ev_last_error();
-				if (lasterr != EAGAIN && lasterr != EWOULDBLOCK && 
+				if (lasterr != EAGAIN && lasterr != EWOULDBLOCK &&
 					lasterr != EINPROGRESS && lasterr != EINTR) {
 					error = [NSError errorWithDomain:MLFoundationErrorDomain
 						code: MLSocketWriteError
@@ -241,7 +241,7 @@ static NSError *InputOverflowError()
 		}
 
 		if (!error) {
-			lastWrite_ = now;	
+			lastWrite_ = now;
 			event |= EV_ASYNC_WRITE;
 		}
 	}
@@ -319,16 +319,16 @@ static NSError *InputOverflowError()
 			error |= EV_READ;
 			readRepeat = readTimeout_;
 		} else {
-			readRepeat = lastRead_ + readTimeout_ - now;	
+			readRepeat = lastRead_ + readTimeout_ - now;
 		}
 	}
 
 	if (writeTimeout_ > 0.0) {
 		if (lastWrite_ + writeTimeout_ <= now) {
 			error |= EV_WRITE;
-			writeRepeat = writeTimeout_;	
+			writeRepeat = writeTimeout_;
 		} else {
-			writeRepeat = lastWrite_ + writeTimeout_ - now;	
+			writeRepeat = lastWrite_ + writeTimeout_ - now;
 		}
 	}
 

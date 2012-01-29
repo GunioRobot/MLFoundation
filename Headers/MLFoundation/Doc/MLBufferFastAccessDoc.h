@@ -1,13 +1,13 @@
 /*
 
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,7 +17,7 @@
 
 #error This file for documenting purposes only.
 
-/** @defgroup mlbuffer_fastaccess MLBuffer Fast read/write functions. 
+/** @defgroup mlbuffer_fastaccess MLBuffer Fast read/write functions.
  *
  * Функции, применяющиеся для работы с MLBuffer.
  *
@@ -34,18 +34,18 @@
  *
  * Если readBytesCount больше len - буфер опустошится.
  *
- * При записи: 
+ * При записи:
  *
  * @code
  * // Decide upper limit of write size
  * uint8_t *writeHere = MLBufferReserve(buf, upperWriteSizeLimit);
- * 
+ *
  * // Copy data to writeHere
  *
  * MLBufferWritten(buf, reallyWritten);
  * @endcode
  *
- * reallyWritten жёстко должен быть меньше или равен upperWriteSizeLimit. 
+ * reallyWritten жёстко должен быть меньше или равен upperWriteSizeLimit.
  * Если запрошен MLBufferReserve на больше, чем есть непрерывного места в буфере,
  * то сначала происходит попытка переместить данные буфера так, чтобы освободить
  * больше непрерывной памяти. Если этого недостаточно, происходит реаллокация.

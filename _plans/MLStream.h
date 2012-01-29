@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,10 +27,10 @@
  * Поскольку отправляет делегату всеразличные события, является MLActivity (TODO - MLActor).
  * В остановленном состоянии делегата не трогает.
  *
- * Таймауты. Write timeout означает "мы давно ничего не отдавали внешней сущности" и 
+ * Таймауты. Write timeout означает "мы давно ничего не отдавали внешней сущности" и
  * предназначен в основном для генерации keepalive-запросов. Read timeout
  * ожидаемо означает "мы давно ничего не получали от внешней сущности". Интервал таймаутам
- * можно ставить любой, но чем больше интервал - тем меньше затраты на его 
+ * можно ставить любой, но чем больше интервал - тем меньше затраты на его
  * обработку.
  * Когда вызываются коллбэки? Это зависит от ватермарков.
  *
@@ -39,7 +39,7 @@
  *                 случае streamHasData будет вызываться после каждой операции чтения
  *                 (как в старом MLBufferedEvent).
  * - streamHasBytes будет вызываться, когда в выходе потока есть байтов не больше, чем
- *   				write watermark. Особый случай, когда write watermark == 0: 
+ *   				write watermark. Особый случай, когда write watermark == 0:
  *   				в этом случае streamHasSpace будет вызываться после всякой операции
  *   				записи.
  *
@@ -63,7 +63,7 @@
  * таймаутов смотри в MLStreamDelegate. */
 - (BOOL)haveTimeouts;
 
-/** Этот поток умеет умеет вызывать делегата по ватермарку. Если NO, то поток всегда будет 
+/** Этот поток умеет умеет вызывать делегата по ватермарку. Если NO, то поток всегда будет
  * вести себя как с watermarks 0. */
 - (BOOL)haveWatermarks;
 
@@ -91,11 +91,11 @@
  * выделения памяти, и не факт. что поток им воспользуется. */
 - (void)hintInputSize:(uint64_t)hint;
 
-/** Закрывает поток. После этого вызова указатель на поток становится невалидным. 
+/** Закрывает поток. После этого вызова указатель на поток становится невалидным.
  * Внутри вызывает тот же closeWithError, только формирует generic ошибку сам. */
 - (void)close;
 
-/** Закрывает поток, сообщив потоку об ошибке. После этого вызова указатель на поток 
+/** Закрывает поток, сообщив потоку об ошибке. После этого вызова указатель на поток
  * становится невалидным. */
 - (void)closeWithError:(NSError *)error;
 @end

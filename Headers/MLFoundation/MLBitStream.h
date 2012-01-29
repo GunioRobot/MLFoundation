@@ -1,13 +1,13 @@
 /*
 
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -36,7 +36,7 @@ struct s_MLBitStream {
 	BOOL error;
 
 	BOOL(*writeOutOfMemory)(struct s_MLBitStream *bs, void *arg);
-	void *outOfMemoryArg;	
+	void *outOfMemoryArg;
 };
 
 typedef struct s_MLBitStream MLBitStream;
@@ -72,23 +72,23 @@ inline static BOOL MLBitStreamIsAligned(MLBitStream *bs)
 static uint32_t bit_mask[] = {0x80, 0x40, 0x20, 0x10, 0x8, 0x4, 0x2, 0x1};
 static uint32_t bits_mask[] = {0x0, 0x1, 0x3, 0x7, 0xF, 0x1F, 0x3F, 0x7F};
 
-inline static uint32_t __MLBitStreamReadByte(MLBitStream *bs) 
+inline static uint32_t __MLBitStreamReadByte(MLBitStream *bs)
 {
 	if (bs->position >= bs->size) {
 		bs->error = YES;
 		return 0;
 	}
-	return (uint32_t)bs->data[bs->position++]; 
+	return (uint32_t)bs->data[bs->position++];
 }
 
-inline static uint8_t __MLBitStreamReadBit(MLBitStream *bs) 
+inline static uint8_t __MLBitStreamReadBit(MLBitStream *bs)
 {
-	MLAssert(bs->mode == MLBitStreamModeRead); 
-	if (bs->nBits == 8) { 
-		bs->current = __MLBitStreamReadByte(bs); 
-		bs->nBits = 0; 
-	} 
-	return (uint8_t)(bs->current & bit_mask[bs->nBits++]) ? 1 : 0; 
+	MLAssert(bs->mode == MLBitStreamModeRead);
+	if (bs->nBits == 8) {
+		bs->current = __MLBitStreamReadByte(bs);
+		bs->nBits = 0;
+	}
+	return (uint8_t)(bs->current & bit_mask[bs->nBits++]) ? 1 : 0;
 }
 
 inline static BOOL MLBitStreamError(MLBitStream *bs)
@@ -182,12 +182,12 @@ inline static uint32_t MLBitStreamReadExpGolomb(MLBitStream *bs)
 {
   uint32_t retval = 0;
   uint8_t retvalLen = 1;
-  
+
   if (bs->error) return 0;
 
   while (!__MLBitStreamReadBit(bs)) {
     retvalLen++;
-    if (retvalLen > 32) { 
+    if (retvalLen > 32) {
       bs->error = YES;
       return 0;
     }
@@ -213,7 +213,7 @@ inline static uint16_t MLBitStreamReadU16(MLBitStream *bs)
 	uint32_t retval;
 	MLAssert(bs->nBits == 8);
 	retval = __MLBitStreamReadByte(bs); retval <<= 8;
-	retval |= __MLBitStreamReadByte(bs); 
+	retval |= __MLBitStreamReadByte(bs);
 	return retval;
 }
 
@@ -224,7 +224,7 @@ inline static uint32_t MLBitStreamReadU32(MLBitStream *bs)
 	retval = __MLBitStreamReadByte(bs); retval <<= 8;
 	retval |= __MLBitStreamReadByte(bs); retval <<= 8;
 	retval |= __MLBitStreamReadByte(bs); retval <<= 8;
-	retval |= __MLBitStreamReadByte(bs); 
+	retval |= __MLBitStreamReadByte(bs);
 	return retval;
 }
 
@@ -233,7 +233,7 @@ inline static uint64_t MLBitStreamReadU64(MLBitStream *bs)
 	uint64_t retval;
 	MLAssert(bs->nBits == 8);
 	retval = MLBitStreamReadU32(bs); retval <<= 32;
-	retval |= MLBitStreamReadU32(bs); 
+	retval |= MLBitStreamReadU32(bs);
 	return retval;
 }
 
@@ -253,7 +253,7 @@ inline static void MLBitStreamReadData(MLBitStream *bs, uint8_t *dest, uint64_t 
 	bs->position += len;
 }
 
-inline static void __MLBitStreamWriteByte(MLBitStream *bs, uint8_t val) 
+inline static void __MLBitStreamWriteByte(MLBitStream *bs, uint8_t val)
 {
 	MLAssert(bs->mode == MLBitStreamModeWrite);
 	if (bs->position == bs->size) {
@@ -267,7 +267,7 @@ inline static void __MLBitStreamWriteByte(MLBitStream *bs, uint8_t val)
 	bs->position ++;
 }
 
-inline static void __MLBitStreamWriteBit(MLBitStream *bs, uint32_t bit) 
+inline static void __MLBitStreamWriteBit(MLBitStream *bs, uint32_t bit)
 {
 	bs->current <<= 1;
 	bs->current |= bit;

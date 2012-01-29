@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -35,13 +35,13 @@ struct BulkAllocationDescriptor {
 md *MLObjectBulkAllocWrapped(Class klass, uint32_t capacity, BOOL instantReify)
 {
  	// TODO: check that klass is MLObject.
-	
+
 	int linksZoneSize = MLArrayNextCapacity(sizeof(void *), 0, capacity, sizeof(struct BulkAllocationDescriptor));
 
-	struct BulkAllocationDescriptor *linksZone = 
+	struct BulkAllocationDescriptor *linksZone =
 		(struct BulkAllocationDescriptor *)(sizeof(struct BulkAllocationDescriptor) + (uint8_t *)malloc(
 			sizeof(struct BulkAllocationDescriptor) + sizeof(void *)*linksZoneSize));
-	
+
 	// TODO error checking as in realloc!
 
 	linksZone[-1].klass = klass;
@@ -51,7 +51,7 @@ md *MLObjectBulkAllocWrapped(Class klass, uint32_t capacity, BOOL instantReify)
 
 	linksZone[-1].objectsZone = (uint8_t *)malloc(linksZone[-1].objectsZoneCapacity * linksZone[-1].instanceSize);
 	memset(linksZone[-1].objectsZone, 0, linksZone[-1].objectsZoneCapacity * linksZone[-1].instanceSize);
-	
+
 	md *retval = (md *)linksZone;
 	int i;
 	for (i=0; i<linksZone[-1].objectsZoneCapacity; i++) {
@@ -65,23 +65,23 @@ md *MLObjectBulkAllocWrapped(Class klass, uint32_t capacity, BOOL instantReify)
 
 uint32_t MLObjectBulkCapacity(md *objects)
 {
-	struct BulkAllocationDescriptor *linksZone = (struct BulkAllocationDescriptor *)objects; 
+	struct BulkAllocationDescriptor *linksZone = (struct BulkAllocationDescriptor *)objects;
 	return linksZone[-1].objectsZoneCapacity;
 }
 
 md *MLObjectBulkReallocWrapped(md *bulkAllocatedObjects, uint32_t newCapacity, BOOL instantReify)
 {
 	int i;
-	struct BulkAllocationDescriptor *linksZone = (struct BulkAllocationDescriptor *)bulkAllocatedObjects; 
-	
+	struct BulkAllocationDescriptor *linksZone = (struct BulkAllocationDescriptor *)bulkAllocatedObjects;
+
 	// 1) Сначала перемещаем и переразмечаем зону объектов, чтобы вывалиться раньше.
 	int oldObjectsZoneSize = linksZone[-1].objectsZoneCapacity;
 	int newObjectsZoneSize = MLArrayNextCapacity(linksZone[-1].instanceSize,
 		oldObjectsZoneSize, newCapacity, 0);
-	
+
 	// 2) Избавляемся здесь от старых объектов, если нужно. В случае фейла
 	// реаллокации зоны мы их проебём, но куда же деваться?
-	// newCapacity может быть меньше чем newObjectsZoneSize. Это правильно: лучше 
+	// newCapacity может быть меньше чем newObjectsZoneSize. Это правильно: лучше
 	// перефинализировать, чем недофинализировать.
 	if (newCapacity < oldObjectsZoneSize) {
 		for (i=newObjectsZoneSize; i< oldObjectsZoneSize; i++) {
@@ -109,7 +109,7 @@ md *MLObjectBulkReallocWrapped(md *bulkAllocatedObjects, uint32_t newCapacity, B
 
 	// 4) Зона объектов перемещена. нужно теперь поменять ссылки в зоне ссылок,
 	// чтобы если сфейлит реаллокация зоны ссылок, мы ничего не потеряли.
-	int objectsAfterObjectsRealloc = MIN(linksZone[-1].objectsZoneCapacity, 
+	int objectsAfterObjectsRealloc = MIN(linksZone[-1].objectsZoneCapacity,
 							 linksZone[-1].linksZoneCapacity);
 	bulkAllocatedObjects = (md *)linksZone;
 	if (oldObjectsZone != newObjectsZone) {
@@ -121,10 +121,10 @@ md *MLObjectBulkReallocWrapped(md *bulkAllocatedObjects, uint32_t newCapacity, B
 	// 5) Теперь мы готовы к реаллокации зоны ссылок. Если сфейлили - возвращаем nil.
 	// Мы снова ничего не потеряли кроме, возможно, финализированых объектов.
 	int oldLinksZoneSize = linksZone[-1].linksZoneCapacity;
-	int newLinksZoneSize = MLArrayNextCapacity(sizeof(void *), 
-		oldLinksZoneSize, newCapacity, 
+	int newLinksZoneSize = MLArrayNextCapacity(sizeof(void *),
+		oldLinksZoneSize, newCapacity,
 		sizeof(struct BulkAllocationDescriptor));
-	
+
 	if (oldLinksZoneSize != newLinksZoneSize) {
 		struct BulkAllocationDescriptor *newLinksZone;
 		newLinksZone = (struct BulkAllocationDescriptor *)realloc(&linksZone[-1], sizeof(struct BulkAllocationDescriptor) + newLinksZoneSize * (sizeof(void *)));
@@ -136,7 +136,7 @@ md *MLObjectBulkReallocWrapped(md *bulkAllocatedObjects, uint32_t newCapacity, B
 	}
 
 	// 6) Зона ссылок успешно перемещена. Нужно теперь переразметить её.
-	int objectsAfterLinksRealloc = MIN(linksZone[-1].objectsZoneCapacity, 
+	int objectsAfterLinksRealloc = MIN(linksZone[-1].objectsZoneCapacity,
 								 linksZone[-1].linksZoneCapacity);
 
 	bulkAllocatedObjects = (md *)linksZone;
@@ -162,7 +162,7 @@ md *MLObjectBulkReallocWrapped(md *bulkAllocatedObjects, uint32_t newCapacity, B
 
 void MLObjectBulkFree(md *objects)
 {
-	struct BulkAllocationDescriptor *linksZone = (struct BulkAllocationDescriptor *)objects; 
+	struct BulkAllocationDescriptor *linksZone = (struct BulkAllocationDescriptor *)objects;
 	int i;
 
 	if (!objects) return;

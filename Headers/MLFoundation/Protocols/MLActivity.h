@@ -1,19 +1,19 @@
 /*
- 
+
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
- 
+
  */
 
 #import <Foundation/Foundation.h>
@@ -21,7 +21,7 @@
 /** Обобщённый жизненный цикл управлямого асинхронными событиями процесса.
  *
  * TODO, XXX, FIXME и все прочие слова. Здесь (в «старый текст») ненамерено
- * перемешались два понятия: единица конкуренции (в будущем MLActor) и 
+ * перемешались два понятия: единица конкуренции (в будущем MLActor) и
  * управляемый процесс (в будущем MLManagedActivity).
  *
  * Позже в рамках имплементации MLManagedActivity эти тексты будут приведены в
@@ -29,17 +29,17 @@
  *
  * \section mlactivity_oldtext Старый текст.
  *
- * Этот жизненный цикл делится на две большие части: сетап и работа. 
+ * Этот жизненный цикл делится на две большие части: сетап и работа.
  * Сетап должен происходить только по
- * требованию пользователя (запуск программы, новое соединение, запрос 
- * нового потока...) 
+ * требованию пользователя (запуск программы, новое соединение, запрос
+ * нового потока...)
  *
  *  - alloc
  *  - init
  *  - установка специфичных для процесса параметров через сеттеры / по KVC
  *
- * Например, ход сетапа MLTCPClientSocket будет примерно такой: alloc, init, 
- * setLoop, setDelegate:, setAddress:, setPort:. 
+ * Например, ход сетапа MLTCPClientSocket будет примерно такой: alloc, init,
+ * setLoop, setDelegate:, setAddress:, setPort:.
  *
  * Параметры, нужные для запуска процесса обозначаются через [INIT]. Параметры,
  * нужные обязательно, обозначаются через [MANDATORY].
@@ -51,7 +51,7 @@
  * нужно что-то из возвращённого в error написать пользователю и прекратить
  * запускать процесс.
  *
- * Вещи, которые зависят только от программиста, например, то, что 
+ * Вещи, которые зависят только от программиста, например, то, что
  * MLTCPClientSocket'у установили event loop, нужно проверять в самом начале
  * метода валидации ассертами.
  *
@@ -64,10 +64,10 @@
  *  - stop
  *
  *  Начать и прекратить работать, то есть, получать асинхронные сообщения и
- *  что-то с ними делать. 
- *  
+ *  что-то с ними делать.
+ *
  *  Вызов start и stop может захватывать и освобождать какие-то ресурсы; это должно быть
- *  оговорено в описании процеса. В любом случае, эти методы должны быть идемпотентны, 
+ *  оговорено в описании процеса. В любом случае, эти методы должны быть идемпотентны,
  *  то есть разрешать вызывать себя по нескольку раз. Некоторые классы могут
  *  имплементировать счётчик стартов.
  *
@@ -79,17 +79,17 @@
  *
  *  Когда процесс запущен, то обычно изменять большую часть его параметров запрещено.
  *  Те, которые можно изменять, обозначены в документации как [RW], прочие -
- *  как [RO]. 
+ *  как [RO].
  *
  * Copyright 2009 undev
  */
 @protocol MLActivity <NSObject>
 /** Проверить готовность процесса к запуску.
- * Возвращает YES, если процесс готов к запуску и NO, если нет. 
+ * Возвращает YES, если процесс готов к запуску и NO, если нет.
  * В последнем случае (и если error не nil) должна выставить autoreleased
  * Error с NSLocalizedDescriptionKey и, возможно, с NSUnderlyingErrorKey.
  *
- * Вообще должна вести себя подобно NSManagedObject'овскому validateForUpdate:, 
+ * Вообще должна вести себя подобно NSManagedObject'овскому validateForUpdate:,
  */
 - (BOOL)validateForStart:(NSError **)error;
 

@@ -1,13 +1,13 @@
 /*
 
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -37,36 +37,36 @@
  *  - self-renice
  *  - stack size limit
  *
- * Как использовать: унаследовать со своими validateForStart: , 
+ * Как использовать: унаследовать со своими validateForStart: ,
  * start, stop. [super start] нужно вызывать в начале метода.
  * Как и с любыми другими start / stop, в начале должны быть guards:
  * if ([self isStarted]) return; в start и if (![self isStarted]) return; в stop.
  *
- * Как использовать command-line options: во-первых, перегрузить usage, чтобы он 
+ * Как использовать command-line options: во-первых, перегрузить usage, чтобы он
  * выводил новые опции. Во-вторых, подкласс должен понимать и валидировать опции по
  * key-value coding (включая key-value validation).
  *
  * Разбираются опции командной строки в processCommandLine (который нужно вызывать руками),
  * ошибки по ним возвращаются точно так же
- * как и все остальные - в validateForStart. --option-name автоматически преобразуется в 
+ * как и все остальные - в validateForStart. --option-name автоматически преобразуется в
  * optionName.
  *
- * В main пользоваться почти так же, как и любой другой activity. Инициализировать, 
+ * В main пользоваться почти так же, как и любой другой activity. Инициализировать,
  * засетапить, и, если всё хорошо, вызвать run. После останова вызывать release.
  * Примерно так:
  *
  * @code
  * #import <MLFoundation/MLFoundation.h>
- * 
+ *
  * int main(int argc, char *argv[])
  * {
  * 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
- * 
+ *
  * 	MyApplication *app = [[MyApplication alloc] init];
- * 
+ *
  * 	[app processCommandLine];
  * 	// Всяческая настройка app
- * 	
+ *
  * 	NSError *startError;
  * 	if (![app validateForStart:&startError]) {
  * 		MLLog(LOG_FATAL, "FATAL: Unable to start application:\n%@", startError);
@@ -75,17 +75,17 @@
  * 		[pool release];
  * 		return 1;
  * 	}
- * 
+ *
  * 	[app run];
  * 	[app release];
  * 	return 0;
  * }
- * 
+ *
  * @endcode
  *
  * Прямой вызов start запрещён.
  *
- * Предполагается, что метод stop останавливает и прекращает всю вызванную 
+ * Предполагается, что метод stop останавливает и прекращает всю вызванную
  * приложением активность. В это входит и обрывание всех открытых подключений.
  *
  * Copyright 2009 undev
@@ -95,7 +95,7 @@
 #if MLDEBUG > 1
 	EVSignalWatcher *sigInfo_;
 #endif
-	BOOL isStarted_; 
+	BOOL isStarted_;
 @private
 
 	NSString *runAsUser_;
@@ -127,12 +127,12 @@
 /** Путь до core dump (если core dumps включены). */
 + (NSString *)coreDumpPath;
 
-/** Обработать командную строку. По умолчанию этот метод разбирает --keys и 
+/** Обработать командную строку. По умолчанию этот метод разбирает --keys и
  * записывает arguments, так что при подклассинге его можно оверрайдить для использования
  * позиционных аргументов из [self arguments], вызвав [super processCommandLine] в начале.*/
 - (void)processCommandLine;
 
-/** Метод вызовется по SIGHUP-у. Если приложение мультиворкерное, то только в мастере. 
+/** Метод вызовется по SIGHUP-у. Если приложение мультиворкерное, то только в мастере.
     Если хочется перечитать конфиг, это именно то место */
 - (void)reloadApplication;
 
@@ -141,7 +141,7 @@
  * 	себя. Этот метод не возвращается. */
 - (void)usage;
 
-/** То, что осталось от командной строки после парсинга опций (то есть все аргументы, начиная с 
+/** То, что осталось от командной строки после парсинга опций (то есть все аргументы, начиная с
  * первого не начинающегося на --) */
 - (NSArray *)arguments;
 

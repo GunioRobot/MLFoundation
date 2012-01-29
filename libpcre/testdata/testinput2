@@ -1978,13 +1978,13 @@ a random value. /Ix
 /^a.b/<lf>
     a\rb
     a\nb\<cr>
-    a\x85b\<anycrlf> 
+    a\x85b\<anycrlf>
     ** Failers
     a\nb
     a\nb\<any>
     a\rb\<cr>
     a\rb\<any>
-    a\x85b\<any> 
+    a\x85b\<any>
     a\rb\<anycrlf>
 
 /^abc./mgx<any>
@@ -2130,20 +2130,20 @@ a random value. /Ix
     afoo
     \r\nfoo
     \nfoo
-    
+
 /^$/mg<any>
     abc\r\rxyz
-    abc\n\rxyz  
-    ** Failers 
+    abc\n\rxyz
+    ** Failers
     abc\r\nxyz
 
 /(?m)^$/<any>g+
     abc\r\n\r\n
 
-/(?m)^$|^\r\n/<any>g+ 
+/(?m)^$|^\r\n/<any>g+
     abc\r\n\r\n
-    
-/(?m)$/<any>g+ 
+
+/(?m)$/<any>g+
     abc\r\n\r\n
 
 /abc.$/mgx<anycrlf>
@@ -2151,7 +2151,7 @@ a random value. /Ix
 
 /^X/m
     XABC
-    ** Failers 
+    ** Failers
     XABC\B
 
 /(ab|c)(?-1)/BZ
@@ -2160,13 +2160,13 @@ a random value. /Ix
 /xy(?+1)(abc)/BZ
     xyabcabc
     ** Failers
-    xyabc  
-    
+    xyabc
+
 /x(?-0)y/
 
 /x(?-1)y/
 
-/x(?+0)y/ 
+/x(?+0)y/
 
 /x(?+1)y/
 
@@ -2174,13 +2174,13 @@ a random value. /Ix
     abcX
     Y
     ** Failers
-    abcY   
-    
-/^((?(+1)X|Y)(abc))+/BZ 
+    abcY
+
+/^((?(+1)X|Y)(abc))+/BZ
     YabcXabc
     YabcXabcXabc
     ** Failers
-    XabcXabc  
+    XabcXabc
 
 /(?(-1)a)/BZ
 
@@ -2193,68 +2193,68 @@ a random value. /Ix
 
 /(foo)\Kbar/
     foobar
-   
+
 /(foo)(\Kbar|baz)/
     foobar
-    foobaz 
+    foobaz
 
 /(foo\Kbar)baz/
     foobarbaz
 
 /(?<A>tom|bon)-\k{A}/
     tom-tom
-    bon-bon 
+    bon-bon
     ** Failers
-    tom-bon  
+    tom-bon
 
 /(?<A>tom|bon)-\g{A}/
     tom-tom
-    bon-bon 
-    
-/\g{A/ 
+    bon-bon
+
+/\g{A/
 
 /(?|(abc)|(xyz))/BZ
    >abc<
-   >xyz< 
+   >xyz<
 
 /(x)(?|(abc)|(xyz))(x)/BZ
     xabcx
-    xxyzx 
+    xxyzx
 
 /(x)(?|(abc)(pqr)|(xyz))(x)/BZ
     xabcpqrx
-    xxyzx 
+    xxyzx
 
 /(?|(abc)|(xyz))\1/
     abcabc
-    xyzxyz 
+    xyzxyz
     ** Failers
     abcxyz
-    xyzabc   
-    
+    xyzabc
+
 /(?|(abc)|(xyz))(?1)/
     abcabc
-    xyzabc 
-    ** Failers 
-    xyzxyz 
- 
+    xyzabc
+    ** Failers
+    xyzxyz
+
 /\H\h\V\v/
     X X\x0a
     X\x09X\x0b
     ** Failers
-    \xa0 X\x0a   
-    
-/\H*\h+\V?\v{3,4}/ 
+    \xa0 X\x0a
+
+/\H*\h+\V?\v{3,4}/
     \x09\x20\xa0X\x0a\x0b\x0c\x0d\x0a
     \x09\x20\xa0\x0a\x0b\x0c\x0d\x0a
     \x09\x20\xa0\x0a\x0b\x0c
-    ** Failers 
+    ** Failers
     \x09\x20\xa0\x0a\x0b
-     
+
 /\H{3,4}/
     XY  ABCDE
-    XY  PQR ST 
-    
+    XY  PQR ST
+
 /.\h{3,4}./
     XY  AB    PQRS
 
@@ -2262,7 +2262,7 @@ a random value. /Ix
     >XNNNYZ
     >  X NYQZ
     ** Failers
-    >XYZ   
+    >XYZ
     >  X NY Z
 
 /\v*X\v?Y\v+Z\V*\x0a\V+\x0b\V{2,3}\x0c/
@@ -2288,9 +2288,9 @@ a random value. /Ix
 /\H++X/BZ
     ** Failers
     XXXX
-    
+
 /\H+\hY/BZ
-    XXXX Y 
+    XXXX Y
 
 /\H+ Y/BZ
 
@@ -2343,7 +2343,7 @@ a random value. /Ix
 
 /^a+(*FAIL)/
     aaaaaa
-    
+
 /a+b?c+(*FAIL)/
     aaabccc
 
@@ -2352,27 +2352,27 @@ a random value. /Ix
 
 /a+b?(*COMMIT)c+(*FAIL)/
     aaabccc
-    
+
 /a+b?(*SKIP)c+(*FAIL)/
     aaabcccaaabccc
 
 /^(?:aaa(*THEN)\w{6}|bbb(*THEN)\w{5}|ccc(*THEN)\w{4}|\w{3})/
     aaaxxxxxx
-    aaa++++++ 
+    aaa++++++
     bbbxxxxx
-    bbb+++++ 
+    bbb+++++
     cccxxxx
-    ccc++++ 
-    dddddddd   
+    ccc++++
+    dddddddd
 
 /^(aaa(*THEN)\w{6}|bbb(*THEN)\w{5}|ccc(*THEN)\w{4}|\w{3})/
     aaaxxxxxx
-    aaa++++++ 
+    aaa++++++
     bbbxxxxx
-    bbb+++++ 
+    bbb+++++
     cccxxxx
-    ccc++++ 
-    dddddddd   
+    ccc++++
+    dddddddd
 
 /a+b?(*THEN)c+(*FAIL)/
     aaabccc
@@ -2382,11 +2382,11 @@ a random value. /Ix
     AADE
     ACDE
     ** Failers
-    AD 
-        
+    AD
+
 /^a+(*FAIL)/C
     aaaaaa
-    
+
 /a+b?c+(*FAIL)/C
     aaabccc
 
@@ -2395,16 +2395,16 @@ a random value. /Ix
 
 /a+b?(*COMMIT)c+(*FAIL)/C
     aaabccc
-    
+
 /a+b?(*SKIP)c+(*FAIL)/C
     aaabcccaaabccc
 
 /a+b?(*THEN)c+(*FAIL)/C
     aaabccc
-    
+
 /a(*PRUNE:XXX)b/
 
-/a(*MARK)b/ 
+/a(*MARK)b/
 
 /(?i:A{1,}\6666666666)/
 
@@ -2416,51 +2416,51 @@ a random value. /Ix
 
 /.+A/<crlf>
     \r\nA
-    
+
 /\nA/<crlf>
-    \r\nA 
+    \r\nA
 
 /[\r\n]A/<crlf>
-    \r\nA 
+    \r\nA
 
 /(\r|\n)A/<crlf>
-    \r\nA 
+    \r\nA
 
 /a(*CR)b/
 
 /(*CR)a.b/
     a\nb
     ** Failers
-    a\rb  
+    a\rb
 
 /(*CR)a.b/<lf>
     a\nb
     ** Failers
-    a\rb  
+    a\rb
 
 /(*LF)a.b/<CRLF>
     a\rb
     ** Failers
-    a\nb  
+    a\nb
 
 /(*CRLF)a.b/
     a\rb
-    a\nb  
+    a\nb
     ** Failers
-    a\r\nb  
+    a\r\nb
 
 /(*ANYCRLF)a.b/<CR>
     ** Failers
     a\rb
-    a\nb  
-    a\r\nb  
+    a\nb
+    a\r\nb
 
 /(*ANY)a.b/<cr>
     ** Failers
     a\rb
-    a\nb  
-    a\r\nb  
-    a\x85b 
+    a\nb
+    a\r\nb
+    a\x85b
 
 /a\Rb/I<bsr_anycrlf>
     a\rb
@@ -2468,65 +2468,65 @@ a random value. /Ix
     a\r\nb
     ** Failers
     a\x85b
-    a\x0bb     
+    a\x0bb
 
 /a\Rb/I<bsr_unicode>
     a\rb
     a\nb
     a\r\nb
     a\x85b
-    a\x0bb     
-    ** Failers 
+    a\x0bb
+    ** Failers
     a\x85b\<bsr_anycrlf>
     a\x0bb\<bsr_anycrlf>
-    
+
 /a\R?b/I<bsr_anycrlf>
     a\rb
     a\nb
     a\r\nb
     ** Failers
     a\x85b
-    a\x0bb     
+    a\x0bb
 
 /a\R?b/I<bsr_unicode>
     a\rb
     a\nb
     a\r\nb
     a\x85b
-    a\x0bb     
-    ** Failers 
+    a\x0bb
+    ** Failers
     a\x85b\<bsr_anycrlf>
     a\x0bb\<bsr_anycrlf>
-    
+
 /a\R{2,4}b/I<bsr_anycrlf>
     a\r\n\nb
     a\n\r\rb
     a\r\n\r\n\r\n\r\nb
     ** Failers
     a\x85\85b
-    a\x0b\0bb     
+    a\x0b\0bb
 
 /a\R{2,4}b/I<bsr_unicode>
     a\r\rb
     a\n\n\nb
     a\r\n\n\r\rb
     a\x85\85b
-    a\x0b\0bb     
-    ** Failers 
-    a\r\r\r\r\rb 
+    a\x0b\0bb
+    ** Failers
+    a\r\r\r\r\rb
     a\x85\85b\<bsr_anycrlf>
     a\x0b\0bb\<bsr_anycrlf>
- 
+
 /(*BSR_ANYCRLF)a\Rb/I
     a\nb
-    a\rb 
+    a\rb
 
 /(*BSR_UNICODE)a\Rb/I
     a\x85b
 
 /(*BSR_ANYCRLF)(*CRLF)a\Rb/I
     a\nb
-    a\rb 
+    a\rb
 
 /(*CRLF)(*BSR_UNICODE)a\Rb/I
     a\x85b
@@ -2592,37 +2592,37 @@ a random value. /Ix
 /^(?<name>a|b\g<name>c)/
     aaaa
     bacxxx
-    bbaccxxx 
+    bbaccxxx
     bbbacccxx
 
 /^(?<name>a|b\g'name'c)/
     aaaa
     bacxxx
-    bbaccxxx 
+    bbaccxxx
     bbbacccxx
 
 /^(a|b\g<1>c)/
     aaaa
     bacxxx
-    bbaccxxx 
+    bbaccxxx
     bbbacccxx
 
 /^(a|b\g'1'c)/
     aaaa
     bacxxx
-    bbaccxxx 
+    bbaccxxx
     bbbacccxx
 
 /^(a|b\g'-1'c)/
     aaaa
     bacxxx
-    bbaccxxx 
+    bbaccxxx
     bbbacccxx
 
 /(^(a|b\g<-1>c))/
     aaaa
     bacxxx
-    bbaccxxx 
+    bbaccxxx
     bbbacccxx
 
 /(^(a|b\g<-1'c))/
@@ -2632,40 +2632,40 @@ a random value. /Ix
 
 /(?-i:\g<name>)(?i:(?<name>a))/
     XaaX
-    XAAX 
+    XAAX
 
 /(?i:\g<name>)(?-i:(?<name>a))/
     XaaX
-    ** Failers 
-    XAAX 
+    ** Failers
+    XAAX
 
 /(?-i:\g<+1>)(?i:(a))/
     XaaX
-    XAAX 
+    XAAX
 
 /(?=(?<regex>(?#simplesyntax)\$(?<name>[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(?:\[(?<index>[a-zA-Z0-9_\x{7f}-\x{ff}]+|\$\g<name>)\]|->\g<name>(\(.*?\))?)?|(?#simple syntax withbraces)\$\{(?:\g<name>(?<indices>\[(?:\g<index>|'(?:\\.|[^'\\])*'|"(?:\g<regex>|\\.|[^"\\])*")\])?|\g<complex>|\$\{\g<complex>\})\}|(?#complexsyntax)\{(?<complex>\$(?<segment>\g<name>(\g<indices>*|\(.*?\))?)(?:->\g<segment>)*|\$\g<complex>|\$\{\g<complex>\})\}))\{/
 
 /(?<n>a|b|c)\g<n>*/
    abc
-   accccbbb 
+   accccbbb
 
 /^(?+1)(?<a>x|y){0}z/
     xzxx
-    yzyy 
+    yzyy
     ** Failers
-    xxz  
+    xxz
 
 /(\3)(\1)(a)/
     cat
 
 /(\3)(\1)(a)/<JS>
     cat
-    
+
 /TA]/
-    The ACTA] comes 
+    The ACTA] comes
 
 /TA]/<JS>
-    The ACTA] comes 
+    The ACTA] comes
 
 /(?2)[]a()b](abc)/
     abcbabc
@@ -2675,12 +2675,12 @@ a random value. /Ix
 
 /(?1)[]a()b](abc)/
     abcbabc
-    ** Failers 
+    ** Failers
     abcXabc
 
 /(?1)[^]a()b](abc)/
     abcXabc
-    ** Failers 
+    ** Failers
     abcbabc
 
 /(?2)[]a()b](abc)(xyz)/
@@ -2702,23 +2702,23 @@ a random value. /Ix
 
 /a[]+b/<JS>
     ** Failers
-    ab 
+    ab
 
 /a[]*+b/<JS>
     ** Failers
-    ab 
+    ab
 
 /a[^]b/<JS>
     aXb
-    a\nb 
+    a\nb
     ** Failers
-    ab  
-    
-/a[^]+b/<JS> 
+    ab
+
+/a[^]+b/<JS>
     aXb
-    a\nX\nXb 
+    a\nX\nXb
     ** Failers
-    ab  
+    ab
 
 /a(?!)+b/
 
@@ -2728,8 +2728,8 @@ a random value. /Ix
 
 /(?(?=.*b)b|^)/CI
    adc
-   abc 
-   
+   abc
+
 /(?(?=b).*b|^d)/I
 
 /(?(?=.*b).*b|^d)/I
@@ -2737,17 +2737,17 @@ a random value. /Ix
 /a?|b?/P
     abc
     ** Failers
-    ddd\N   
+    ddd\N
 
 /xyz/C
-  xyz 
-  abcxyz 
+  xyz
+  abcxyz
   abcxyz\Y
-  ** Failers 
+  ** Failers
   abc
   abc\Y
-  abcxypqr  
-  abcxypqr\Y  
+  abcxypqr
+  abcxypqr\Y
 
 /^"((?(?=[a])[^"])|b)*"$/C
     "ab"
@@ -2763,7 +2763,7 @@ a random value. /Ix
 
 /^X(?&N)(a)(?|(b)|(q))(c)(d)(?<N>Y)/
     XYabcdY
- 
+
 /^X(?7)(a)(?|(b)|(q)(r)(s))(c)(d)(Y)/
     XYabcdY
 

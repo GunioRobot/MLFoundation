@@ -8,7 +8,7 @@ from SCons.Script.SConscript import SConsEnvironment
 # 0) ============= Instal objc & foundation-program tools everywhere =============
 # (TODO - use AddMethod?)
 
-# Semi-clever hack to add scons_tools dir 
+# Semi-clever hack to add scons_tools dir
 SCons.Tool.DefaultToolpath.append(str(Dir('scons_tools').srcnode()))
 
 # Unclever hack to add objc to default tools list
@@ -48,7 +48,7 @@ def SetupMLFoundation(env):
   if sys.platform == 'win32':
     env.Append(CCFLAGS="-DPCRE_STATIC")
     env.Append(OBJCFLAGS="-DPCRE_STATIC")
- 
+
 SConsEnvironment.SetupMLFoundation = SetupMLFoundation
 
 # 0.2) ============================= TCMalloc hook ==================================

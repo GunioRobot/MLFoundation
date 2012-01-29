@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -24,10 +24,10 @@
 #define EV_OBJC_BRIDGING 1
 #define EV_CONFIG_H <libev/config.h>
 
-typedef void (*CB_5IMP)(id, SEL, void *, void *, int); 
-typedef void (*CB_4IMP)(id, SEL, void *, int); 
-typedef void (*CB_3IMP)(id, SEL, int); 
-typedef void (*CB_2IMP)(id, SEL); 
+typedef void (*CB_5IMP)(id, SEL, void *, void *, int);
+typedef void (*CB_4IMP)(id, SEL, void *, int);
+typedef void (*CB_3IMP)(id, SEL, int);
+typedef void (*CB_2IMP)(id, SEL);
 
 #define EV_CB_DECLARE(type) \
 	id target; \
@@ -39,7 +39,7 @@ typedef void (*CB_2IMP)(id, SEL);
 	(ev)->target = NULL; \
 	(ev)->argCount = 5; \
 	(ev)->cb = (CB_5IMP) cb_; \
-} while(0) 
+} while(0)
 
 #define ev_set_objc_cb(ev, target_, sel_) do { \
 	(ev)->target = target_; \
@@ -70,7 +70,7 @@ typedef void (*CB_2IMP)(id, SEL);
 } while(0)
 
 /*
- * EV_OBJC_BRIDGING requires changing callback signature, hence it 
+ * EV_OBJC_BRIDGING requires changing callback signature, hence it
  * requires changing internal libev callbacks signatures too.
  *
  * callbacks can be set by funcs ev_init, ev_set_cb, ev_TYPE_init.

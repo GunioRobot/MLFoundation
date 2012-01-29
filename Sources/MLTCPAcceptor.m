@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -102,7 +102,7 @@
 	fd = socket(AF_INET, SOCK_STREAM, 0);
 	if (fd < 0) {
 		bindError_ = [[NSError alloc] initWithDomain:MLFoundationErrorDomain
-			code:MLSocketOpenError 
+			code:MLSocketOpenError
 			localizedDescriptionFormat:@"Failed to create socket : %s",
 			strerror(ev_last_error())];
 		return;
@@ -111,7 +111,7 @@
 	flags = 1;
 	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &flags, sizeof(int)) == -1) {
 		bindError_ = [[NSError alloc] initWithDomain:MLFoundationErrorDomain
-			code:MLSocketOpenError 
+			code:MLSocketOpenError
 			localizedDescriptionFormat:@"Failed to SO_REUSEADDR : %s",
 			strerror(ev_last_error())];
 
@@ -125,7 +125,7 @@
 
 	if (bind(fd, (struct sockaddr *)&server, sizeof(server))) {
 		bindError_ = [[NSError alloc] initWithDomain:MLFoundationErrorDomain
-			code:MLSocketBindError 
+			code:MLSocketBindError
 			localizedDescriptionFormat:@"Failed to bind to port %d : %s",
 			port, strerror(ev_last_error())];
 
@@ -135,7 +135,7 @@
 
 	if (!ev_set_nonblock(fd)) {
 		bindError_ = [[NSError alloc] initWithDomain:MLFoundationErrorDomain
-			code:MLSocketOpenError 
+			code:MLSocketOpenError
 			localizedDescriptionFormat:@"Failed to make socket non-blocking: %s",
 			strerror(ev_last_error())];
 
@@ -145,7 +145,7 @@
 
 	if (listen(fd, 511) < 0) {
 		bindError_ = [[NSError alloc] initWithDomain:MLFoundationErrorDomain
-			code:MLSocketListenError 
+			code:MLSocketListenError
 			localizedDescriptionFormat:@"Failed to listen(): %s",
 			strerror(ev_last_error())];
 
@@ -157,10 +157,10 @@
 	fd = _open_osfhandle(fd, O_RDWR);
 #endif
 	[acceptWatcher_ setFd:fd];
-	
+
 	socklen_t addr_len = sizeof(server);
 	getsockname(fd, (struct sockaddr *)&server, (socklen_t *)&addr_len);
-	
+
 	port_ = ntohs(server.sin_port);
 }
 
@@ -179,7 +179,7 @@
 	NSSocketNativeHandle fd = ((struct ev_io *)w)->fd;
 #ifdef WIN32
 	fd = _get_osfhandle(fd);
-#endif	
+#endif
 
 	clientFd = accept(fd, (struct sockaddr *)&clientAddr, &clientLen);
 	BOOL nonblockResult = NO;
@@ -187,7 +187,7 @@
 
 	if (clientFd == -1 || !nonblockResult) {
 		int err = ev_last_error();
-		if (err == EINTR || err == EWOULDBLOCK || 
+		if (err == EINTR || err == EWOULDBLOCK ||
 			err == EAGAIN || err == EINPROGRESS) return;
 
 		error = [NSError errorWithDomain:MLFoundationErrorDomain
@@ -197,7 +197,7 @@
 
 		if (clientFd >= 0) close(clientFd);
 
-		[self stop];	
+		[self stop];
 		[delegate_ acceptor:self error:error];
 		return;
 	}
@@ -206,7 +206,7 @@
 	[conn setLoop:loop_];
 #ifdef WIN32
 	clientFd = _open_osfhandle(clientFd, O_RDWR);
-#endif	
+#endif
 	[conn setFd:clientFd];
 
 	if (!conn) {
@@ -214,13 +214,13 @@
 			code: MLSocketListenError
 			localizedDescriptionFormat: @"Error while allocating connection"];
 
-		[self stop];	
+		[self stop];
 		[delegate_ acceptor:self error:error];
 		return;
 	}
 
 	if ([conn respondsToSelector:@selector(setDescription:)]) {
-		[conn setDescription:[NSString stringWithFormat:@"%s:%d", 
+		[conn setDescription:[NSString stringWithFormat:@"%s:%d",
 			inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port)]];
 	}
 	[delegate_ acceptor:self receivedConnection:conn];
@@ -233,7 +233,7 @@
 	[super validateForStart:(NSError **)nil]; // Мы знаем, что там только ассерты.
 
 	if (bindError_) {
-		if (error) *error = [[bindError_ copy] autorelease]; 
+		if (error) *error = [[bindError_ copy] autorelease];
 		return NO;
 	} else {
 		return YES;

@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -44,7 +44,7 @@ enum {
 	conn_ = [[MLTCPClientConnection alloc] init];
 	MLReleaseSelfAndReturnNilUnless(conn_);
 	[conn_ setDelegate:self];
-	
+
 	return self;
 }
 
@@ -105,13 +105,13 @@ enum {
 - (NSUInteger)currentResponseProtocolVersion
 {
 	MLAssert(state_ >= MLHTTPClientHeadersReceived);
-	return 11;	
+	return 11;
 }
 
 - (NSString *)currentResponseReason
 {
 	MLAssert(state_ >= MLHTTPClientHeadersReceived);
-	return @"";	
+	return @"";
 }
 
 - (uint64_t)currentResponseContentLength
@@ -119,7 +119,7 @@ enum {
 	return contentLength_;
 }
 
-- (void)sendRequestWithMethod:(NSString *)method url:(NSURL *)url 
+- (void)sendRequestWithMethod:(NSString *)method url:(NSURL *)url
 		headers:(NSDictionary *)headers
 {
 	// TODO check headers...
@@ -162,7 +162,7 @@ enum {
 {
 	MLAssert(isStarted_);
 	MLAssert(state_ == MLHTTPClientSendingRequest);
-	
+
 	state_ = MLHTTPClientNoStatus;
 
 	[conn_ rescheduleRead];
@@ -204,10 +204,10 @@ enum {
 
 	static char requestBuffer[4096];
 
-	sprintf(requestBuffer, "%s %s HTTP/1.0\nConnection: close\n\n", 
-		[method_ UTF8String], [urlString UTF8String]);		
+	sprintf(requestBuffer, "%s %s HTTP/1.0\nConnection: close\n\n",
+		[method_ UTF8String], [urlString UTF8String]);
 
-	MLStreamAppendString(conn_, requestBuffer);	
+	MLStreamAppendString(conn_, requestBuffer);
 
 	status_ = 0;
 	contentLength_ = 0;
@@ -244,7 +244,7 @@ enum {
 	NSError *e = [NSError errorWithDomain:MLFoundationErrorDomain
 		code: MLSocketTimeoutError
 		localizedDescriptionFormat:@"Read timeout on TCP socket."];
-	
+
 	[delegate_ httpClient:self failedWithError:e];
 }
 
@@ -252,9 +252,9 @@ enum {
 {
 	[self stop];
 
-	if ((NSErrorCode(details) == MLSocketEOFError) && 
+	if ((NSErrorCode(details) == MLSocketEOFError) &&
 		(contentLength_ == 0 || MLStreamLength(conn_) == contentLength_)) {
-		[delegate_ httpClient:self 
+		[delegate_ httpClient:self
 			finishedLoadingBuffer:conn_];
 	} else {
 		[delegate_ httpClient:self failedWithError:details];
@@ -294,7 +294,7 @@ enum {
 
 				// "Content-Length: " len is 16
 				// :-(
-				if (!contentLength_ && strl > 0 && 
+				if (!contentLength_ && strl > 0 &&
 					!(strncmp(str, "Content-Length: ", MIN(strl, 16)))) {
 						contentLength_ = strtoull(str + 16, NULL, 10);
 				}
@@ -310,7 +310,7 @@ enum {
 
 					[delegate_ httpClient:self receivedResponseWithBody:YES];
 					// TODO определять, есть ли body на самом деле.
-					return; 
+					return;
 				}
 			}
 			break;

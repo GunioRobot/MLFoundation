@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -61,7 +61,7 @@ int be_wait_event(be_fd fd)
 - (id)initWithBufferedEvent:(id <MLBufferedEvent>)bufEv
 {
 	if (!(self = [super init])) return nil;
-	
+
 	bufEv_ = [bufEv retain];
 	[bufEv_ setDelegate:self];
 	state_ = MLBBESleeping;
@@ -93,7 +93,7 @@ int be_wait_event(be_fd fd)
 {
 	MLAssert(state_ == MLBBESleeping);
 
-	// Если bufferedEvent stopped - сразу к возврату ошибки 
+	// Если bufferedEvent stopped - сразу к возврату ошибки
 	if ([bufEv_ isStarted]) {
 		while (MLStreamLength(bufEv_) <= 0 && !error_) {
 			state_ = MLBBEReading;
@@ -108,7 +108,7 @@ int be_wait_event(be_fd fd)
 			return -1;
 		}
 	}
-	
+
 	// 2) Если error не EOF - возвращаем -1 (и ставим errno)
 	if (error_ && NSErrorCode(error_) != MLSocketEOFError) {
 		errno = [error_ errnoCode];
@@ -131,7 +131,7 @@ int be_wait_event(be_fd fd)
 	MLAssert(state_ == MLBBESleeping);
 
 	// Если bufferedEvent stopped - к возврату ошибки
-	if ([bufEv_ isStarted]) {	
+	if ([bufEv_ isStarted]) {
 		MLStreamAppendBytes(bufEv_, (uint8_t *)buf, (uint64_t)count);
 
 		while (MLBufferLength(MLS_OPEN(bufEv_)->outputBuffer_) > 0 && !error_) {
@@ -196,15 +196,15 @@ int be_wait_event(be_fd fd)
 - (void)timeout:(int)what onEvent:(id <MLBufferedEvent>)bufEvent
 {
 	[error_ release];
-	
+
 	// Создать годный error_ (и остановить всё нафиг?)
 	error_ = [[NSError alloc] initWithDomain:MLFoundationErrorDomain
 								code: MLSocketEOFError
-								localizedDescriptionFormat: 
+								localizedDescriptionFormat:
 									@"Timeout on blocking socket (EOF simulated)"];
 
 	[bufEv_ stop];
-	
+
 	if (state_ != MLBBESleeping) {
 		caller_ = [MLCoroutine current];
 		MLAssert(caller_ != myCoro_);

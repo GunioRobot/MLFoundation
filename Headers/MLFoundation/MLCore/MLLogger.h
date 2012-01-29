@@ -1,13 +1,13 @@
 /*
 
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -49,20 +49,20 @@ enum {
 
 /** Логгер.
  *
- * 	Entry points - два макроса: 
+ * 	Entry points - два макроса:
  *
  * 	- MLLog(int level, const char *fmt, ...);
  * 	- MLLogHexdump(int level, uint8_t *data, int len);
  *
- * 	Определены следующие log levels, по убыванию: LOG_FATAL,  LOG_ERROR, LOG_WARNING, 
+ * 	Определены следующие log levels, по убыванию: LOG_FATAL,  LOG_ERROR, LOG_WARNING,
  * 	LOG_ALERT, LOG_INFO, LOG_DEBUG, LOG_VDEBUG, LOG_VVDEBUG.
  *
- * 	Если ничего не трогать - лог идёт в stderr. 
+ * 	Если ничего не трогать - лог идёт в stderr.
  * 	Без вызова setLogDirectory открывать именованые логи ( == логи в файл) не дадут.
  * 	Напрямую, впрочем, его лучше не трогать, а использовать методы MLApplication.
  *
- * 	Логгинг в файл устроен так: 
- * 	файлы с логами лежат в одной директории, и называются log_name.log. 
+ * 	Логгинг в файл устроен так:
+ * 	файлы с логами лежат в одной директории, и называются log_name.log.
  *
  * 	В составе каждого
  * 	лога может быть несколько префиксованых логов - они идут в тот же файл/stderr но с префиксом
@@ -90,7 +90,7 @@ enum {
 /** Создать новый лог в файл. Если не получилось открыть файл на запись - возвращает nil.
  * Обычно используется для создания локальных логгеров. */
 + (MLStdioLogger *)newLoggerWithName:(NSString *)name;
-/** Создать новый префиксованый лог внутри глобального. 
+/** Создать новый префиксованый лог внутри глобального.
  * Обычно используется для создания локальных логгеров. */
 + (MLPrefixedLogger *)newLoggerWithPrefix:(NSString *)prefix;
 
@@ -154,9 +154,9 @@ const extern char *__endOfArgs;
 
 #define HAVE_LOCAL_LOGGER MLLogger *__localLogger_
 
-/** Per-object logging. 
- * 
- * Чтобы им пользоваться, нужно в секции instance variables класса вписать декларацию 
+/** Per-object logging.
+ *
+ * Чтобы им пользоваться, нужно в секции instance variables класса вписать декларацию
  * HAVE_LOCAL_LOGGER:
  *
  * @code
@@ -164,13 +164,13 @@ const extern char *__endOfArgs;
  *     HAVE_LOCAL_LOGGER;
  * }
  * @endcode
- * 
+ *
  * Без вызова setLogger вывод из этого объекта всё равно пойдёт в глобальный лог.
  *
  * setLogger не ретейнит. Создание и освобождение логгеров оставляется приложению.
  *
  * Для этого есть три вызова:
- * 
+ *
  * -# [MLLogger newLoggerWithName:@"name"];
  * -# [MLLogger newLoggerWithPrefix:@"prefix"];
  * -# [someLocalLogger newLoggerWithPrefix:@"prefix"];
@@ -188,6 +188,6 @@ const extern char *__endOfArgs;
 #define MLLogVa(ARGS...) do { if (__localLogger_) { MLLogVa2((MLLogger *)__localLogger_, ##ARGS); } else { MLLogVa2(globalLogger, ##ARGS); } } while(0)
 #define MLLogHexdump(ARGS...) do { if (__localLogger_) { MLLogHexdump2((MLLogger *)__localLogger_, ##ARGS); } else { MLLogHexdump2(globalLogger, ##ARGS); } } while(0)
 
-void MLLogBacktrace2(MLLogger *logger, int level, int skip); 
+void MLLogBacktrace2(MLLogger *logger, int level, int skip);
 
 #define MLLogBacktrace(level) do { if (__localLogger_) { MLLogBacktrace2((MLLogger *)__localLogger_, level, 1); } else { MLLogBacktrace2(globalLogger, level, 1); } } while(0)

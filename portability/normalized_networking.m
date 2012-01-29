@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,13 +29,13 @@ BOOL ev_set_nonblock(NSSocketNativeHandle fd)
 #else
   int flags;
 
-  if ((flags = fcntl(fd, F_GETFL, 0)) < 0)  { 
+  if ((flags = fcntl(fd, F_GETFL, 0)) < 0)  {
       return NO;
-  } 
-  
-  if (fcntl(fd, F_SETFL, flags | O_NONBLOCK) < 0)  { 
+  }
+
+  if (fcntl(fd, F_SETFL, flags | O_NONBLOCK) < 0)  {
       return NO;
-  }                        
+  }
 #endif
   return YES;
 }

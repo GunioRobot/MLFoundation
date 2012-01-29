@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,7 +32,7 @@ static IMP autoreleasePoolDrain = NULL;
 	(*autoreleasePoolNew)(autoreleasePoolClass, @selector(new))
 #define EV_AUTORELEASEPOOL_RELEASE(x) (*autoreleasePoolRelease)(x, @selector(release)); (x)=nil
 
-#if defined(__NEXT_RUNTIME__) 
+#if defined(__NEXT_RUNTIME__)
 #	define EV_AUTORELEASEPOOL_DRAIN(x) do { \
 	(*autoreleasePoolRelease)((x), @selector(release)); \
 	(x) = (*autoreleasePoolNew)(autoreleasePoolClass, @selector(new)); \
@@ -52,14 +52,14 @@ static IMP autoreleasePoolDrain = NULL;
 
 static EVBaseLoop *defaultEventLoop = NULL;
 
-@implementation EVBaseLoop 
+@implementation EVBaseLoop
 + (void)load
 {
 	autoreleasePoolClass = [NSAutoreleasePool class];
 	autoreleasePoolNew = [[NSAutoreleasePool class] methodForSelector:@selector(new)];
-	autoreleasePoolDrain = [[NSAutoreleasePool class] 
+	autoreleasePoolDrain = [[NSAutoreleasePool class]
 		instanceMethodForSelector:@selector(emptyPool)];
-	autoreleasePoolRelease = [[NSAutoreleasePool class] 
+	autoreleasePoolRelease = [[NSAutoreleasePool class]
 		instanceMethodForSelector:@selector(release)];
 }
 

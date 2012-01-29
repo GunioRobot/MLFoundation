@@ -22,7 +22,7 @@
 //
 //		Regular expression support is provided by the PCRE library package,
 //   which is open source software, written by Philip Hazel, and copyright
-//			 by the University of Cambridge, England. 
+//			 by the University of Cambridge, England.
 //		(PCRE available at ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/)
 ///////////////////////////////////////////////////////////////////////////////
 /* v. 0.3.5 */
@@ -37,19 +37,19 @@ const int MAX_VECTOR_SIZE = 99;
 - (id)init
 {
 	self = [super init];
-	
+
 	[self initializeWithVectorSize:MAX_VECTOR_SIZE];
-	
+
 	return self;
 }
 
 - (id)initWithVectorSize:(int)maxVectorSize
 {
 	self = [super init];
-	
+
 	// overwrite the default value
 	[self initializeWithVectorSize:maxVectorSize];
-	
+
 	return self;
 }
 
@@ -57,26 +57,26 @@ const int MAX_VECTOR_SIZE = 99;
 		   andOptions:(int)opts
 {
 	self = [super init];
-	
+
 	[self initializeWithVectorSize:MAX_VECTOR_SIZE];
-		
+
 	// compile the regex for the client
 	[self compileWithPattern:pattern
 				  andOptions:opts];
-	
+
 	return self;
 }
 
 - (id)initWithPattern:(NSString *)pattern
 {
 	self = [super init];
-	
+
 	[self initializeWithVectorSize:MAX_VECTOR_SIZE];
-	
+
 	// compile the regex for the client
 	[self compileWithPattern:pattern
 				  andOptions:0];
-	
+
 	return self;
 }
 
@@ -89,11 +89,11 @@ const int MAX_VECTOR_SIZE = 99;
 {
 	if ( mRegex )
 		pcre_free(mRegex);
-	
+
 	mRegex = (pcre*)NULL;
-	
+
 	free(mVector);
-	
+
 	[super dealloc];
 }
 
@@ -103,7 +103,7 @@ const int MAX_VECTOR_SIZE = 99;
 	mLastError = (char*)NULL;
 	mLastErrorOffset = -1;
 	mMaxVectorSize = maxVectorSize;
-	
+
 	// calculate vector info
 	int nVectorSize = mMaxVectorSize; // vector will hold mMaxVectoSize matches (start and end index)
 	mVectorCount = (1 + nVectorSize) * 3; // should always be a multiple of 3
@@ -117,16 +117,16 @@ const int MAX_VECTOR_SIZE = 99;
 		// cleanup pcre object
 		pcre_free(mRegex);
 		mRegex = (pcre*)NULL;
-		
+
 		if ( mLastError )
 		{
 			free((char*)mLastError);
 			mLastError = (char*)NULL;
 		} // end IF
-		
+
 		mLastErrorOffset = -1;
 		mMatchCount = 0;
-	} // end 
+	} // end
 }
 
 - (BOOL)compileWithPattern:(NSString *)regexPattern
@@ -134,19 +134,19 @@ const int MAX_VECTOR_SIZE = 99;
 {
 	// re-init this object
 	[self reinitialize];
-	
+
 	// convert the wxString to a PCRE safe std::string object
 	const char* pattern = (char*)NULL;
 	const char* error = (char*)NULL;
-	
+
 	// convert the NSString to a cstring
 	pattern = [regexPattern UTF8String];
-	
+
 	// store the options
 	mCompileOptions = options;
-	
+
 	// perform the pcre regex pattern compilation
-	mRegex = pcre_compile(pattern, 
+	mRegex = pcre_compile(pattern,
 						  PCRE_UTF8|options,
 						  &error, &mLastErrorOffset,
 						  NULL);
@@ -156,13 +156,13 @@ const int MAX_VECTOR_SIZE = 99;
 
 	// check the regex object (if false then check mLastError)
 	BOOL isValid = [self isValid];
-	
+
 	// if not valid then reset respective vars
 	if ( !isValid )
 	{
 		mMatchCount = 0;
 	} // end IF
-	
+
 	return isValid;
 }
 
@@ -196,25 +196,25 @@ const int MAX_VECTOR_SIZE = 99;
 	return mVector[1] - mVector[0];
 }
 
-- (BOOL)regexMatches:(NSString *)text 
+- (BOOL)regexMatches:(NSString *)text
 			 options:(int)options
 		 startOffset:(int)startOffset
 			   error:(void *)err
-{	
+{
 	if ( ![self isValid] )
 		return NO;
-	
+
 	// store the options
 	mExecOptions = options;
-	
+
 	/*
-	- implement later	
+	- implement later
 	// returned value may be used to speed up match
-	pcre_extra *regexExtra = pcre_study(mRegex, 
+	pcre_extra *regexExtra = pcre_study(mRegex,
 	options, // options
 	&error);
 	*/
-	
+
 	/*
 	// get full info
 	int pcre_fullinfo(const pcre *code, const pcre_extra *extra,
@@ -222,15 +222,15 @@ const int MAX_VECTOR_SIZE = 99;
 	int rc;
 	size_t len;
 	rc = pcre_fullinfo(mRegex, regexExtra, PCRE_INFO_CAPTURECOUNT, &len);
-	
+
 	*/
-	
+
 	// convert the NSString to a const char* (for use with PCRE)
 	const char* subject = (char*)NULL;
-	
+
 	// convert the string
 	subject = [text UTF8String];
-	
+
 	/*
 	int pcre_exec(const pcre *code, const pcre_extra *extra,
 	const char *subject, int length, int startoffset,
@@ -246,7 +246,7 @@ const int MAX_VECTOR_SIZE = 99;
 	options,              /* options */
 	mVector,        /* vector of integers for substring information */
 	mVectorCount);            /* number of elements (NOT size in bytes) */
-	
+
 	return (mVector[1] > 0);
 }
 
@@ -286,14 +286,14 @@ const int MAX_VECTOR_SIZE = 99;
 {
 	if ( ![self isValid] )
 		return NO;
-	
+
 	// store the length for later use
 	int l = [self matchLength:match];
-	
+
 	// pass the values to ptrs
 	*start = [self matchStart:match];
 	*len = l;
-	
+
 	// if the length is useful, match is valid
 	return (l >= 1);
 }
@@ -309,13 +309,13 @@ const int MAX_VECTOR_SIZE = 99;
 
 - (NSString *)match:(NSString *)text
 	   atMatchIndex:(int)match
-{	
+{
 	if ( ![self isValid] )
 		return @"";
-	
+
 	// cast for safety
 	int m = match;
-	
+
 	/* alternative method
 	// get the matched string
 	int pcre_get_substring(const char *subject, int *ovector,
@@ -323,7 +323,7 @@ const int MAX_VECTOR_SIZE = 99;
 	const char **stringptr);
 	// returns the length of the string (or the error code if return negative int)
 	*/
-	
+
 	// get the NSString value of the match
 	return [text substringWithRange:NSMakeRange([self matchStart:m], [self matchLength:m])];
 }
@@ -338,14 +338,14 @@ const int MAX_VECTOR_SIZE = 99;
 {
 	if ( ![self isValid] )
 		return 0;
-	
+
 	/* - if the match count is less than 0
 	* then it contains the error code, but to the
 	* client of this function its a zero match count
 	*/
 	if ( mMatchCount < 0 )
 		return 0;
-	
+
 	return mMatchCount;
 }
 
@@ -358,72 +358,72 @@ maxReplacements:(int)max
 	 * - second: inject them in the correct pos of the replacement NSString
 	 * - final: perform the replacements on all the matches in text (do not replace more than max)
 	 */
-	
+
 	// check validaty of the regex
 	if ( ![self isValid] )
 		return 0;
-	
+
 	// assign the subject string to the worker mutable string
 	NSMutableString *text = [NSMutableString stringWithCapacity: [*subjectString length]];
 	[text setString:*subjectString];
-	
+
 	// store the current class values
 	int prevMatchCount = mMatchCount;
-	int *prevVector = mVector;	
-	
+	int *prevVector = mVector;
+
 	int startIndex = 0; // what match to begin with
 	int nOffset = startIndex;
 	int nMatch = 0;
 	int nCount = 0; // stores num of iterations/replacements
-	
+
 	/*
 	 * - only match \xx if it is not escaped
-	 * - (?<!\\\\)(\\\\)([0-9]+) - will not capture the non-escape char 
+	 * - (?<!\\\\)(\\\\)([0-9]+) - will not capture the non-escape char
 	 * - ([^\\\\]|^)(\\\\)([0-9]+) - will capture the non-escaping char
 	 * - also it seems that you have to escape the escape char for C++ (compiler) and for PCRE (ex: \\\\ = \\ [pcre escape])
 	 */
 	ObjPCRE *refRegex = [[ObjPCRE alloc] initWithPattern:@"([^\\\\]|^)(\\\\)(\\d+)"];
-		
+
 	// do we process back references \xx (are there any backrefs in the replacement string)
 	BOOL obtainRefs = [refRegex matches:replacement];
 	NSMutableArray *intArr = (NSMutableArray*)NULL;
-	
+
 	if ( obtainRefs )
 	{ // start backref grab SCOPE
-		
+
 		intArr = [NSMutableArray arrayWithCapacity:2];
 		int nOffset = 0;
-		
+
 		// get all the values of the backrefs
 		while ( [refRegex regexMatches:replacement
 							   options:0
 						   startOffset:nOffset
 								 error:NULL])
 		{
-			// get the int value (of the back ref)			
-			[intArr addObject: [refRegex match:replacement 
+			// get the int value (of the back ref)
+			[intArr addObject: [refRegex match:replacement
 								  atMatchIndex:3]];
-			
+
 			// move the marker forward
 			nOffset = [refRegex matchEnd];
-			
+
 			if ( nOffset == 0 )
 				break;
 		} // end WHILE
 	} // end IF
-	
+
 	// iterate through all the possible matches (or till max)
 	while ( [self regexMatches:text
 					   options:mExecOptions
 				   startOffset:nOffset
 						 error:NULL] )
-	{				
+	{
 		// get the match info
 		int start = [self matchStart:nMatch];
 		int len = [self matchLength:nMatch];
 
 		if ( obtainRefs )
-		{			
+		{
 			int limit = [intArr count];
 			int i = 0;
 			// iterate through all the backrefs
@@ -440,24 +440,24 @@ maxReplacements:(int)max
 						   options:mExecOptions
 					   startOffset:nOffset
 							 error:NULL];
-								
+
 				// convert the string to a long
 				int matchIdx = 0;
 				NSString *backRef = [intArr objectAtIndex:i];
 				matchIdx = [backRef intValue];
-				
+
 				// get the match info
 				int s = [self matchStart:matchIdx];
 				int l = [self matchLength:matchIdx];
-				
+
 				// get the backref string value
 				NSString *value = [text substringWithRange:NSMakeRange(s, l)];
-				
+
 				// setup the replacement text vars
 				NSMutableString *replacementText = [NSMutableString stringWithCapacity: [replacement length]];
 				[replacementText setString:replacement];
 				backRef = [NSString stringWithFormat:@"\\%@", backRef];
-				
+
 				/*
 				* - replace the backref in 'replacement' with
 				* the value acquired from the actual backref
@@ -466,26 +466,26 @@ maxReplacements:(int)max
 												 withString:value
 													options:NSLiteralSearch
 													  range:NSMakeRange(0, [replacementText length])];
-								
+
 				// replace the string in the current pos with the actual backref value
 				[text replaceCharactersInRange:NSMakeRange(start, len)
 									withString:replacementText];
 			} // end FOR
 		} // end IF (obtainRefs)
-		
+
 		if ( !obtainRefs )
 		{
 			// replace the matched string the current match
 			[text replaceCharactersInRange:NSMakeRange(start, len)
 								withString:replacement];
 		} // end IF
-		
+
 		// set next mark past this match
-		nOffset = start + len;		
-		
+		nOffset = start + len;
+
 		// increment the replacement count
 		++nCount;
-		
+
 		// if max not set then keep going
 		if ( max != 0 )
 		{
@@ -494,18 +494,18 @@ maxReplacements:(int)max
 				break;
 		} // end IF
 	} // end WHILE
-	
+
 	// free mem
 	if ( refRegex )
 		[refRegex release];
-	
+
 	// restore to class vars
 	mVector = prevVector;
 	mMatchCount = prevMatchCount;
-	
+
 	// assign the newly created NSString
 	*subjectString = [NSString stringWithString:text];
-	
+
 	return nCount;
 }
 
@@ -537,7 +537,7 @@ maxReplacements:(int)max
 - (int)lastErrorOffset
 {
 	return mLastErrorOffset;
-}	
+}
 
 + (NSString *)escapedPattern:(NSString *)pattern
 {
@@ -548,9 +548,9 @@ maxReplacements:(int)max
 	for( ; i < len ; ++i )
 	{
 		char c = [pattern characterAtIndex:i];
-		
+
 		if( c=='^' || c=='.' || c=='[' || c=='$' || c=='(' || c==')'
-		|| c=='|' || c=='*' || c=='+' || c=='?' || c=='{' || c=='\\' ) 
+		|| c=='|' || c=='*' || c=='+' || c=='?' || c=='{' || c=='\\' )
 		{
 			[escaped appendFormat:@"\\%C", c];
 		}
@@ -559,7 +559,7 @@ maxReplacements:(int)max
 			[escaped appendFormat:@"%C", c];
 		}
 	} // end FOR
-	
+
 	return (NSString*)escaped;
-}	
+}
 @end

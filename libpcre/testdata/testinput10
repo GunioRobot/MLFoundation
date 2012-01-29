@@ -1,6 +1,6 @@
-/-- These are a few representative patterns whose lengths and offsets are to be 
-shown when the link size is 2. This is just a doublecheck test to ensure the 
-sizes don't go horribly wrong when something is changed. The pattern contents 
+/-- These are a few representative patterns whose lengths and offsets are to be
+shown when the link size is 2. This is just a doublecheck test to ensure the
+sizes don't go horribly wrong when something is changed. The pattern contents
 are all themselves checked in other tests. --/
 
 /((?i)b)/BM
@@ -19,7 +19,7 @@ are all themselves checked in other tests. --/
 
 /x++/BM
 
-/x{1,3}+/BM 
+/x{1,3}+/BM
 
 /(x)*+/BM
 
@@ -66,8 +66,8 @@ are all themselves checked in other tests. --/
 /\xff/8BM
 
 /\x{0041}\x{2262}\x{0391}\x{002e}/D8M
-    
-/\x{D55c}\x{ad6d}\x{C5B4}/D8M 
+
+/\x{D55c}\x{ad6d}\x{C5B4}/D8M
 
 /\x{65e5}\x{672c}\x{8a9e}/D8M
 

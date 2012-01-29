@@ -1,19 +1,19 @@
 /*
- 
+
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
- 
+
  */
 
 #import <Foundation/Foundation.h>
@@ -24,14 +24,14 @@
 
 /** HTTP-клиент.
  *
- * Оптимизирован для "много запросов на один хост:порт". 
+ * Оптимизирован для "много запросов на один хост:порт".
  * В один момент времени исполняет один запрос (то есть не умеет pipelining),
  * поэтому для пользователя ведёт себя подобно реюзабельному HTTPResponse.
  *
  * Не является MLActivity, все свои ошибки сообщает асинхронно.
  *
- * Последовательность работы такова: 
- *  
+ * Последовательность работы такова:
+ *
  *  - init / setEvLoop
  *
  *  - Отправка запроса. Выполняется тремя методами в зависимости от тела запроса:
@@ -43,15 +43,15 @@
  *      url:headers:, взять requestStream и писать, пока не надоест.
  *      Потом взывать finishSendRequest и ждать ответа.
  *   - Ожидание ответа.
- *   - На делегате вызывается receivedResponseWithBody:. Если haveBody == NO, то всё, 
+ *   - На делегате вызывается receivedResponseWithBody:. Если haveBody == NO, то всё,
  *     ответ получен.
- *   - Если haveBody == YES, то на делегате ноль или несколько раз дёргается 
+ *   - Если haveBody == YES, то на делегате ноль или несколько раз дёргается
  *     haveNewDataInBuffer, и в финале дёргается finishedLoadingBuffer. Ответ получен.
  *
  *  Правильность переданной url тоже лежит на совести клиента.
  *
- *  После того, как ответ получен, можно начинать новый запрос. 
- *  Покуда это возможно и покуда хост и порт не меняются, клиент будет пытаться держать 
+ *  После того, как ответ получен, можно начинать новый запрос.
+ *  Покуда это возможно и покуда хост и порт не меняются, клиент будет пытаться держать
  *  соединение открытым.
  *
  *  ! Это, к сожалению, только планы API, большей частью пока Not implemented. Мы работаем.
@@ -68,11 +68,11 @@
  *
  * TODO: Проверять, что урла http://
  *
- * TODO: Всё, связанное с проверкой хедеров запроса. Чтобы сама собой ставилась 
- * 		 Content-Length [в методе который sendReq:...data:len: ], 
+ * TODO: Всё, связанное с проверкой хедеров запроса. Чтобы сама собой ставилась
+ * 		 Content-Length [в методе который sendReq:...data:len: ],
  * 		 требовалась бы Connection: close  / CTE Chunked / Content-Lentgth
  * 		 [ в start ]
- * 			
+ *
  * TODO: Пока позволяет HTTP/1.1, не разрывать соединения. Уметь определять длину
  * 	     ответа из Content-Length, а если нет ни Content-Legth, ни Connection: close,
  * 	     ругаться. Принудительно закрывать соединение только если поменялся host и/или port
@@ -118,9 +118,9 @@
 /** Response timeout. */
 - (ev_tstamp)writeTimeout;
 
-/** Отправить запрос без тела методом method на url. Клиент переходит в состояние 
+/** Отправить запрос без тела методом method на url. Клиент переходит в состояние
  * ожидания ответа. */
-- (void)sendRequestWithMethod:(NSString *)method url:(NSURL *)url 
+- (void)sendRequestWithMethod:(NSString *)method url:(NSURL *)url
 		headers:(NSDictionary *)headers;
 
 /** Отправить запрос с телом одним куском. Content-Length: выставляется автомагически. */
@@ -129,8 +129,8 @@
 
 /** Начать отправлять запрос. Требуется, чтобы в headers: было либо Connection: close
  * (и тогда после finishSendRequest соединение будет закрыто), либо Content-Transfer-Encoding:
- * chunked (и тогда пользователь обязуется сам правильно форматировать чанки), либо 
- * Content-Length (и тогда пользователь сам обязуется её соблюдать). 
+ * chunked (и тогда пользователь обязуется сам правильно форматировать чанки), либо
+ * Content-Length (и тогда пользователь сам обязуется её соблюдать).
  *
  * Если в ходе запуска запроса возникла какая-либо ошибка, она сообщается асинхронно,
  * а возвращается NULL.

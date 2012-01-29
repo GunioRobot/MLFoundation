@@ -1,13 +1,13 @@
 /*
 
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,7 +22,7 @@
  * -# Tabs, no spaces. Обычно считается, что ширина таба 4.
  * -# Общий brace style: The One True Brace Style, он же 1TBS, он же OTBS.
  * -# Расстановку скобок в методах см. Methods ниже
- * -# В statements обязательны фигурные скобки - открывающая на той же строке, 
+ * -# В statements обязательны фигурные скобки - открывающая на той же строке,
  *    финальная закрывающая на отдельной.
  *
  *  Пример:
@@ -44,7 +44,7 @@
  *
  * \section sg_methods Methods
  *
- * -# Название функции начинается с новой строки, тип {+|-} является первым 
+ * -# Название функции начинается с новой строки, тип {+|-} является первым
  *    символом, за которым следует пробел.
  * -# Тип возвращаемого значения от следующий за ним метки пробелом не отделяется.
  * -# В случае указателя звёздочка ставится через пробел после имени типа.
@@ -85,13 +85,13 @@
  *
  * \section sg_mem_mgmt Memory management
  *
- * -# Для графов объектов применять конвенционные cocoa reference counting. 
+ * -# Для графов объектов применять конвенционные cocoa reference counting.
  * -# По умолчанию, если явно не указано обратного, все объекты, переданые в коллбэках,
  *    монопольно принадлежат тому, кто их передал. Если кто-то хочет их сохранить, он
  *    должен их копировать.
  * -# При ошибке в конструкторе объект должен быть сразу же освобождён до возврата nil.
  *    Для этого есть макрос MLReleaseSelfAndReturnNilUnless(x).
- * 
+ *
  * \section sg_err_mgmt Error management
  *
  * -# Агрессивная проверка inner consistency при помощи макросов:
@@ -113,7 +113,7 @@
  * -# Сигнал - int
  * -# никаких NSUInteger - int и <stdint.h>
  *
- * \section Objective-C 
+ * \section Objective-C
  *
  * -# Помнить о том, что nil сжирает все селекторы без разбору и пользоваться этим.
  *

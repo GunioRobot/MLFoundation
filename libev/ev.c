@@ -6,14 +6,14 @@
  *
  * Redistribution and use in source and binary forms, with or without modifica-
  * tion, are permitted provided that the following conditions are met:
- * 
+ *
  *   1.  Redistributions of source code must retain the above copyright notice,
  *       this list of conditions and the following disclaimer.
- * 
+ *
  *   2.  Redistributions in binary form must reproduce the above copyright
  *       notice, this list of conditions and the following disclaimer in the
  *       documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MER-
  * CHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
@@ -100,7 +100,7 @@ extern "C" {
 #   define EV_USE_POLL 0
 #  endif
 # endif
-   
+
 # ifndef EV_USE_EPOLL
 #  if HAVE_EPOLL_CTL && HAVE_SYS_EPOLL_H
 #   define EV_USE_EPOLL 1
@@ -108,7 +108,7 @@ extern "C" {
 #   define EV_USE_EPOLL 0
 #  endif
 # endif
-   
+
 # ifndef EV_USE_KQUEUE
 #  if HAVE_KQUEUE && HAVE_SYS_EVENT_H && HAVE_SYS_QUEUE_H
 #   define EV_USE_KQUEUE 1
@@ -116,7 +116,7 @@ extern "C" {
 #   define EV_USE_KQUEUE 0
 #  endif
 # endif
-   
+
 # ifndef EV_USE_PORT
 #  if HAVE_PORT_H && HAVE_PORT_CREATE
 #   define EV_USE_PORT 1
@@ -140,7 +140,7 @@ extern "C" {
 #   define EV_USE_EVENTFD 0
 #  endif
 # endif
- 
+
 #endif
 
 #include <math.h>
@@ -420,10 +420,10 @@ static EV_ATOMIC_T have_monotonic; /* did clock_gettime (CLOCK_MONOTONIC) work? 
 # define EV_CB_A  nil, NULL
 # define EV_CB_A_  nil, NULL,
 #else
-# define EV_CB_P 
-# define EV_CB_P_ 
-# define EV_CB_A  
-# define EV_CB_A_ 
+# define EV_CB_P
+# define EV_CB_P_
+# define EV_CB_A
+# define EV_CB_A_
 #endif
 
 /*****************************************************************************/
@@ -974,7 +974,7 @@ downheap (ANHE *heap, int N, int k)
 
       heap [k] = heap [c];
       ev_active (ANHE_w (heap [k])) = k;
-      
+
       k = c;
     }
 
@@ -1121,7 +1121,7 @@ pipecb (EV_CB_P_ EV_P_ ev_io *iow, int revents)
     }
 
   if (gotsig && ev_is_default_loop (EV_A))
-    {    
+    {
       int signum;
       gotsig = 0;
 
@@ -1293,7 +1293,7 @@ ev_supported_backends (void)
   if (EV_USE_EPOLL ) flags |= EVBACKEND_EPOLL;
   if (EV_USE_POLL  ) flags |= EVBACKEND_POLL;
   if (EV_USE_SELECT) flags |= EVBACKEND_SELECT;
-  
+
   return flags;
 }
 
@@ -1784,7 +1784,7 @@ queue_laters (EV_P)
 {
   int i;
 
-  for (i = 0; i < latercnt; ++i) 
+  for (i = 0; i < latercnt; ++i)
   	if (expect_true(laters[i].w)) {
 		laters[i].w->later = 0;
     	ev_feed_event (EV_A_ laters [i].w, laters[i].events);
@@ -2125,7 +2125,7 @@ ev_loop (EV_P_ int flags)
       /* queue check watchers, to be executed first */
       if (expect_false (checkcnt))
         queue_events (EV_A_ (W *)checks, checkcnt, EV_CHECK);
-	
+
 	  /* queue later watchers, to be executed second */
       if (expect_false (latercnt))
         queue_laters(EV_A);
@@ -2568,7 +2568,7 @@ infy_add (EV_P_ ev_stat *w)
 
               *pend = 0;
               w->wd = inotify_add_watch (fs_fd, path, mask);
-            } 
+            }
           while (w->wd < 0 && (errno == ENOENT || errno == EACCES));
         }
     }
@@ -3194,7 +3194,7 @@ int
 ev_later_clear_pending (EV_P_ ev_later *w)
 {
   int retval = 0;
-  
+
   if (w->later) {
     laters[w->later-1].w = NULL;
 	retval |= laters[w->later-1].events;

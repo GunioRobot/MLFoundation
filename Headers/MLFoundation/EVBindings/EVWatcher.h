@@ -1,13 +1,13 @@
 /*
 
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -39,28 +39,28 @@
  * - EVAsyncWatcher
  * - Другие - to be done
  *
- * Оверхед от коллбэков внутрь objc заключается всего лишь в укладывании двух дополнительных 
+ * Оверхед от коллбэков внутрь objc заключается всего лишь в укладывании двух дополнительных
  * параметров на стек и одного switch. :-) Ценой этого являются две вещи:
  *
- * - после того, как выставлен коллбэк, его нельзя трогать всяким method swizzling, class posing и прочими 
+ * - после того, как выставлен коллбэк, его нельзя трогать всяким method swizzling, class posing и прочими
  *   затейливыми способами. Вообще, пользуясь этими биндингами вы фактически обязуетесь не менять единожды
  *   установившиеся отношения isa, селектора и его IMP-а.
  *
  * Ещё: большинство вызовов требуют явного указания EVLoop, на которой всё происходит. Ответственность
- * за правильное её указание всецело лежит на программисте. Как правило, EVLoop сохраняется в 
+ * за правильное её указание всецело лежит на программисте. Как правило, EVLoop сохраняется в
  * контексте MLEvLoopActivity.
  *
  * Copyright 2009 undev
- */ 
+ */
 @interface EVWatcher : EVBaseWatcher {
 }
 /** Устанавливает коллбэк watcher'a.
  *
  * Сигнатура коллбэка должна быть одной из четырёх:
  *
- * - :(EVLoop*):(EVWatcher*):(int)event 
- * - :(EVWatcher*):(int)event 
- * - :(int)event 
+ * - :(EVLoop*):(EVWatcher*):(int)event
+ * - :(EVWatcher*):(int)event
+ * - :(int)event
  * - (без аргументов)
  *
  *  Иначе всё сломается.
@@ -73,7 +73,7 @@
 - (SEL)selector;
 
 /** Активирует watcher на указаной loop. Он начинает получать свои события и дёргать коллбэки.
- * Watcher не может быть активирован несколько раз, и, как следствие, может быть активен только 
+ * Watcher не может быть активирован несколько раз, и, как следствие, может быть активен только
  * на одной event loop.
  */
 - (void)startOnLoop:(EVLoop *)loop;

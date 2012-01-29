@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -102,7 +102,7 @@
 		return;
 	}
 
-	
+
 	char *endPtr = NULL;
 	uint32_t connCount = strtoul(buf, &endPtr, 10);
 	if (buf[0] != '\0' && endPtr[0] == '\0') {
@@ -126,7 +126,7 @@
 		MLLog(LOG_ERROR, "Trying to send through master-child channel too large message %@. 255 bytes is limit", message);
 		return;
 	}
-	
+
 	strncpy(buf, (char *)[message UTF8String], sizeof(buf) - 1);
 
 	vec.iov_base = buf;
@@ -137,7 +137,7 @@
 	if (sendmsg([ioWatcher_ fd], &msg, 0) < 0) {
 		MLLog(LOG_INFO, "ERROR: Failed to send graceful to child: %s", strerror(errno));
 	};
-	
+
 }
 
 // Отправка ребенку сообщения «прекрати принимать соединения и умри»
@@ -180,7 +180,7 @@
 	msg.msg_iov = &vec;
 	msg.msg_iovlen = 1;
 
-	/* old BSD implementations should use msg_accrights instead of 
+	/* old BSD implementations should use msg_accrights instead of
 	* msg_control; the interface is different. */
 	msg.msg_control = ccmsg;
 	msg.msg_controllen = sizeof(ccmsg);

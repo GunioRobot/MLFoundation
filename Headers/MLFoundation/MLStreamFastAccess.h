@@ -1,19 +1,19 @@
 /*
- 
+
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
- 
+
  */
 
 #import <Foundation/Foundation.h>
@@ -77,10 +77,10 @@ inline static uint8_t *MLBufferReserve(id<MLStream> buf, uint64_t n)
 	int64_t myCapacityLeft = (MLB_OPEN(buf)->capacity_ - (MLB_OPEN(buf)->pointer_ + MLB_OPEN(buf)->length_));
 
 	if (myCapacityLeft >= n) {
-		return (MLB_OPEN(buf)->data_ + MLB_OPEN(buf)->pointer_ + 
+		return (MLB_OPEN(buf)->data_ + MLB_OPEN(buf)->pointer_ +
 				MLB_OPEN(buf)->length_);
 	}
-	
+
 	if (!MLB_OPEN(buf)->parentTransaction_) {
 		return STATICMSG_1A(uint8_t *, MLBuffer, buf, reserveBytes:, n);
 	} else {
@@ -93,7 +93,7 @@ inline static uint8_t *MLBufferReserve(id<MLStream> buf, uint64_t n)
 		MLB_OPEN(buf)->data_ = MLB_OPEN(parent)->data_;
 		MLB_OPEN(buf)->pointer_ = MLB_OPEN(parent)->pointer_ + MLB_OPEN(parent)->length_;
 
-		MLB_OPEN(buf)->capacity_ = MLB_OPEN(parent)->capacity_; 
+		MLB_OPEN(buf)->capacity_ = MLB_OPEN(parent)->capacity_;
 		MLB_OPEN(buf)->maxSize_ = MLB_OPEN(buf)->capacity_;
 
 		return retval + MLB_OPEN(buf)->length_;
@@ -106,10 +106,10 @@ inline static BOOL MLBufferWritten(id<MLStream> buf, uint64_t m)
 	MLAssert((MLB_OPEN(buf)->parentTransaction_ && MLB_OPEN(buf)->transactionKind_ == MLBufferWriteTransactionKind) ||
 			(!MLB_OPEN(buf)->parentTransaction_ && MLB_OPEN(buf)->transactionKind_ == MLBufferNoTransactionKind));
 
-	MLAssert(MLB_OPEN(buf)->pointer_ + 
-			 MLB_OPEN(buf)->length_ + 
+	MLAssert(MLB_OPEN(buf)->pointer_ +
+			 MLB_OPEN(buf)->length_ +
 			 m <= MLB_OPEN(buf)->capacity_);
-	
+
 	MLB_OPEN(buf)->length_ += m;
 
 	return YES;

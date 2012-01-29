@@ -1,7 +1,7 @@
 /abc/
     abc
  0: abc
-    
+
 /ab*c/
     abc
  0: abc
@@ -9,23 +9,23 @@
  0: abbbbc
     ac
  0: ac
-    
+
 /ab+c/
     abc
  0: abc
     abbbbbbc
  0: abbbbbbc
-    *** Failers 
+    *** Failers
 No match
     ac
 No match
     ab
 No match
-    
+
 /a*/
     a
  0: a
- 1: 
+ 1:
     aaaaaaaaaaaaaaaaa
  0: aaaaaaaaaaaaaaaaa
  1: aaaaaaaaaaaaaaaa
@@ -44,8 +44,8 @@ No match
 14: aaa
 15: aa
 16: a
-17: 
-    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
+17:
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 Matched, but too many subsidiary matches
  0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
  1: aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -69,9 +69,9 @@ Matched, but too many subsidiary matches
 19: aaaaaaaaaaa
 20: aaaaaaaaaa
 21: aaaaaaaaa
-    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\F 
- 0: 
-    
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\F
+ 0:
+
 /(a|abcd|african)/
     a
  0: a
@@ -81,7 +81,7 @@ Matched, but too many subsidiary matches
     african
  0: african
  1: a
-    
+
 /^abc/
     abcdef
  0: abc
@@ -89,19 +89,19 @@ Matched, but too many subsidiary matches
 No match
     xyzabc
 No match
-    xyz\nabc    
+    xyz\nabc
 No match
-    
+
 /^abc/m
     abcdef
  0: abc
-    xyz\nabc    
+    xyz\nabc
  0: abc
     *** Failers
 No match
     xyzabc
 No match
-    
+
 /\Aabc/
     abcdef
  0: abc
@@ -109,9 +109,9 @@ No match
 No match
     xyzabc
 No match
-    xyz\nabc    
+    xyz\nabc
 No match
-    
+
 /\Aabc/m
     abcdef
  0: abc
@@ -119,9 +119,9 @@ No match
 No match
     xyzabc
 No match
-    xyz\nabc    
+    xyz\nabc
 No match
-    
+
 /\Gabc/
     abcdef
  0: abc
@@ -129,11 +129,11 @@ No match
  0: abc
     *** Failers
 No match
-    xyzabc    
+    xyzabc
 No match
-    xyzabc\>2 
+    xyzabc\>2
 No match
-    
+
 /x\dy\Dz/
     x9yzz
  0: x9yzz
@@ -143,9 +143,9 @@ No match
 No match
     xyz
 No match
-    xxy0z     
+    xxy0z
 No match
-    
+
 /x\sy\Sz/
     x yzz
  0: x yzz
@@ -157,7 +157,7 @@ No match
 No match
     xxyyz
 No match
-    
+
 /x\wy\Wz/
     xxy+z
  0: xxy+z
@@ -165,9 +165,9 @@ No match
 No match
     xxy0z
 No match
-    x+y+z         
+    x+y+z
 No match
-    
+
 /x.y/
     x+y
  0: x+y
@@ -177,7 +177,7 @@ No match
 No match
     x\ny
 No match
-    
+
 /x.y/s
     x+y
  0: x+y
@@ -191,15 +191,15 @@ No match
  0: a+bc+dp+q
     a+bc\ndp+q
  0: a+bc\x0adp+q
-    x\nyp+q 
+    x\nyp+q
  0: x\x0ayp+q
-    *** Failers 
+    *** Failers
 No match
     a\nbc\ndp+q
 No match
     a+bc\ndp\nq
 No match
-    x\nyp\nq 
+    x\nyp\nq
 No match
 
 /a\d\z/
@@ -209,7 +209,7 @@ No match
 No match
     ba0\n
 No match
-    ba0\ncd   
+    ba0\ncd
 No match
 
 /a\d\z/m
@@ -219,7 +219,7 @@ No match
 No match
     ba0\n
 No match
-    ba0\ncd   
+    ba0\ncd
 No match
 
 /a\d\Z/
@@ -229,7 +229,7 @@ No match
  0: a0
     *** Failers
 No match
-    ba0\ncd   
+    ba0\ncd
 No match
 
 /a\d\Z/m
@@ -239,7 +239,7 @@ No match
  0: a0
     *** Failers
 No match
-    ba0\ncd   
+    ba0\ncd
 No match
 
 /a\d$/
@@ -249,7 +249,7 @@ No match
  0: a0
     *** Failers
 No match
-    ba0\ncd   
+    ba0\ncd
 No match
 
 /a\d$/m
@@ -257,7 +257,7 @@ No match
  0: a0
     ba0\n
  0: a0
-    ba0\ncd   
+    ba0\ncd
  0: a0
     *** Failers
 No match
@@ -269,11 +269,11 @@ No match
  0: aBc
     ABC
  0: ABC
-    
+
 /[^a]/
     abcd
  0: b
-    
+
 /ab?\w/
     abz
  0: abz
@@ -281,7 +281,7 @@ No match
     abbz
  0: abb
  1: ab
-    azz  
+    azz
  0: az
 
 /x{0,3}yz/
@@ -299,9 +299,9 @@ No match
 No match
     ax
 No match
-    axx     
+    axx
 No match
-      
+
 /x{3}yz/
     axxxyzq
  0: xxxyz
@@ -311,7 +311,7 @@ No match
 No match
     ax
 No match
-    axx     
+    axx
 No match
     ayzq
 No match
@@ -319,7 +319,7 @@ No match
 No match
     axxyz
 No match
-      
+
 /x{2,3}yz/
     axxyz
  0: xxyz
@@ -331,13 +331,13 @@ No match
 No match
     ax
 No match
-    axx     
+    axx
 No match
     ayzq
 No match
     axyzq
 No match
-      
+
 /[^a]+/
     bac
  0: b
@@ -349,34 +349,34 @@ No match
  4: b
     *** Failers
  0: *** F
- 1: *** 
+ 1: ***
  2: ***
  3: **
  4: *
-    aaaaa   
+    aaaaa
 No match
 
 /[^a]*/
     bac
  0: b
- 1: 
+ 1:
     bcdefax
  0: bcdef
  1: bcde
  2: bcd
  3: bc
  4: b
- 5: 
+ 5:
     *** Failers
  0: *** F
- 1: *** 
+ 1: ***
  2: ***
  3: **
  4: *
- 5: 
-    aaaaa   
- 0: 
-    
+ 5:
+    aaaaa
+ 0:
+
 /[^a]{3,5}/
     xyz
  0: xyz
@@ -393,13 +393,13 @@ No match
  2: bcd
     *** Failers
  0: *** F
- 1: *** 
+ 1: ***
  2: ***
     axya
 No match
     axa
 No match
-    aaaaa         
+    aaaaa
 No match
 
 /\d*/
@@ -408,20 +408,20 @@ No match
  1: 123
  2: 12
  3: 1
- 4: 
+ 4:
     xyz
- 0: 
-    
+ 0:
+
 /\D*/
     a1234b567
  0: a
- 1: 
+ 1:
     xyz
  0: xyz
  1: xy
  2: x
- 3: 
-     
+ 3:
+
 /\d+/
     ab1234c56
  0: 1234
@@ -432,7 +432,7 @@ No match
 No match
     xyz
 No match
-    
+
 /\D+/
     ab123c56
  0: ab
@@ -445,13 +445,13 @@ No match
  4: *** Fai
  5: *** Fa
  6: *** F
- 7: *** 
+ 7: ***
  8: ***
  9: **
 10: *
     789
 No match
-    
+
 /\d?A/
     045ABC
  0: 5A
@@ -461,13 +461,13 @@ No match
 No match
     XYZ
 No match
-    
+
 /\D?A/
     ABC
  0: A
     BAC
  0: BA
-    9ABC             
+    9ABC
  0: A
     *** Failers
 No match
@@ -484,7 +484,7 @@ No match
  0: xyz
     ggggggggxyz
  0: ggggggggxyz
-    
+
 /^.+xyz/
     abcdxyz
  0: abcdxyz
@@ -494,11 +494,11 @@ No match
 No match
     xyz
 No match
-    
+
 /^.?xyz/
     xyz
  0: xyz
-    cxyz       
+    cxyz
  0: cxyz
 
 /^\d{2,3}X/
@@ -512,7 +512,7 @@ No match
 No match
     1X
 No match
-    1234X     
+    1234X
 No match
 
 /^[abcd]\d/
@@ -528,11 +528,11 @@ No match
 No match
     e45
 No match
-    abcd      
+    abcd
 No match
     abcd1234
 No match
-    1234  
+    1234
 No match
 
 /^[abcd]*\d/
@@ -546,13 +546,13 @@ No match
  0: d0
     abcd1234
  0: abcd1
-    1234  
+    1234
  0: 1
     *** Failers
 No match
     e45
 No match
-    abcd      
+    abcd
 No match
 
 /^[abcd]+\d/
@@ -568,17 +568,17 @@ No match
  0: abcd1
     *** Failers
 No match
-    1234  
+    1234
 No match
     e45
 No match
-    abcd      
+    abcd
 No match
 
 /^a+X/
     aX
  0: aX
-    aaX 
+    aaX
  0: aaX
 
 /^[abcd]?\d/
@@ -590,7 +590,7 @@ No match
  0: c9
     d04
  0: d0
-    1234  
+    1234
  0: 1
     *** Failers
 No match
@@ -606,9 +606,9 @@ No match
  0: bcd9
     *** Failers
 No match
-    1234 
+    1234
 No match
-    a36 
+    a36
 No match
     abcd1234
 No match
@@ -620,7 +620,7 @@ No match
  0: abc4
     abcabcabc45
  0: abcabcabc4
-    42xyz 
+    42xyz
  0: 4
     *** Failers
 No match
@@ -632,13 +632,13 @@ No match
  0: abcabcabc4
     *** Failers
 No match
-    42xyz 
+    42xyz
 No match
 
 /^(abc)?\d/
     abc45
  0: abc4
-    42xyz 
+    42xyz
  0: 4
     *** Failers
 No match
@@ -656,13 +656,13 @@ No match
 No match
     abc45
 No match
-    42xyz 
+    42xyz
 No match
 
 /1(abc|xyz)2(?1)3/
     1abc2abc3456
  0: 1abc2abc3
-    1abc2xyz3456 
+    1abc2xyz3456
  0: 1abc2xyz3
 
 /^(a*\w|ab)=(a*\w|ab)/
@@ -679,11 +679,11 @@ No match
  0: abc
     a(b)c
  0: a(b)c
-    a(b(c))d  
+    a(b(c))d
  0: a(b(c))d
     *** Failers)
 No match
-    a(b(c)d  
+    a(b(c)d
 No match
 
 /^>abc>([^()]|\((?1)*\))*<xyz<$/
@@ -697,7 +697,7 @@ No match
 /^(?>a*)\d/
     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa9876
  0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa9
-    *** Failers 
+    *** Failers
 No match
     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 No match
@@ -711,63 +711,63 @@ No match
  0: <abc <123> hij>
     <abc <def> hij>
  0: <def>
-    <abc<>def> 
+    <abc<>def>
  0: <abc<>def>
-    <abc<>      
+    <abc<>
  0: <>
     *** Failers
 No match
     <abc
 No match
 
-/^(?(?=abc)\w{3}:|\d\d)$/        
-    abc:                          
+/^(?(?=abc)\w{3}:|\d\d)$/
+    abc:
  0: abc:
-    12                             
- 0: 12
-    *** Failers                     
-No match
-    123                       
-No match
-    xyz                        
-No match
-                                
-/^(?(?!abc)\d\d|\w{3}:)$/      
-    abc:                        
- 0: abc:
-    12         
+    12
  0: 12
     *** Failers
 No match
     123
 No match
-    xyz    
+    xyz
 No match
 
-/^(?=abc)\w{5}:$/        
-    abcde:                          
+/^(?(?!abc)\d\d|\w{3}:)$/
+    abc:
+ 0: abc:
+    12
+ 0: 12
+    *** Failers
+No match
+    123
+No match
+    xyz
+No match
+
+/^(?=abc)\w{5}:$/
+    abcde:
  0: abcde:
-    *** Failers                     
+    *** Failers
 No match
-    abc.. 
+    abc..
 No match
-    123                       
+    123
 No match
-    vwxyz                        
+    vwxyz
 No match
-                                
-/^(?!abc)\d\d$/      
-    12         
+
+/^(?!abc)\d\d$/
+    12
  0: 12
     *** Failers
 No match
     abcde:
 No match
-    abc..  
+    abc..
 No match
     123
 No match
-    vwxyz    
+    vwxyz
 No match
 
 /(?<=abc|xy)123/
@@ -783,7 +783,7 @@ No match
 /(?<!abc|xy)123/
     123abc
  0: 123
-    mno123456 
+    mno123456
  0: 123
     *** Failers
 No match
@@ -797,7 +797,7 @@ No match
 --->abcxyz
   1 ^  ^       x
  0: abcxyz
-    123abcxyz999 
+    123abcxyz999
 --->123abcxyz999
   1    ^  ^          x
  0: abcxyz
@@ -818,7 +818,7 @@ No match
  +4 ^   ^      c
  +2 ^    ^     b
  +3 ^     ^    |
-+12 ^     ^    
++12 ^     ^
  +1 ^     ^    a
  +4 ^     ^    c
  0: ababab
@@ -837,15 +837,15 @@ No match
  +4 ^   ^        c
  +2 ^    ^       b
  +3 ^     ^      |
-+12 ^     ^      
++12 ^     ^
  +1 ^     ^      a
  +4 ^     ^      c
  +5 ^      ^     d
  +6 ^       ^    )
-+12 ^       ^    
++12 ^       ^
  0: abcdabcd
  1: abcdab
-  abcdcdcdcdcd  
+  abcdcdcdcdcd
 --->abcdcdcdcdcd
  +0 ^                (ab|cd){3,4}
  +1 ^                a
@@ -860,12 +860,12 @@ No match
  +4 ^   ^            c
  +5 ^    ^           d
  +6 ^     ^          )
-+12 ^     ^          
++12 ^     ^
  +1 ^     ^          a
  +4 ^     ^          c
  +5 ^      ^         d
  +6 ^       ^        )
-+12 ^       ^        
++12 ^       ^
  0: abcdcdcd
  1: abcdcd
 
@@ -874,27 +874,27 @@ No match
  0: abc
     *** Failers
 No match
-    abcdef\B  
+    abcdef\B
 No match
 
 /^(a*|xyz)/
     bcd
- 0: 
+ 0:
     aaabcd
  0: aaa
  1: aa
  2: a
- 3: 
+ 3:
     xyz
  0: xyz
- 1: 
-    xyz\N  
+ 1:
+    xyz\N
  0: xyz
     *** Failers
- 0: 
-    bcd\N   
+ 0:
+    bcd\N
 No match
-    
+
 /xyz$/
     xyz
  0: xyz
@@ -904,19 +904,19 @@ No match
 No match
     xyz\Z
 No match
-    xyz\n\Z    
+    xyz\n\Z
 No match
-    
+
 /xyz$/m
     xyz
  0: xyz
-    xyz\n 
+    xyz\n
  0: xyz
-    abcxyz\npqr 
+    abcxyz\npqr
  0: xyz
-    abcxyz\npqr\Z 
+    abcxyz\npqr\Z
  0: xyz
-    xyz\n\Z    
+    xyz\n\Z
  0: xyz
     *** Failers
 No match
@@ -926,9 +926,9 @@ No match
 /\Gabc/
     abcdef
  0: abc
-    defabcxyz\>3 
+    defabcxyz\>3
  0: abc
-    *** Failers 
+    *** Failers
 No match
     defabcxyz
 No match
@@ -942,7 +942,7 @@ Partial match: abcde
  0: abcdef
     *** Failers
 No match
-    abx\P    
+    abx\P
 No match
 
 /^a{2,4}\d+z/
@@ -950,49 +950,49 @@ No match
 Partial match: a
     aa\P
 Partial match: aa
-    aa2\P 
+    aa2\P
 Partial match: aa2
     aaa\P
 Partial match: aaa
-    aaa23\P 
+    aaa23\P
 Partial match: aaa23
     aaaa12345\P
 Partial match: aaaa12345
     aa0z\P
  0: aa0z
-    aaaa4444444444444z\P 
+    aaaa4444444444444z\P
  0: aaaa4444444444444z
     *** Failers
 No match
-    az\P 
+    az\P
 No match
-    aaaaa\P 
+    aaaaa\P
 No match
-    a56\P 
+    a56\P
 No match
 
 /^abcdef/
    abc\P
 Partial match: abc
-   def\R 
+   def\R
  0: def
-   
+
 /(?<=foo)bar/
-   xyzfo\P 
+   xyzfo\P
 No match
-   foob\P\>2 
+   foob\P\>2
 Partial match: b
-   foobar...\R\P\>4 
+   foobar...\R\P\>4
  0: ar
    xyzfo\P
 No match
-   foobar\>2  
+   foobar\>2
  0: bar
    *** Failers
 No match
    xyzfo\P
 No match
-   obar\R   
+   obar\R
 No match
 
 /(ab*(cd|ef))+X/
@@ -1004,7 +1004,7 @@ Partial match: abbbbbbcdaefabbbbbbbefa
 Partial match: cdabbbbbbbb
     efabbbbbbbbbbbbbbbb\P\R\B\Z
 Partial match: efabbbbbbbbbbbbbbbb
-    bbbbbbbbbbbbcdXyasdfadf\P\R\B\Z    
+    bbbbbbbbbbbbcdXyasdfadf\P\R\B\Z
  0: bbbbbbbbbbbbcdX
 
 /(a|b)/SF>testsavedregex
@@ -1017,9 +1017,9 @@ Study data loaded from testsavedregex
  0: a
     ** Failers
  0: a
-    def  
+    def
 No match
-    
+
 /the quick brown fox/
     the quick brown fox
  0: the quick brown fox
@@ -1522,7 +1522,7 @@ No match
 
 /^$/
     \
- 0: 
+ 0:
     *** Failers
 No match
 
@@ -1743,7 +1743,7 @@ No match
  1: foolish see
  2: foolish se
  3: foolish s
- 4: foolish 
+ 4: foolish
  5: foolish
  6: foolis
  7: fooli
@@ -1755,7 +1755,7 @@ No match
  0: rowbar etc
  1: rowbar et
  2: rowbar e
- 3: rowbar 
+ 3: rowbar
  4: rowbar
     barrel
  0: barrel
@@ -2056,11 +2056,11 @@ No match
  1: user@dom
     \"A. Other\" <user.1234\@dom.ain> (a comment)
  0: "A. Other" <user.1234@dom.ain> (a comment)
- 1: "A. Other" <user.1234@dom.ain> 
+ 1: "A. Other" <user.1234@dom.ain>
  2: "A. Other" <user.1234@dom.ain>
     A. Other <user.1234\@dom.ain> (a comment)
  0:  Other <user.1234@dom.ain> (a comment)
- 1:  Other <user.1234@dom.ain> 
+ 1:  Other <user.1234@dom.ain>
  2:  Other <user.1234@dom.ain>
     \"/s=user/ou=host/o=place/prmd=uu.yy/admd= /c=gb/\"\@x400-re.lay
  0: "/s=user/ou=host/o=place/prmd=uu.yy/admd= /c=gb/"@x400-re.lay
@@ -2704,7 +2704,7 @@ No match
  1: \x00\x00\x00
  2: \x00\x00
  3: \x00
- 4: 
+ 4:
 
 /A\x0{2,3}Z/
     The A\x0\x0Z
@@ -2720,7 +2720,7 @@ No match
 
 /^\s/
     \040abc
- 0:  
+ 0:
     \x0cabc
  0: \x0c
     \nabc
@@ -2759,12 +2759,12 @@ No match
  1: track1.title:TBlah blah bla
  2: track1.title:TBlah blah bl
  3: track1.title:TBlah blah b
- 4: track1.title:TBlah blah 
+ 4: track1.title:TBlah blah
  5: track1.title:TBlah blah
  6: track1.title:TBlah bla
  7: track1.title:TBlah bl
  8: track1.title:TBlah b
- 9: track1.title:TBlah 
+ 9: track1.title:TBlah
 10: track1.title:TBlah
 11: track1.title:TBla
 12: track1.title:TBl
@@ -2777,12 +2777,12 @@ No match
  1: track1.title:TBlah blah bla
  2: track1.title:TBlah blah bl
  3: track1.title:TBlah blah b
- 4: track1.title:TBlah blah 
+ 4: track1.title:TBlah blah
  5: track1.title:TBlah blah
  6: track1.title:TBlah bla
  7: track1.title:TBlah bl
  8: track1.title:TBlah b
- 9: track1.title:TBlah 
+ 9: track1.title:TBlah
 10: track1.title:TBlah
 11: track1.title:TBla
 12: track1.title:TBl
@@ -2795,12 +2795,12 @@ No match
  1: track1.title:TBlah blah bla
  2: track1.title:TBlah blah bl
  3: track1.title:TBlah blah b
- 4: track1.title:TBlah blah 
+ 4: track1.title:TBlah blah
  5: track1.title:TBlah blah
  6: track1.title:TBlah bla
  7: track1.title:TBlah bl
  8: track1.title:TBlah b
- 9: track1.title:TBlah 
+ 9: track1.title:TBlah
 10: track1.title:TBlah
 11: track1.title:TBla
 12: track1.title:TBl
@@ -2852,7 +2852,7 @@ No match
 /\Aabc\Z/m
     abc
  0: abc
-    abc\n 
+    abc\n
  0: abc
     *** Failers
 No match
@@ -2862,7 +2862,7 @@ No match
 No match
     qqq\nabc\nzzz
 No match
-    
+
 /\A(.)*\Z/s
     abc\ndef
  0: abc\x0adef
@@ -3095,7 +3095,7 @@ No match
  6: *** F
     anything
 No match
-    b\bc   
+    b\bc
 No match
     baccd
 No match
@@ -3103,9 +3103,9 @@ No match
 /[^a]/
     Abc
  0: A
-  
+
 /[^a]/i
-    Abc 
+    Abc
  0: b
 
 /[^a]+/
@@ -3113,9 +3113,9 @@ No match
  0: AAA
  1: AA
  2: A
-  
+
 /[^a]+/i
-    AAAaAbc 
+    AAAaAbc
  0: bc
  1: b
 
@@ -3128,21 +3128,21 @@ No match
  4: bbb
  5: bb
  6: b
-   
+
 /[^k]$/
     abc
  0: c
     *** Failers
  0: s
-    abk   
+    abk
 No match
-   
+
 /[^k]{2,3}$/
     abc
  0: abc
     kbc
  0: bc
-    kabc 
+    kabc
  0: abc
     *** Failers
  0: ers
@@ -3150,7 +3150,7 @@ No match
 No match
     akb
 No match
-    akk 
+    akk
 No match
 
 /^\d{8,}\@.+[^k]$/
@@ -3162,31 +3162,31 @@ No match
 No match
     12345678\@x.y.uk
 No match
-    1234567\@a.b.c.d       
+    1234567\@a.b.c.d
 No match
 
 /[^a]/
     aaaabcd
  0: b
-    aaAabcd 
+    aaAabcd
  0: A
 
 /[^a]/i
     aaaabcd
  0: b
-    aaAabcd 
+    aaAabcd
  0: b
 
 /[^az]/
     aaaabcd
  0: b
-    aaAabcd 
+    aaAabcd
  0: A
 
 /[^az]/i
     aaaabcd
  0: b
-    aaAabcd 
+    aaAabcd
  0: b
 
 /\000\001\002\003\004\005\006\007\010\011\012\013\014\015\016\017\020\021\022\023\024\025\026\027\030\031\032\033\034\035\036\037\040\041\042\043\044\045\046\047\050\051\052\053\054\055\056\057\060\061\062\063\064\065\066\067\070\071\072\073\074\075\076\077\100\101\102\103\104\105\106\107\110\111\112\113\114\115\116\117\120\121\122\123\124\125\126\127\130\131\132\133\134\135\136\137\140\141\142\143\144\145\146\147\150\151\152\153\154\155\156\157\160\161\162\163\164\165\166\167\170\171\172\173\174\175\176\177\200\201\202\203\204\205\206\207\210\211\212\213\214\215\216\217\220\221\222\223\224\225\226\227\230\231\232\233\234\235\236\237\240\241\242\243\244\245\246\247\250\251\252\253\254\255\256\257\260\261\262\263\264\265\266\267\270\271\272\273\274\275\276\277\300\301\302\303\304\305\306\307\310\311\312\313\314\315\316\317\320\321\322\323\324\325\326\327\330\331\332\333\334\335\336\337\340\341\342\343\344\345\346\347\350\351\352\353\354\355\356\357\360\361\362\363\364\365\366\367\370\371\372\373\374\375\376\377/
@@ -3210,7 +3210,7 @@ No match
  4: .23000
  5: .2300
  6: .230
-    1.875000282   
+    1.875000282
  0: .875000282
  1: .87500028
  2: .8750002
@@ -3218,24 +3218,24 @@ No match
  4: .87500
  5: .8750
  6: .875
-    1.235  
+    1.235
  0: .235
-                  
+
 /(\.\d\d((?=0)|\d(?=\d)))/
-    1.230003938      
+    1.230003938
  0: .230
  1: .23
     1.875000282
  0: .875
-    *** Failers 
+    *** Failers
 No match
-    1.235 
+    1.235
 No match
-    
+
 /a(?)b/
-    ab 
+    ab
  0: ab
- 
+
 /\b(foo)\s+(\w+)/i
     Food is on the foo table
  0: foo table
@@ -3243,13 +3243,13 @@ No match
  2: foo tab
  3: foo ta
  4: foo t
-    
+
 /foo(.*)bar/
     The food is under the bar in the barn.
  0: food is under the bar in the bar
  1: food is under the bar
-    
-/foo(.*?)bar/  
+
+/foo(.*?)bar/
     The food is under the bar in the barn.
  0: food is under the bar in the bar
  1: food is under the bar
@@ -3262,7 +3262,7 @@ Matched, but too many subsidiary matches
  2: I have 2 numbers: 531
  3: I have 2 numbers: 53
  4: I have 2 numbers: 5
- 5: I have 2 numbers: 
+ 5: I have 2 numbers:
  6: I have 2 numbers:
  7: I have 2 numbers
  8: I have 2 number
@@ -3271,15 +3271,15 @@ Matched, but too many subsidiary matches
 11: I have 2 num
 12: I have 2 nu
 13: I have 2 n
-14: I have 2 
+14: I have 2
 15: I have 2
-16: I have 
+16: I have
 17: I have
 18: I hav
 19: I ha
 20: I h
-21: I 
-    
+21: I
+
 /(.*)(\d+)/
     I have 2 numbers: 53147
  0: I have 2 numbers: 53147
@@ -3288,7 +3288,7 @@ Matched, but too many subsidiary matches
  3: I have 2 numbers: 53
  4: I have 2 numbers: 5
  5: I have 2
- 
+
 /(.*?)(\d*)/
     I have 2 numbers: 53147
 Matched, but too many subsidiary matches
@@ -3297,7 +3297,7 @@ Matched, but too many subsidiary matches
  2: I have 2 numbers: 531
  3: I have 2 numbers: 53
  4: I have 2 numbers: 5
- 5: I have 2 numbers: 
+ 5: I have 2 numbers:
  6: I have 2 numbers:
  7: I have 2 numbers
  8: I have 2 number
@@ -3306,14 +3306,14 @@ Matched, but too many subsidiary matches
 11: I have 2 num
 12: I have 2 nu
 13: I have 2 n
-14: I have 2 
+14: I have 2
 15: I have 2
-16: I have 
+16: I have
 17: I have
 18: I hav
 19: I ha
 20: I h
-21: I 
+21: I
 
 /(.*?)(\d+)/
     I have 2 numbers: 53147
@@ -3344,8 +3344,8 @@ Matched, but too many subsidiary matches
     ABC123
  0: AB
  1: A
- 2: 
-     
+ 2:
+
 /^(\D*)(?=\d)(?!123)/
     ABC445
  0: ABC
@@ -3353,9 +3353,9 @@ Matched, but too many subsidiary matches
 No match
     ABC123
 No match
-    
+
 /^[W-]46]/
-    W46]789 
+    W46]789
  0: W46]
     -46]789
  0: -46]
@@ -3367,27 +3367,27 @@ No match
 No match
     42
 No match
-    [abcd] 
+    [abcd]
 No match
     ]abcd[
 No match
-       
+
 /^[W-\]46]/
-    W46]789 
+    W46]789
  0: W
     Wall
  0: W
     Zebra
  0: Z
-    Xylophone  
+    Xylophone
  0: X
     42
  0: 4
-    [abcd] 
+    [abcd]
  0: [
     ]abcd[
  0: ]
-    \\backslash 
+    \\backslash
  0: \
     *** Failers
 No match
@@ -3395,7 +3395,7 @@ No match
 No match
     well
 No match
-    
+
 /\d\d\/\d\d\/\d\d\d\d/
     01/01/2000
  0: 01/01/2000
@@ -3412,65 +3412,65 @@ No match
 
 /^(a){0,0}/
     bcd
- 0: 
+ 0:
     abc
- 0: 
-    aab     
- 0: 
+ 0:
+    aab
+ 0:
 
 /^(a){0,1}/
     bcd
- 0: 
+ 0:
     abc
  0: a
- 1: 
-    aab  
+ 1:
+    aab
  0: a
- 1: 
+ 1:
 
 /^(a){0,2}/
     bcd
- 0: 
+ 0:
     abc
  0: a
- 1: 
-    aab  
+ 1:
+    aab
  0: aa
  1: a
- 2: 
+ 2:
 
 /^(a){0,3}/
     bcd
- 0: 
+ 0:
     abc
  0: a
- 1: 
+ 1:
     aab
  0: aa
  1: a
- 2: 
-    aaa   
- 0: aaa
- 1: aa
- 2: a
- 3: 
-
-/^(a){0,}/
-    bcd
- 0: 
-    abc
- 0: a
- 1: 
-    aab
- 0: aa
- 1: a
- 2: 
+ 2:
     aaa
  0: aaa
  1: aa
  2: a
- 3: 
-    aaaaaaaa    
+ 3:
+
+/^(a){0,}/
+    bcd
+ 0:
+    abc
+ 0: a
+ 1:
+    aab
+ 0: aa
+ 1: a
+ 2:
+    aaa
+ 0: aaa
+ 1: aa
+ 2: a
+ 3:
+    aaaaaaaa
  0: aaaaaaaa
  1: aaaaaaa
  2: aaaaaa
@@ -3479,14 +3479,14 @@ No match
  5: aaa
  6: aa
  7: a
- 8: 
+ 8:
 
 /^(a){1,1}/
     bcd
 No match
     abc
  0: a
-    aab  
+    aab
  0: a
 
 /^(a){1,2}/
@@ -3494,7 +3494,7 @@ No match
 No match
     abc
  0: a
-    aab  
+    aab
  0: aa
  1: a
 
@@ -3506,7 +3506,7 @@ No match
     aab
  0: aa
  1: a
-    aaa   
+    aaa
  0: aaa
  1: aa
  2: a
@@ -3523,7 +3523,7 @@ No match
  0: aaa
  1: aa
  2: a
-    aaaaaaaa    
+    aaaaaaaa
  0: aaaaaaaa
  1: aaaaaaa
  2: aaaaaa
@@ -3552,7 +3552,7 @@ No match
 /.*\.gif/ms
     borfle\nbib.gif\nno
  0: borfle\x0abib.gif
-    
+
 /.*$/
     borfle\nbib.gif\nno
  0: no
@@ -3570,7 +3570,7 @@ No match
  0: borfle\x0abib.gif\x0ano
  1: borfle\x0abib.gif
  2: borfle
-    
+
 /.*$/
     borfle\nbib.gif\nno\n
  0: no
@@ -3590,61 +3590,61 @@ No match
  1: borfle\x0abib.gif\x0ano
  2: borfle\x0abib.gif
  3: borfle
-    
+
 /(.*X|^B)/
     abcde\n1234Xyz
  0: 1234X
-    BarFoo 
+    BarFoo
  0: B
     *** Failers
 No match
-    abcde\nBar  
+    abcde\nBar
 No match
 
 /(.*X|^B)/m
     abcde\n1234Xyz
  0: 1234X
-    BarFoo 
+    BarFoo
  0: B
-    abcde\nBar  
+    abcde\nBar
  0: B
 
 /(.*X|^B)/s
     abcde\n1234Xyz
  0: abcde\x0a1234X
-    BarFoo 
+    BarFoo
  0: B
     *** Failers
 No match
-    abcde\nBar  
+    abcde\nBar
 No match
 
 /(.*X|^B)/ms
     abcde\n1234Xyz
  0: abcde\x0a1234X
-    BarFoo 
+    BarFoo
  0: B
-    abcde\nBar  
+    abcde\nBar
  0: B
 
 /(?s)(.*X|^B)/
     abcde\n1234Xyz
  0: abcde\x0a1234X
-    BarFoo 
+    BarFoo
  0: B
-    *** Failers 
+    *** Failers
 No match
-    abcde\nBar  
+    abcde\nBar
 No match
 
 /(?s:.*X|^B)/
     abcde\n1234Xyz
  0: abcde\x0a1234X
-    BarFoo 
+    BarFoo
  0: B
-    *** Failers 
+    *** Failers
 No match
-    abcde\nBar  
+    abcde\nBar
 No match
 
 /^.*B/
@@ -3652,7 +3652,7 @@ No match
 No match
     abc\nB
 No match
-     
+
 /(?s)^.*B/
     abc\nB
  0: abc\x0aB
@@ -3660,7 +3660,7 @@ No match
 /(?m)^.*B/
     abc\nB
  0: B
-     
+
 /(?ms)^.*B/
     abc\nB
  0: abc\x0aB
@@ -3676,33 +3676,33 @@ No match
 /^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/
     123456654321
  0: 123456654321
-  
+
 /^\d\d\d\d\d\d\d\d\d\d\d\d/
-    123456654321 
+    123456654321
  0: 123456654321
 
 /^[\d][\d][\d][\d][\d][\d][\d][\d][\d][\d][\d][\d]/
     123456654321
  0: 123456654321
-  
+
 /^[abc]{12}/
     abcabcabcabc
  0: abcabcabcabc
-    
+
 /^[a-c]{12}/
     abcabcabcabc
  0: abcabcabcabc
-    
+
 /^(a|b|c){12}/
-    abcabcabcabc 
+    abcabcabcabc
  0: abcabcabcabc
 
 /^[abcdefghijklmnopqrstuvwxy0123456789]/
     n
  0: n
-    *** Failers 
+    *** Failers
 No match
-    z 
+    z
 No match
 
 /abcde{0,0}/
@@ -3710,7 +3710,7 @@ No match
  0: abcd
     *** Failers
 No match
-    abce  
+    abce
 No match
 
 /ab[cd]{0,0}e/
@@ -3718,15 +3718,15 @@ No match
  0: abe
     *** Failers
 No match
-    abcde 
+    abcde
 No match
-    
+
 /ab(c){0,0}d/
     abd
  0: abd
     *** Failers
 No match
-    abcd   
+    abcd
 No match
 
 /a(b*)/
@@ -3743,53 +3743,53 @@ No match
  4: a
     *** Failers
  0: a
-    bbbbb    
+    bbbbb
 No match
-    
+
 /ab\d{0}e/
     abe
  0: abe
     *** Failers
 No match
-    ab1e   
+    ab1e
 No match
-    
+
 /"([^\\"]+|\\.)*"/
     the \"quick\" brown fox
  0: "quick"
-    \"the \\\"quick\\\" brown fox\" 
+    \"the \\\"quick\\\" brown fox\"
  0: "the \"quick\" brown fox"
 
 /.*?/g+
     abc
  0: abc
- 0+ 
+ 0+
  1: ab
  2: a
- 3: 
- 0: 
- 0+ 
-  
+ 3:
+ 0:
+ 0+
+
 /\b/g+
-    abc 
- 0: 
+    abc
+ 0:
  0+ abc
- 0: 
- 0+ 
+ 0:
+ 0+
 
 /\b/+g
-    abc 
- 0: 
+    abc
+ 0:
  0+ abc
- 0: 
- 0+ 
+ 0:
+ 0+
 
 //g
     abc
- 0: 
- 0: 
- 0: 
- 0: 
+ 0:
+ 0:
+ 0:
+ 0:
 
 /<tr([\w\W\s\d][^<>]{0,})><TD([\w\W\s\d][^<>]{0,})>([\d]{0,}\.)(.*)((<BR>([\w\W\s\d][^<>]{0,})|[\s]{0,}))<\/a><\/TD><TD([\w\W\s\d][^<>]{0,})>([\w\W\s\d][^<>]{0,})<\/TD><TD([\w\W\s\d][^<>]{0,})>([\w\W\s\d][^<>]{0,})<\/TD><\/TR>/is
   <TR BGCOLOR='#DBE9E9'><TD align=left valign=top>43.<a href='joblist.cfm?JobID=94 6735&Keyword='>Word Processor<BR>(N-1286)</a></TD><TD align=left valign=top>Lega lstaff.com</TD><TD align=left valign=top>CA - Statewide</TD></TR>
@@ -3800,25 +3800,25 @@ No match
  0: acb
     a\nb
  0: a\x0ab
-    
+
 /a.b/
     acb
  0: acb
-    *** Failers 
+    *** Failers
 No match
-    a\nb   
+    a\nb
 No match
-    
+
 /a[^a]b/s
     acb
  0: acb
-    a\nb  
+    a\nb
  0: a\x0ab
-    
+
 /a.b/s
     acb
  0: acb
-    a\nb  
+    a\nb
  0: a\x0ab
 
 /^(b+?|a){1,2}?c/
@@ -3830,7 +3830,7 @@ No match
  0: bbbac
     bbbbac
  0: bbbbac
-    bbbbbac 
+    bbbbbac
  0: bbbbbac
 
 /^(b+|a){1,2}?c/
@@ -3842,25 +3842,25 @@ No match
  0: bbbac
     bbbbac
  0: bbbbac
-    bbbbbac 
+    bbbbbac
  0: bbbbbac
-    
+
 /(?!\A)x/m
     x\nb\n
 No match
-    a\bx\n  
+    a\bx\n
  0: x
-    
+
 /\x0{ab}/
-    \0{ab} 
+    \0{ab}
  0: \x00{ab}
 
 /(A|B)*?CD/
-    CD 
+    CD
  0: CD
-    
+
 /(A|B)*CD/
-    CD 
+    CD
  0: CD
 
 /(?<!bar)foo/
@@ -3900,13 +3900,13 @@ No match
 No match
     foobbar
 No match
-      
+
 /\Aabc\z/m
     abc
  0: abc
     *** Failers
 No match
-    abc\n   
+    abc\n
 No match
     qqq\nabc
 No match
@@ -3939,9 +3939,9 @@ No match
  3: .875000
  4: .87500
  5: .8750
-    *** Failers 
+    *** Failers
 No match
-    1.235 
+    1.235
 No match
 
 /^((?>\w+)|(?>\s+))*$/
@@ -3951,7 +3951,7 @@ No match
 No match
     this is not a line with only words and spaces!
 No match
-    
+
 /(\d+)(\w)/
     12345a
  0: 12345a
@@ -3959,7 +3959,7 @@ No match
  2: 1234
  3: 123
  4: 12
-    12345+ 
+    12345+
  0: 12345
  1: 1234
  2: 123
@@ -3970,7 +3970,7 @@ No match
  0: 12345a
     *** Failers
 No match
-    12345+ 
+    12345+
 No match
 
 /(?>a+)b/
@@ -3995,7 +3995,7 @@ No match
     aaabbbbccccd
  0: aaabbbbcccc
  1: aaabbbbc
-    
+
 /(a+|b+|c+)*c/
     aaabbbbccccd
  0: aaabbbbcccc
@@ -4011,15 +4011,15 @@ No match
  3: abc(ade)ufh
  4: abc(ade)
  5: abc
-    
-/\(((?>[^()]+)|\([^()]+\))+\)/ 
+
+/\(((?>[^()]+)|\([^()]+\))+\)/
     (abc)
  0: (abc)
     (abc(def)xyz)
  0: (abc(def)xyz)
     *** Failers
 No match
-    ((()aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa   
+    ((()aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 No match
 
 /a(?-i)b/i
@@ -4027,13 +4027,13 @@ No match
  0: ab
     Ab
  0: Ab
-    *** Failers 
+    *** Failers
 No match
     aB
 No match
     AB
 No match
-        
+
 /(a (?x)b c)d e/
     a bcd e
  0: a bcd e
@@ -4041,17 +4041,17 @@ No match
 No match
     a b cd e
 No match
-    abcd e   
+    abcd e
 No match
-    a bcde 
+    a bcde
 No match
- 
+
 /(a b(?x)c d (?-x)e f)/
     a bcde f
  0: a bcde f
     *** Failers
 No match
-    abcdef  
+    abcdef
 No match
 
 /(a(?i)b)c/
@@ -4063,7 +4063,7 @@ No match
 No match
     abC
 No match
-    aBC  
+    aBC
 No match
     Abc
 No match
@@ -4073,13 +4073,13 @@ No match
 No match
     AbC
 No match
-    
+
 /a(?i:b)c/
     abc
  0: abc
     aBc
  0: aBc
-    *** Failers 
+    *** Failers
 No match
     ABC
 No match
@@ -4087,19 +4087,19 @@ No match
 No match
     aBC
 No match
-    
+
 /a(?i:b)*c/
     aBc
  0: aBc
     aBBc
  0: aBBc
-    *** Failers 
+    *** Failers
 No match
     aBC
 No match
     aBBC
 No match
-    
+
 /a(?=b(?i)c)\w\wd/
     abcd
  0: abcd
@@ -4109,21 +4109,21 @@ No match
 No match
     aBCd
 No match
-    abcD     
+    abcD
 No match
-    
+
 /(?s-i:more.*than).*million/i
     more than million
  0: more than million
     more than MILLION
  0: more than MILLION
-    more \n than Million 
+    more \n than Million
  0: more \x0a than Million
     *** Failers
 No match
-    MORE THAN MILLION    
+    MORE THAN MILLION
 No match
-    more \n than \n million 
+    more \n than \n million
 No match
 
 /(?:(?s-i)more.*than).*million/i
@@ -4131,31 +4131,31 @@ No match
  0: more than million
     more than MILLION
  0: more than MILLION
-    more \n than Million 
+    more \n than Million
  0: more \x0a than Million
     *** Failers
 No match
-    MORE THAN MILLION    
+    MORE THAN MILLION
 No match
-    more \n than \n million 
+    more \n than \n million
 No match
-    
-/(?>a(?i)b+)+c/ 
+
+/(?>a(?i)b+)+c/
     abc
  0: abc
     aBbc
  0: aBbc
-    aBBc 
+    aBBc
  0: aBBc
     *** Failers
 No match
     Abc
 No match
-    abAb    
+    abAb
 No match
-    abbC 
+    abbC
 No match
-    
+
 /(?=a(?i)b)\w\wc/
     abc
  0: abc
@@ -4163,13 +4163,13 @@ No match
  0: aBc
     *** Failers
 No match
-    Ab 
+    Ab
 No match
     abC
 No match
-    aBC     
+    aBC
 No match
-    
+
 /(?<=a(?i)b)(\w\w)c/
     abxxc
  0: xxc
@@ -4181,7 +4181,7 @@ No match
 No match
     ABxxc
 No match
-    abxxC      
+    abxxC
 No match
 
 /^(?(?=abc)\w{3}:|\d\d)$/
@@ -4193,7 +4193,7 @@ No match
 No match
     123
 No match
-    xyz    
+    xyz
 No match
 
 /^(?(?!abc)\d\d|\w{3}:)$/
@@ -4205,9 +4205,9 @@ No match
 No match
     123
 No match
-    xyz    
+    xyz
 No match
-    
+
 /(?(?<=foo)bar|cat)/
     foobar
  0: bar
@@ -4215,11 +4215,11 @@ No match
  0: cat
     fcat
  0: cat
-    focat   
+    focat
  0: cat
     *** Failers
 No match
-    foocat  
+    foocat
 No match
 
 /(?(?<!foo)cat|bar)/
@@ -4229,59 +4229,59 @@ No match
  0: cat
     fcat
  0: cat
-    focat   
+    focat
  0: cat
     *** Failers
 No match
-    foocat  
+    foocat
 No match
 
 /(?>a*)*/
     a
  0: a
- 1: 
+ 1:
     aa
  0: aa
- 1: 
+ 1:
     aaaa
  0: aaaa
- 1: 
-    
+ 1:
+
 /(abc|)+/
     abc
  0: abc
- 1: 
+ 1:
     abcabc
  0: abcabc
  1: abc
- 2: 
+ 2:
     abcabcabc
  0: abcabcabc
  1: abcabc
  2: abc
- 3: 
-    xyz      
- 0: 
+ 3:
+    xyz
+ 0:
 
 /([a]*)*/
     a
  0: a
- 1: 
-    aaaaa 
+ 1:
+    aaaaa
  0: aaaaa
  1: aaaa
  2: aaa
  3: aa
  4: a
- 5: 
- 
+ 5:
+
 /([ab]*)*/
     a
  0: a
- 1: 
+ 1:
     b
  0: b
- 1: 
+ 1:
     ababab
  0: ababab
  1: ababa
@@ -4289,124 +4289,124 @@ No match
  3: aba
  4: ab
  5: a
- 6: 
+ 6:
     aaaabcde
  0: aaaab
  1: aaaa
  2: aaa
  3: aa
  4: a
- 5: 
-    bbbb    
- 0: bbbb
- 1: bbb
- 2: bb
- 3: b
- 4: 
- 
-/([^a]*)*/
-    b
- 0: b
- 1: 
+ 5:
     bbbb
  0: bbbb
  1: bbb
  2: bb
  3: b
- 4: 
-    aaa   
- 0: 
- 
+ 4:
+
+/([^a]*)*/
+    b
+ 0: b
+ 1:
+    bbbb
+ 0: bbbb
+ 1: bbb
+ 2: bb
+ 3: b
+ 4:
+    aaa
+ 0:
+
 /([^ab]*)*/
     cccc
  0: cccc
  1: ccc
  2: cc
  3: c
- 4: 
-    abab  
- 0: 
- 
+ 4:
+    abab
+ 0:
+
 /([a]*?)*/
     a
  0: a
- 1: 
-    aaaa 
+ 1:
+    aaaa
  0: aaaa
  1: aaa
  2: aa
  3: a
- 4: 
- 
+ 4:
+
 /([ab]*?)*/
     a
  0: a
- 1: 
+ 1:
     b
  0: b
- 1: 
+ 1:
     abab
  0: abab
  1: aba
  2: ab
  3: a
- 4: 
-    baba   
+ 4:
+    baba
  0: baba
  1: bab
  2: ba
  3: b
- 4: 
- 
+ 4:
+
 /([^a]*?)*/
     b
  0: b
- 1: 
+ 1:
     bbbb
  0: bbbb
  1: bbb
  2: bb
  3: b
- 4: 
-    aaa   
- 0: 
- 
+ 4:
+    aaa
+ 0:
+
 /([^ab]*?)*/
     c
  0: c
- 1: 
+ 1:
     cccc
  0: cccc
  1: ccc
  2: cc
  3: c
- 4: 
-    baba   
- 0: 
- 
+ 4:
+    baba
+ 0:
+
 /(?>a*)*/
     a
  0: a
- 1: 
-    aaabcde 
+ 1:
+    aaabcde
  0: aaa
- 1: 
- 
+ 1:
+
 /((?>a*))*/
     aaaaa
  0: aaaaa
- 1: 
-    aabbaa 
+ 1:
+    aabbaa
  0: aa
- 1: 
- 
+ 1:
+
 /((?>a*?))*/
     aaaaa
  0: aaaaa
- 1: 
-    aabbaa 
+ 1:
+    aabbaa
  0: aa
- 1: 
+ 1:
 
 /(?(?=[^a-z]+[a-z])  \d{2}-[a-z]{3}-\d{2}  |  \d{2}-\d{2}-\d{2} ) /x
     12-sep-98
@@ -4417,7 +4417,7 @@ No match
 No match
     sep-12-98
 No match
-        
+
 /(?i:saturday|sunday)/
     saturday
  0: saturday
@@ -4433,7 +4433,7 @@ No match
  0: SUNDAY
     SunDay
  0: SunDay
-    
+
 /(a(?i)bc|BB)x/
     abcx
  0: abcx
@@ -4451,7 +4451,7 @@ No match
 No match
     bbX
 No match
-    BBX               
+    BBX
 No match
 
 /^([ab](?i)[cd]|[ef])/
@@ -4463,7 +4463,7 @@ No match
  0: bD
     elephant
  0: e
-    Europe 
+    Europe
  0: E
     frog
  0: f
@@ -4471,7 +4471,7 @@ No match
  0: F
     *** Failers
 No match
-    Africa     
+    Africa
 No match
 
 /^(ab|a(?i)[b-c](?m-i)d|x(?i)y|z)/
@@ -4489,9 +4489,9 @@ No match
  0: Z
     *** Failers
 No match
-    aCD  
+    aCD
 No match
-    XY  
+    XY
 No match
 
 /(?<=foo\n)^bar/m
@@ -4501,21 +4501,21 @@ No match
 No match
     bar
 No match
-    baz\nbar   
+    baz\nbar
 No match
 
 /(?<=(?<!foo)bar)baz/
     barbaz
  0: baz
-    barbarbaz 
+    barbarbaz
  0: baz
-    koobarbaz 
+    koobarbaz
  0: baz
     *** Failers
 No match
     baz
 No match
-    foobarbaz 
+    foobarbaz
 No match
 
 /The following tests are taken from the Perl 5.005 test suite; some of them/
@@ -4645,11 +4645,11 @@ No match
 
 /^/
     abc
- 0: 
+ 0:
 
 /$/
     abc
- 0: 
+ 0:
 
 /a.c/
     abc
@@ -4894,13 +4894,13 @@ No match
     ab
  0: ab
  1: a
- 2: 
+ 2:
 
 /(a+|b){0,}/
     ab
  0: ab
  1: a
- 2: 
+ 2:
 
 /(a+|b)+/
     ab
@@ -4915,29 +4915,29 @@ No match
 /(a+|b)?/
     ab
  0: a
- 1: 
+ 1:
 
 /(a+|b){0,1}/
     ab
  0: a
- 1: 
+ 1:
 
 /[^ab]*/
     cde
  0: cde
  1: cd
  2: c
- 3: 
+ 3:
 
 /abc/
     *** Failers
 No match
     b
 No match
-    
+
 
 /a*/
-    
+
 
 /([abc])*d/
     abbbcd
@@ -5212,11 +5212,11 @@ No match
 
 /^/i
     ABC
- 0: 
+ 0:
 
 /$/i
     ABC
- 0: 
+ 0:
 
 /a.c/i
     ABC
@@ -5355,13 +5355,13 @@ No match
     AB
  0: AB
  1: A
- 2: 
+ 2:
 
 /(a+|b){0,}/i
     AB
  0: AB
  1: A
- 2: 
+ 2:
 
 /(a+|b)+/i
     AB
@@ -5376,29 +5376,29 @@ No match
 /(a+|b)?/i
     AB
  0: A
- 1: 
+ 1:
 
 /(a+|b){0,1}/i
     AB
  0: A
- 1: 
+ 1:
 
 /(a+|b){0,1}?/i
     AB
  0: A
- 1: 
+ 1:
 
 /[^ab]*/i
     CDE
  0: CDE
  1: CD
  2: C
- 3: 
+ 3:
 
 /abc/i
 
 /a*/i
-    
+
 
 /([abc])*d/i
     ABBBCD
@@ -5622,7 +5622,7 @@ No match
     foobar
  0: foobar
  1: foo
- 2: 
+ 2:
 
 /a(?:b|c|d){6,7}(.)/
     acdbcdbe
@@ -5672,7 +5672,7 @@ No match
     foobar
  0: foobar
  1: foo
- 2: 
+ 2:
 
 /(?<=a)b/
     ab
@@ -5704,7 +5704,7 @@ No match
 
 /^(){3,5}/
     abc
- 0: 
+ 0:
 
 /^(a+)*ax/
     aax
@@ -6007,7 +6007,7 @@ No match
 
 /$(?<=^(a))/
     a
- 0: 
+ 0:
 
 /([\w:]+::)?(\w+)$/
     abcd
@@ -6100,7 +6100,7 @@ No match
  0: b
     *** Failers
 No match
-    
+
 /(?>.*)(?<=(abcd|wxyz))/
     alphabetabcd
  0: alphabetabcd
@@ -6116,7 +6116,7 @@ No match
  0: word cat dog elephant mussel cow horse canary baboon snake shark otherword
     word cat dog elephant mussel cow horse canary baboon snake shark
 No match
-  
+
 /word (?>[a-zA-Z0-9]+ ){0,30}otherword/
     word cat dog elephant mussel cow horse canary baboon snake shark the quick brown fox and the lazy dog and several other words getting close to thirty by now I hope
 No match
@@ -6124,17 +6124,17 @@ No match
 /(?<=\d{3}(?!999))foo/
     999foo
  0: foo
-    123999foo 
+    123999foo
  0: foo
     *** Failers
 No match
     123abcfoo
 No match
-    
+
 /(?<=(?!...999)\d{3})foo/
     999foo
  0: foo
-    123999foo 
+    123999foo
  0: foo
     *** Failers
 No match
@@ -6144,61 +6144,61 @@ No match
 /(?<=\d{3}(?!999)...)foo/
     123abcfoo
  0: foo
-    123456foo 
+    123456foo
  0: foo
     *** Failers
 No match
-    123999foo  
+    123999foo
 No match
-    
+
 /(?<=\d{3}...)(?<!999)foo/
-    123abcfoo   
+    123abcfoo
  0: foo
-    123456foo 
+    123456foo
  0: foo
     *** Failers
 No match
-    123999foo  
+    123999foo
 No match
 
 /((Z)+|A)*/
     ZABCDEFG
  0: ZA
  1: Z
- 2: 
+ 2:
 
 /(Z()|A)*/
     ZABCDEFG
  0: ZA
  1: Z
- 2: 
+ 2:
 
 /(Z(())|A)*/
     ZABCDEFG
  0: ZA
  1: Z
- 2: 
+ 2:
 
 /((?>Z)+|A)*/
     ZABCDEFG
  0: ZA
  1: Z
- 2: 
+ 2:
 
 /((?>)+|A)*/
     ZABCDEFG
- 0: 
+ 0:
 
 /a*/g
     abbab
  0: a
- 1: 
- 0: 
- 0: 
+ 1:
+ 0:
+ 0:
  0: a
- 1: 
- 0: 
- 0: 
+ 1:
+ 0:
+ 0:
 
 /^[a-\d]/
     abcde
@@ -6209,7 +6209,7 @@ No match
  0: 0
     *** Failers
 No match
-    bcdef    
+    bcdef
 No match
 
 /^[\d-a]/
@@ -6221,9 +6221,9 @@ No match
  0: 0
     *** Failers
 No match
-    bcdef    
+    bcdef
 No match
-    
+
 /[[:space:]]+/
     > \x09\x0a\x0c\x0d\x0b<
  0:  \x09\x0a\x0c\x0d\x0b
@@ -6231,29 +6231,29 @@ No match
  2:  \x09\x0a\x0c
  3:  \x09\x0a
  4:  \x09
- 5:  
-     
+ 5:
+
 /[[:blank:]]+/
     > \x09\x0a\x0c\x0d\x0b<
  0:  \x09
- 1:  
-     
+ 1:
+
 /[\s]+/
     > \x09\x0a\x0c\x0d\x0b<
  0:  \x09\x0a\x0c\x0d
  1:  \x09\x0a\x0c
  2:  \x09\x0a
  3:  \x09
- 4:  
-     
+ 4:
+
 /\s+/
     > \x09\x0a\x0c\x0d\x0b<
  0:  \x09\x0a\x0c\x0d
  1:  \x09\x0a\x0c
  2:  \x09\x0a
  3:  \x09
- 4:  
-     
+ 4:
+
 /ab/x
     ab
 No match
@@ -6269,9 +6269,9 @@ No match
 /abc\Qabc\Eabc/
     abcabcabc
  0: abcabcabc
-    
+
 /abc\Q(*+|\Eabc/
-    abc(*+|abc 
+    abc(*+|abc
  0: abc(*+|abc
 
 /   abc\Q abc\Eabc/x
@@ -6279,32 +6279,32 @@ No match
  0: abc abcabc
     *** Failers
 No match
-    abcabcabc  
+    abcabcabc
 No match
-    
+
 /abc#comment
     \Q#not comment
     literal\E/x
-    abc#not comment\n    literal     
+    abc#not comment\n    literal
  0: abc#not comment\x0a    literal
 
 /abc#comment
     \Q#not comment
     literal/x
-    abc#not comment\n    literal     
+    abc#not comment\n    literal
  0: abc#not comment\x0a    literal
 
 /abc#comment
     \Q#not comment
     literal\E #more comment
     /x
-    abc#not comment\n    literal     
+    abc#not comment\n    literal
  0: abc#not comment\x0a    literal
 
 /abc#comment
     \Q#not comment
     literal\E #more comment/x
-    abc#not comment\n    literal     
+    abc#not comment\n    literal
  0: abc#not comment\x0a    literal
 
 /\Qabc\$xyz\E/
@@ -6320,7 +6320,7 @@ No match
  0: abc
     *** Failers
 No match
-    xyzabc  
+    xyzabc
 No match
 
 /\Gabc./g
@@ -6329,7 +6329,7 @@ No match
  0: abc2
 
 /abc./g
-    abc1abc2xyzabc3 
+    abc1abc2xyzabc3
  0: abc1
  0: abc2
  0: abc3
@@ -6337,15 +6337,15 @@ No match
 /a(?x: b c )d/
     XabcdY
  0: abcd
-    *** Failers 
+    *** Failers
 No match
-    Xa b c d Y 
+    Xa b c d Y
 No match
 
 /((?x)x y z | a b c)/
     XabcY
  0: abc
-    AxyzB 
+    AxyzB
  0: xyz
 
 /(?i)AB(?-i)C/
@@ -6353,7 +6353,7 @@ No match
  0: abC
     *** Failers
 No match
-    XabcY  
+    XabcY
 No match
 
 /((?i)AB(?-i)C|D)E/
@@ -6365,11 +6365,11 @@ No match
 No match
     abcE
 No match
-    abCe  
+    abCe
 No match
     dE
 No match
-    De    
+    De
 No match
 
 /[z\Qa-d]\E]/
@@ -6381,35 +6381,35 @@ No match
  0: -
     d
  0: d
-    ] 
+    ]
  0: ]
     *** Failers
  0: a
-    b     
+    b
 No match
 
 /[\z\C]/
     z
  0: z
-    C 
+    C
  0: C
-    
+
 /\M/
-    M 
+    M
  0: M
-    
+
 /(a+)*b/
-    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 No match
-    
+
 /(?i)reg(?:ul(?:[aä]|ae)r|ex)/
     REGular
  0: REGular
     regulaer
  0: regulaer
-    Regex  
+    Regex
  0: Regex
-    regulär 
+    regulär
  0: regul\xe4r
 
 /Åæåä[à-ÿÀ-ß]+/
@@ -6447,7 +6447,7 @@ No study data
 No match
     bca
 No match
-    
+
 /abc/F>testsavedregex
 Compiled regex written to testsavedregex
 <testsavedregex
@@ -6470,9 +6470,9 @@ Study data loaded from testsavedregex
  0: a
     *** Failers
  0: a
-    def  
+    def
 No match
-    
+
 /(a|b)/SF>testsavedregex
 Compiled regex written to testsavedregex
 Study data written to testsavedregex
@@ -6483,29 +6483,29 @@ Study data loaded from testsavedregex
  0: a
     *** Failers
  0: a
-    def  
+    def
 No match
-    
+
 /line\nbreak/
     this is a line\nbreak
  0: line\x0abreak
-    line one\nthis is a line\nbreak in the second line 
+    line one\nthis is a line\nbreak in the second line
  0: line\x0abreak
 
 /line\nbreak/f
     this is a line\nbreak
  0: line\x0abreak
-    ** Failers 
+    ** Failers
 No match
-    line one\nthis is a line\nbreak in the second line 
+    line one\nthis is a line\nbreak in the second line
 No match
 
 /line\nbreak/mf
     this is a line\nbreak
  0: line\x0abreak
-    ** Failers 
+    ** Failers
 No match
-    line one\nthis is a line\nbreak in the second line 
+    line one\nthis is a line\nbreak in the second line
 No match
 
 /1234/
@@ -6522,42 +6522,42 @@ Partial match: 123
 
 /^/mg
     a\nb\nc\n
- 0: 
- 0: 
- 0: 
-    \ 
- 0: 
-    
+ 0:
+ 0:
+ 0:
+    \
+ 0:
+
 /(?<=C\n)^/mg
-    A\nC\nC\n 
- 0: 
+    A\nC\nC\n
+ 0:
 
 /(?s)A?B/
     AB
  0: AB
-    aB  
+    aB
  0: B
 
 /(?s)A*B/
     AB
  0: AB
-    aB  
+    aB
  0: B
 
 /(?m)A?B/
     AB
  0: AB
-    aB  
+    aB
  0: B
 
 /(?m)A*B/
     AB
  0: AB
-    aB  
+    aB
  0: B
 
 /Content-Type\x3A[^\r\n]{6,}/
-    Content-Type:xxxxxyyy 
+    Content-Type:xxxxxyyy
  0: Content-Type:xxxxxyyy
  1: Content-Type:xxxxxyy
  2: Content-Type:xxxxxy
@@ -6567,7 +6567,7 @@ Partial match: 123
  0: Content-Type:xxxxxyyyz
 
 /Content-Type\x3A[^a]{6,}/
-    Content-Type:xxxyyy 
+    Content-Type:xxxyyy
  0: Content-Type:xxxyyy
 
 /Content-Type\x3A[^a]{6,}z/
@@ -6585,7 +6585,7 @@ Partial match: 123
  0: abc
     xyz\r\nabc\<crlf>
  0: abc
-    ** Failers 
+    ** Failers
 No match
     xyz\nabc\<cr>
 No match
@@ -6597,69 +6597,69 @@ No match
 No match
     xyz\rabc\<lf>
 No match
-    
+
 /abc$/m<lf>
     xyzabc
  0: abc
-    xyzabc\n 
+    xyzabc\n
  0: abc
-    xyzabc\npqr 
+    xyzabc\npqr
  0: abc
-    xyzabc\r\<cr> 
+    xyzabc\r\<cr>
  0: abc
-    xyzabc\rpqr\<cr> 
+    xyzabc\rpqr\<cr>
  0: abc
-    xyzabc\r\n\<crlf> 
+    xyzabc\r\n\<crlf>
  0: abc
-    xyzabc\r\npqr\<crlf> 
+    xyzabc\r\npqr\<crlf>
  0: abc
     ** Failers
 No match
-    xyzabc\r 
+    xyzabc\r
 No match
-    xyzabc\rpqr 
+    xyzabc\rpqr
 No match
-    xyzabc\r\n 
+    xyzabc\r\n
 No match
-    xyzabc\r\npqr 
+    xyzabc\r\npqr
 No match
-    
+
 /^abc/m<cr>
     xyz\rabcdef
  0: abc
     xyz\nabcdef\<lf>
  0: abc
-    ** Failers  
+    ** Failers
 No match
     xyz\nabcdef
 No match
-       
+
 /^abc/m<lf>
     xyz\nabcdef
  0: abc
     xyz\rabcdef\<cr>
  0: abc
-    ** Failers  
+    ** Failers
 No match
     xyz\rabcdef
 No match
-       
+
 /^abc/m<crlf>
     xyz\r\nabcdef
  0: abc
     xyz\rabcdef\<cr>
  0: abc
-    ** Failers  
+    ** Failers
 No match
     xyz\rabcdef
 No match
-    
+
 /.*/<lf>
     abc\ndef
  0: abc
  1: ab
  2: a
- 3: 
+ 3:
     abc\rdef
  0: abc\x0ddef
  1: abc\x0dde
@@ -6668,13 +6668,13 @@ No match
  4: abc
  5: ab
  6: a
- 7: 
+ 7:
     abc\r\ndef
  0: abc\x0d
  1: abc
  2: ab
  3: a
- 4: 
+ 4:
     \<cr>abc\ndef
  0: abc\x0adef
  1: abc\x0ade
@@ -6683,17 +6683,17 @@ No match
  4: abc
  5: ab
  6: a
- 7: 
+ 7:
     \<cr>abc\rdef
  0: abc
  1: ab
  2: a
- 3: 
+ 3:
     \<cr>abc\r\ndef
  0: abc
  1: ab
  2: a
- 3: 
+ 3:
     \<crlf>abc\ndef
  0: abc\x0adef
  1: abc\x0ade
@@ -6702,7 +6702,7 @@ No match
  4: abc
  5: ab
  6: a
- 7: 
+ 7:
     \<crlf>abc\rdef
  0: abc\x0ddef
  1: abc\x0dde
@@ -6711,12 +6711,12 @@ No match
  4: abc
  5: ab
  6: a
- 7: 
+ 7:
     \<crlf>abc\r\ndef
  0: abc
  1: ab
  2: a
- 3: 
+ 3:
 
 /\w+(.)(.)?def/s
     abc\ndef
@@ -6744,7 +6744,7 @@ No match
  1: aaa
  2: aa
  3: a
- 4: 
+ 4:
 
 /^(?:a(?:(?:))*)*/
     aaaa
@@ -6752,7 +6752,7 @@ No match
  1: aaa
  2: aa
  3: a
- 4: 
+ 4:
 
 /^(a()+)+/
     aaaa
@@ -6789,7 +6789,7 @@ No match
 /^a.b/<lf>
     a\rb
  0: a\x0db
-    a\nb\<cr> 
+    a\nb\<cr>
  0: a\x0ab
     ** Failers
 No match
@@ -6797,9 +6797,9 @@ No match
 No match
     a\nb\<any>
 No match
-    a\rb\<cr>   
+    a\rb\<cr>
 No match
-    a\rb\<any>   
+    a\rb\<any>
 No match
 
 /^abc./mgx<any>
@@ -6833,11 +6833,11 @@ No match
  0: a\x0bb
     a\x0cb
  0: a\x0cb
-    a\x85b   
+    a\x85b
  0: a\x85b
     ** Failers
 No match
-    a\n\rb    
+    a\n\rb
 No match
 
 /^a\R*b/<bsr_unicode>
@@ -6853,11 +6853,11 @@ No match
  0: a\x0bb
     a\x0cb
  0: a\x0cb
-    a\x85b   
+    a\x85b
  0: a\x85b
-    a\n\rb    
+    a\n\rb
  0: a\x0a\x0db
-    a\n\r\x85\x0cb 
+    a\n\r\x85\x0cb
  0: a\x0a\x0d\x85\x0cb
 
 /^a\R+b/<bsr_unicode>
@@ -6871,17 +6871,17 @@ No match
  0: a\x0bb
     a\x0cb
  0: a\x0cb
-    a\x85b   
+    a\x85b
  0: a\x85b
-    a\n\rb    
+    a\n\rb
  0: a\x0a\x0db
-    a\n\r\x85\x0cb 
+    a\n\r\x85\x0cb
  0: a\x0a\x0d\x85\x0cb
     ** Failers
 No match
-    ab  
+    ab
 No match
-    
+
 /^a\R{1,3}b/<bsr_unicode>
     a\nb
  0: a\x0ab
@@ -6889,13 +6889,13 @@ No match
  0: a\x0a\x0db
     a\n\r\x85b
  0: a\x0a\x0d\x85b
-    a\r\n\r\nb 
+    a\r\n\r\nb
  0: a\x0d\x0a\x0d\x0ab
-    a\r\n\r\n\r\nb 
+    a\r\n\r\n\r\nb
  0: a\x0d\x0a\x0d\x0a\x0d\x0ab
     a\n\r\n\rb
  0: a\x0a\x0d\x0a\x0db
-    a\n\n\r\nb 
+    a\n\n\r\nb
  0: a\x0a\x0a\x0d\x0ab
     ** Failers
 No match
@@ -6909,53 +6909,53 @@ No match
  0: aRb
     ** Failers
 No match
-    a\nb  
+    a\nb
 No match
 
 /.+foo/
     afoo
  0: afoo
-    ** Failers 
+    ** Failers
 No match
-    \r\nfoo 
+    \r\nfoo
 No match
-    \nfoo 
+    \nfoo
 No match
 
 /.+foo/<crlf>
     afoo
  0: afoo
-    \nfoo 
+    \nfoo
  0: \x0afoo
-    ** Failers 
+    ** Failers
 No match
-    \r\nfoo 
+    \r\nfoo
 No match
 
 /.+foo/<any>
     afoo
  0: afoo
-    ** Failers 
+    ** Failers
 No match
-    \nfoo 
+    \nfoo
 No match
-    \r\nfoo 
+    \r\nfoo
 No match
 
 /.+foo/s
     afoo
  0: afoo
-    \r\nfoo 
+    \r\nfoo
  0: \x0d\x0afoo
-    \nfoo 
+    \nfoo
  0: \x0afoo
 
 /^$/mg<any>
     abc\r\rxyz
- 0: 
-    abc\n\rxyz  
- 0: 
-    ** Failers 
+ 0:
+    abc\n\rxyz
+ 0:
+    ** Failers
 No match
     abc\r\nxyz
 No match
@@ -6963,59 +6963,59 @@ No match
 /^X/m
     XABC
  0: X
-    ** Failers 
+    ** Failers
 No match
     XABC\B
 No match
 
 /(?m)^$/<any>g+
     abc\r\n\r\n
- 0: 
+ 0:
  0+ \x0d\x0a
 
-/(?m)^$|^\r\n/<any>g+ 
+/(?m)^$|^\r\n/<any>g+
     abc\r\n\r\n
  0: \x0d\x0a
- 0+ 
- 1: 
-    
-/(?m)$/<any>g+ 
+ 0+
+ 1:
+
+/(?m)$/<any>g+
     abc\r\n\r\n
- 0: 
+ 0:
  0+ \x0d\x0a\x0d\x0a
- 0: 
+ 0:
  0+ \x0d\x0a
- 0: 
- 0+ 
+ 0:
+ 0+
 
 /(?|(abc)|(xyz))/
    >abc<
  0: abc
-   >xyz< 
+   >xyz<
  0: xyz
 
 /(x)(?|(abc)|(xyz))(x)/
     xabcx
  0: xabcx
-    xxyzx 
+    xxyzx
  0: xxyzx
 
 /(x)(?|(abc)(pqr)|(xyz))(x)/
     xabcpqrx
  0: xabcpqrx
-    xxyzx 
+    xxyzx
  0: xxyzx
 
 /(?|(abc)|(xyz))(?1)/
     abcabc
  0: abcabc
-    xyzabc 
+    xyzabc
  0: xyzabc
-    ** Failers 
+    ** Failers
 No match
-    xyzxyz 
+    xyzxyz
 No match
- 
+
 /\H\h\V\v/
     X X\x0a
  0: X X\x0a
@@ -7023,10 +7023,10 @@ No match
  0: X\x09X\x0b
     ** Failers
 No match
-    \xa0 X\x0a   
+    \xa0 X\x0a
 No match
-    
-/\H*\h+\V?\v{3,4}/ 
+
+/\H*\h+\V?\v{3,4}/
     \x09\x20\xa0X\x0a\x0b\x0c\x0d\x0a
  0: \x09 \xa0X\x0a\x0b\x0c\x0d
  1: \x09 \xa0X\x0a\x0b\x0c
@@ -7035,22 +7035,22 @@ No match
  1: \x09 \xa0\x0a\x0b\x0c
     \x09\x20\xa0\x0a\x0b\x0c
  0: \x09 \xa0\x0a\x0b\x0c
-    ** Failers 
+    ** Failers
 No match
     \x09\x20\xa0\x0a\x0b
 No match
-     
+
 /\H{3,4}/
     XY  ABCDE
  0: ABCD
  1: ABC
-    XY  PQR ST 
+    XY  PQR ST
  0: PQR
-    
+
 /.\h{3,4}./
     XY  AB    PQRS
  0: B    P
- 1: B    
+ 1: B
 
 /\h*X\h?\H+Y\H?Z/
     >XNNNYZ
@@ -7059,7 +7059,7 @@ No match
  0:   X NYQZ
     ** Failers
 No match
-    >XYZ   
+    >XYZ
 No match
     >  X NY Z
 No match
@@ -7073,17 +7073,17 @@ No match
 /.+A/<crlf>
     \r\nA
 No match
-    
+
 /\nA/<crlf>
-    \r\nA 
+    \r\nA
  0: \x0aA
 
 /[\r\n]A/<crlf>
-    \r\nA 
+    \r\nA
  0: \x0aA
 
 /(\r|\n)A/<crlf>
-    \r\nA 
+    \r\nA
  0: \x0aA
 
 /a\Rb/I<bsr_anycrlf>
@@ -7101,7 +7101,7 @@ Need char = 'b'
 No match
     a\x85b
 No match
-    a\x0bb     
+    a\x0bb
 No match
 
 /a\Rb/I<bsr_unicode>
@@ -7117,15 +7117,15 @@ Need char = 'b'
  0: a\x0d\x0ab
     a\x85b
  0: a\x85b
-    a\x0bb     
+    a\x0bb
  0: a\x0bb
-    ** Failers 
+    ** Failers
 No match
     a\x85b\<bsr_anycrlf>
 No match
     a\x0bb\<bsr_anycrlf>
 No match
-    
+
 /a\R?b/I<bsr_anycrlf>
 Capturing subpattern count = 0
 Options: bsr_anycrlf
@@ -7141,7 +7141,7 @@ Need char = 'b'
 No match
     a\x85b
 No match
-    a\x0bb     
+    a\x0bb
 No match
 
 /a\R?b/I<bsr_unicode>
@@ -7157,15 +7157,15 @@ Need char = 'b'
  0: a\x0d\x0ab
     a\x85b
  0: a\x85b
-    a\x0bb     
+    a\x0bb
  0: a\x0bb
-    ** Failers 
+    ** Failers
 No match
     a\x85b\<bsr_anycrlf>
 No match
     a\x0bb\<bsr_anycrlf>
 No match
-    
+
 /a\R{2,4}b/I<bsr_anycrlf>
 Capturing subpattern count = 0
 Partial matching not supported
@@ -7182,7 +7182,7 @@ Need char = 'b'
 No match
     a\x85\85b
 No match
-    a\x0b\0bb     
+    a\x0b\0bb
 No match
 
 /a\R{2,4}b/I<bsr_unicode>
@@ -7199,19 +7199,19 @@ Need char = 'b'
  0: a\x0d\x0a\x0a\x0d\x0db
     a\x85\85b
 No match
-    a\x0b\0bb     
+    a\x0b\0bb
 No match
-    ** Failers 
+    ** Failers
 No match
-    a\r\r\r\r\rb 
+    a\r\r\r\r\rb
 No match
     a\x85\85b\<bsr_anycrlf>
 No match
     a\x0b\0bb\<bsr_anycrlf>
 No match
-    
+
 /a(?!)|\wbc/
-    abc 
+    abc
  0: abc
 
 /a[]b/<JS>
@@ -7223,63 +7223,63 @@ No match
 /a[]+b/<JS>
     ** Failers
 No match
-    ab 
+    ab
 No match
 
 /a[]*+b/<JS>
     ** Failers
 No match
-    ab 
+    ab
 No match
 
 /a[^]b/<JS>
     aXb
  0: aXb
-    a\nb 
+    a\nb
  0: a\x0ab
     ** Failers
 No match
-    ab  
+    ab
 No match
-    
-/a[^]+b/<JS> 
+
+/a[^]+b/<JS>
     aXb
  0: aXb
-    a\nX\nXb 
+    a\nX\nXb
  0: a\x0aX\x0aXb
     ** Failers
 No match
-    ab  
+    ab
 No match
 
 /X$/E
     X
  0: X
-    ** Failers 
+    ** Failers
 No match
-    X\n 
+    X\n
 No match
 
 /X$/
     X
  0: X
-    X\n 
+    X\n
  0: X
 
 /xyz/C
-  xyz 
+  xyz
 --->xyz
  +0 ^       x
  +1 ^^      y
  +2 ^ ^     z
- +3 ^  ^    
+ +3 ^  ^
  0: xyz
-  abcxyz 
+  abcxyz
 --->abcxyz
  +0    ^       x
  +1    ^^      y
  +2    ^ ^     z
- +3    ^  ^    
+ +3    ^  ^
  0: xyz
   abcxyz\Y
 --->abcxyz
@@ -7289,9 +7289,9 @@ No match
  +0    ^       x
  +1    ^^      y
  +2    ^ ^     z
- +3    ^  ^    
+ +3    ^  ^
  0: xyz
-  ** Failers 
+  ** Failers
 No match
   abc
 No match
@@ -7302,9 +7302,9 @@ No match
  +0   ^     x
  +0    ^    x
 No match
-  abcxypqr  
+  abcxypqr
 No match
-  abcxypqr\Y  
+  abcxypqr\Y
 --->abcxypqr
  +0 ^            x
  +0  ^           x
@@ -7318,7 +7318,7 @@ No match
  +0        ^     x
  +0         ^    x
 No match
-  
+
 /(?C)ab/
   ab
 --->ab
@@ -7326,15 +7326,15 @@ No match
  0: ab
   \C-ab
  0: ab
-  
+
 /ab/C
   ab
 --->ab
  +0 ^      a
  +1 ^^     b
- +2 ^ ^    
+ +2 ^ ^
  0: ab
-  \C-ab    
+  \C-ab
  0: ab
 
 /^"((?(?=[a])[^"])|b)*"$/C
@@ -7365,7 +7365,7 @@ No match
  +8    ^     [a]
 +17 ^  ^     |
 +22 ^   ^    $
-+23 ^   ^    
++23 ^   ^
  0: "ab"
     \C-"ab"
  0: "ab"

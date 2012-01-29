@@ -74,7 +74,7 @@ __bswap_32 (unsigned int __bsx)
 #define U32_HTON(x) __bswap_32(x)
 #define U64_NTOH(x) __bswap_64(x)
 #define U64_HTON(x) __bswap_64(x)
-#else 
+#else
 #define U16_NTOH(x) (x)
 #define U16_HTON(x) (x)
 #define U32_NTOH(x) (x)

@@ -59,33 +59,33 @@
 
 /^[\xc8-\xc9]/Lfrench
     École
-    *** Failers 
+    *** Failers
     école
 
 /\W+/Lfrench
     >>>\xaa<<<
-    >>>\xba<<< 
+    >>>\xba<<<
 
 /[\W]+/Lfrench
     >>>\xaa<<<
-    >>>\xba<<< 
+    >>>\xba<<<
 
 /[^[:alpha:]]+/Lfrench
     >>>\xaa<<<
-    >>>\xba<<< 
+    >>>\xba<<<
 
 /\w+/Lfrench
     >>>\xaa<<<
-    >>>\xba<<< 
+    >>>\xba<<<
 
 /[\w]+/Lfrench
     >>>\xaa<<<
-    >>>\xba<<< 
+    >>>\xba<<<
 
 /[[:alpha:]]+/Lfrench
     >>>\xaa<<<
-    >>>\xba<<< 
-    
-/[[:alpha:]][[:lower:]][[:upper:]]/DZLfrench 
+    >>>\xba<<<
+
+/[[:alpha:]][[:lower:]][[:upper:]]/DZLfrench
 
 / End of testinput3 /

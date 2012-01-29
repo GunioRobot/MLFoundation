@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -58,16 +58,16 @@ static MLSessionSet *AllBuffers = nil;
 static inline BOOL MLBufferAllocCapacity(MLBuffer *buf, uint64_t size)
 {
 	// Округляем до размера страницы
-	if ((size & ~(PageSize - 1)) != size) 
+	if ((size & ~(PageSize - 1)) != size)
 		size = PageSize + (size & ~(PageSize -1));
-	
+
 	MLB_OPEN(buf)->capacity_ = size;
 
 	if (size < MMAP_THRESHOLD) {
 		MLB_OPEN(buf)->data_ = malloc(size);
 		MLB_OPEN(buf)->mmapAllocated_ = NO;
 	} else {
-		MLB_OPEN(buf)->data_ = mmap(0, size, PROT_READ | PROT_WRITE, 
+		MLB_OPEN(buf)->data_ = mmap(0, size, PROT_READ | PROT_WRITE,
 			MAP_ANON| MAP_PRIVATE, 0, 0);
 		MLAssert(MLB_OPEN(buf)->data_ != MAP_FAILED);
 		MLB_OPEN(buf)->mmapAllocated_ = YES;
@@ -91,7 +91,7 @@ static inline BOOL MLBufferReallocCapacity(MLBuffer *buf, uint64_t size)
 	[MLB_OPEN(buf)->lastReallocationTrace_ release];
 	MLB_OPEN(buf)->lastReallocationTrace_ = [MLRawBacktrace() retain];
 #endif
-	
+
 	if (!MLB_OPEN(buf)->mmapAllocated_ && newCapacity < MMAP_THRESHOLD) {
 		MLLog(LOG_VVDEBUG, "%p reallocating malloc %lld -> malloc %lld", buf, MLB_OPEN(buf)->capacity_, newCapacity);
 
@@ -100,7 +100,7 @@ static inline BOOL MLBufferReallocCapacity(MLBuffer *buf, uint64_t size)
 		MLB_OPEN(buf)->capacity_ = newCapacity;
 
 		return YES;
-	} 
+	}
 
 	if (!MLB_OPEN(buf)->mmapAllocated_ && newCapacity >= MMAP_THRESHOLD) {
 		MLLog(LOG_VVDEBUG, "%p reallocating malloc %lld -> mmap %lld", buf, MLB_OPEN(buf)->capacity_, newCapacity);
@@ -154,7 +154,7 @@ static inline void MLBufferFreeCapacity(MLBuffer *buf)
 {
 	MLBufferClass = [MLBuffer class];
 	if (!MLBufferClass) MLFail("Unable to get MLBuffer class! :-/");
-	
+
 	MLAssert(PageSize == getpagesize());
 }
 
@@ -163,7 +163,7 @@ static inline void MLBufferFreeCapacity(MLBuffer *buf)
 	return [self initBufferWithCapacity:2 * PageSize];
 }
 
-- (id)initBufferWithCapacity:(uint64_t)capacity 
+- (id)initBufferWithCapacity:(uint64_t)capacity
 {
 	MLAssert(capacity);
 	if (!(self = [super init])) return nil;
@@ -198,9 +198,9 @@ static inline void MLBufferFreeCapacity(MLBuffer *buf)
 
 	FILE *f = fopen([fname UTF8String], "rb");
 	MLReleaseSelfAndReturnNilUnless(f);
-	fseek(f, 0, SEEK_END); 
+	fseek(f, 0, SEEK_END);
 	uint32_t fsize = ftell(f);
-	fseek(f, 0, SEEK_SET); 
+	fseek(f, 0, SEEK_SET);
 
 	uint8_t *place = [self reserveBytes: fsize];
 	MLReleaseSelfAndReturnNilUnless(place);
@@ -208,7 +208,7 @@ static inline void MLBufferFreeCapacity(MLBuffer *buf)
 	[self writtenBytes: fsize];
 	fclose(f);
 
-	return self;	
+	return self;
 }
 
 - (id)initMappingFile:(NSString *)fname

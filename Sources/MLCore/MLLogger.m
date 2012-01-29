@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -47,7 +47,7 @@ static MLSessionSet *loggers = nil;
 static void destroy_global_logger(void)
 {
 	if ([loggers count] > 2) {
-		MLLog(LOG_WARNING, 
+		MLLog(LOG_WARNING,
 			"WARNING: Undestroyed loggers found at teardown. Check your memory management!");
 		MLLog(LOG_DEBUG,
 			"Loggers: %@", loggers);
@@ -131,7 +131,7 @@ static void destroy_global_logger(void)
 }
 
 - (void)logMessage:(const char *)fmt args:(va_list)ap level:(int)level
-{ 
+{
 	[self subclassResponsibility:_cmd];
 }
 
@@ -176,22 +176,22 @@ static void destroy_global_logger(void)
 
 - (MLStdioLogger *)initWithFile:(FILE *)_output
 {
-	if (!(self = [self init])) return nil;  
+	if (!(self = [self init])) return nil;
 	fname = [@"" retain];
 	name = [@"" retain];
-	output = _output;  
+	output = _output;
 	return self;
 }
 
 - (MLStdioLogger *)initWithLogName:(NSString *)_name
 {
-	if (!(self = [self init])) return nil;  
+	if (!(self = [self init])) return nil;
 
 	MLReleaseSelfAndReturnNilUnless(log_dir);
 
 	name = [_name retain];
 
-	fname = [[[log_dir stringByAppendingPathComponent:_name] 
+	fname = [[[log_dir stringByAppendingPathComponent:_name]
 		stringByAppendingPathExtension:@"log"] retain];
 
 	output = fopen([fname UTF8String], "ab");
@@ -315,7 +315,7 @@ static void destroy_global_logger(void)
 }
 @end
 
-void MLLogAssertion2(MLLogger *logger, const char *what, char *file, int line, char *condition, ...) 
+void MLLogAssertion2(MLLogger *logger, const char *what, char *file, int line, char *condition, ...)
 {
 	va_list arg_ptr;
 
@@ -324,8 +324,8 @@ void MLLogAssertion2(MLLogger *logger, const char *what, char *file, int line, c
 	va_start(arg_ptr, condition);
 
 	char *format = va_arg(arg_ptr, char *);
-	NSString *reason = format ? 
-		[[NSString alloc] initWithFormat:[NSString stringWithCString:format] arguments:arg_ptr] : 
+	NSString *reason = format ?
+		[[NSString alloc] initWithFormat:[NSString stringWithCString:format] arguments:arg_ptr] :
 		[[NSString alloc] initWithUTF8String:condition];
 
 	MLLog2(logger, LOG_FATAL, "%s failed at %s:%d (%s)", what, file, line, [reason UTF8String]);

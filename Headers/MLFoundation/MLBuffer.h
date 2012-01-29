@@ -1,13 +1,13 @@
 /*
 
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,14 +27,14 @@ enum {
 
 /** MLStream-compliant буфер.
  *
- * Интерфейс его похож на FIFO, который предоставляет доступ к своим 
+ * Интерфейс его похож на FIFO, который предоставляет доступ к своим
  * внутренностям и не имеет решительно никакой защиты от дурака.
  * Лучше всего этот буфер работает, если периодически вычитывать его целиком.
  *
- * Читать/писать в него можно только функциями быстрого доступа. 
+ * Читать/писать в него можно только функциями быстрого доступа.
  * ( \ref mlbuffer_fastaccess ). Подробности поведения буфера описаны там же.
  *
- * По операциям чтения/записи совместим с MLStream, то есть все MLStreamXXX, 
+ * По операциям чтения/записи совместим с MLStream, то есть все MLStreamXXX,
  * от FastAccess до Functions к нему применимы.
  *
  * Copyright 2009 undev
@@ -81,10 +81,10 @@ enum {
 /** Set max buffer size.
  *  Может быть изменён в любое время. Если он указан и больше 0, то на попытку
  *  выйти за его пределы MLBufferReserve вернёт NULL.
- *  Само по себе изменение maxSize не меняет объёма занятой памяти, оно 
+ *  Само по себе изменение maxSize не меняет объёма занятой памяти, оно
  *  только ограничивает MLBufferReserve.
  */
-- (void)setMaxSize:(uint64_t)maxSize; 
+- (void)setMaxSize:(uint64_t)maxSize;
 
 /** Returns how many Reserve calls resulted in data block reallocation. */
 - (uint16_t)reallocationsCount;

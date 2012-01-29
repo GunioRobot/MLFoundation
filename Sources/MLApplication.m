@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -170,12 +170,12 @@ static MLApplication *sharedApp = nil;
 #ifndef SIGINFO
 #define SIGINFO SIGPWR
 #endif
-	
+
 	sigInfo_ = [[EVSignalWatcher alloc] init];
 	MLReleaseSelfAndReturnNilUnless(sigInfo_);
 	[sigInfo_ setTarget:self selector:@selector(loop:watcher:debugDumpSignal:)];
 	[sigInfo_ setSignalNo: SIGINFO];
-	
+
 #endif
 
 #endif
@@ -347,8 +347,8 @@ static MLApplication *sharedApp = nil;
 	printf("  --stackSize <integer>       Set stack size to <integer> kb. Requires root\n");
 	printf("                              privileges.\n");
 	}
-	printf("  --logDirectory <path>       Write logs to directory <path>.\n"); 
-	printf("  --logName <name>            Set main log name. Requires --log-directory.\n"); 
+	printf("  --logDirectory <path>       Write logs to directory <path>.\n");
+	printf("  --logName <name>            Set main log name. Requires --log-directory.\n");
 	printf("  --pidFile <part>            Save pid file.\n");
 	if ([[self class] isDaemonizeAvailable]) {
 	printf("  --daemonize YES             Become daemon. Requires --pid-file,\n");
@@ -556,7 +556,7 @@ static MLApplication *sharedApp = nil;
 			return NO;
 		}
 	}
-	
+
 #ifndef WIN32
 	if (runAsUser_) {
 		if (![MLApplication isSetuidAvailable]) {
@@ -589,13 +589,13 @@ static MLApplication *sharedApp = nil;
 			return NO;
 		}
 	}
-	// 4) Check whether log directory & pid file writable 
+	// 4) Check whether log directory & pid file writable
 	BOOL isDirectory;
 	if (logDirectory_) {
-		[[NSFileManager defaultManager] 
+		[[NSFileManager defaultManager]
 			fileExistsAtPath:logDirectory_ isDirectory:&isDirectory];
 
-		if (!isDirectory || 
+		if (!isDirectory ||
 			![[NSFileManager defaultManager] isWritableFileAtPath:logDirectory_]) {
 
 			if (e) *e = [NSError errorWithDomain:MLFoundationErrorDomain
@@ -603,9 +603,9 @@ static MLApplication *sharedApp = nil;
 				localizedDescriptionFormat:@"Log directory %@ is not writable!", logDirectory_];
 			return NO;
 		}
-		NSString *fullLogFileName = [[logDirectory_ stringByAppendingPathComponent:logName_] 
+		NSString *fullLogFileName = [[logDirectory_ stringByAppendingPathComponent:logName_]
 			stringByAppendingPathExtension: @"log"];
-		BOOL fileExists = [[NSFileManager defaultManager] 
+		BOOL fileExists = [[NSFileManager defaultManager]
 			fileExistsAtPath:fullLogFileName isDirectory:&isDirectory];
 
 		BOOL fileWritable = [[NSFileManager defaultManager] isWritableFileAtPath:fullLogFileName];
@@ -620,10 +620,10 @@ static MLApplication *sharedApp = nil;
 
 	if (pidFile_) {
 		NSString *pidFileDirectory = [pidFile_ stringByDeletingLastPathComponent];
-		[[NSFileManager defaultManager] 
+		[[NSFileManager defaultManager]
 			fileExistsAtPath:pidFileDirectory isDirectory:&isDirectory];
 
-		if (!isDirectory || 
+		if (!isDirectory ||
 			![[NSFileManager defaultManager] isWritableFileAtPath:pidFileDirectory]) {
 
 			if (e) *e = [NSError errorWithDomain:MLFoundationErrorDomain
@@ -660,7 +660,7 @@ static MLApplication *sharedApp = nil;
 		if (getrlimit(RLIMIT_STACK, &rl) < 0) {
 			if (e) *e = [NSError errorWithDomain:MLFoundationErrorDomain
 				code:MLApplicationStartError
-				localizedDescriptionFormat:@"Can't change stack size (getrlimit): %s", 
+				localizedDescriptionFormat:@"Can't change stack size (getrlimit): %s",
 					strerror(errno)];
 			return NO;
 		}
@@ -675,7 +675,7 @@ static MLApplication *sharedApp = nil;
 	}
 
 	// If we wanna drop core dumps:
-	// 1) We have to eiher be notroot or change user. 
+	// 1) We have to eiher be notroot or change user.
 	// 2) We should be able to raise core size limit
 	if (dropCoreDumps_) {
 		if (![MLApplication isCoreDumpAvailable]) {
@@ -691,7 +691,7 @@ static MLApplication *sharedApp = nil;
 		if (getrlimit(RLIMIT_CORE, &rl) < 0) {
 			if (e) *e = [NSError errorWithDomain:MLFoundationErrorDomain
 				code:MLApplicationStartError
-				localizedDescriptionFormat:@"Can't enable core dumps (getrlimit): %s", 
+				localizedDescriptionFormat:@"Can't enable core dumps (getrlimit): %s",
 					strerror(errno)];
 			return NO;
 		}
@@ -730,8 +730,8 @@ static MLApplication *sharedApp = nil;
 
 		struct stat coresStat;
 		if ((stat("/cores", &coresStat) < 0) || !S_ISDIR(coresStat.st_mode)
-			|| ((coresStat.st_mode & S_IRWXU) != S_IRWXU) 
-			|| ((coresStat.st_mode & S_IRWXG) != S_IRWXG) 
+			|| ((coresStat.st_mode & S_IRWXU) != S_IRWXU)
+			|| ((coresStat.st_mode & S_IRWXG) != S_IRWXG)
 			|| ((coresStat.st_mode & S_IRWXO) != S_IRWXO)) {
 
 			if (e) *e = [NSError errorWithDomain:MLFoundationErrorDomain
@@ -777,7 +777,7 @@ static MLApplication *sharedApp = nil;
 				localizedDescriptionFormat:@"Can't enable core dumps: please perform \"echo '/cores/core' > /proc/sys/kernel/core_pattern\" as root"];
 			return NO;
 		}
-#	endif		
+#	endif
 #endif
 	}
 	return YES;
@@ -799,7 +799,7 @@ static MLApplication *sharedApp = nil;
 			fprintf(stderr, "FATAL: failed to open log file\n");
 		}
 	}
-	
+
 #ifdef HAVE_SETPRIORITY
 	// 0) Renice if necessary
 	if (niceValue_) {
@@ -824,7 +824,7 @@ static MLApplication *sharedApp = nil;
 #endif
 
 #ifdef HAVE_SETUID
-	// 1) Setuid if necessary 
+	// 1) Setuid if necessary
 	if (runAsUser_) {
 		struct passwd *pwd = getpwnam([runAsUser_ UTF8String]);
 		if (!pwd) {
@@ -866,7 +866,7 @@ static MLApplication *sharedApp = nil;
 
 	// 3.5) Reinit libev
 	[EVReactor forked];
-	
+
 	// 4) Write pidfile
 	if (pidf) {
 		fprintf(pidf, "%d", getpid());

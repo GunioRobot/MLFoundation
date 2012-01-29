@@ -1,12 +1,12 @@
 /*
  Copyright 2009 undev
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -57,7 +57,7 @@
 {
 	// Stolen from
 	// http://lists.canonical.org/pipermail/kragen-hacks/2002-January/000292.html
-	
+
 	struct msghdr msg;
 	struct iovec iov;
 	uint8_t buf[256];
@@ -67,14 +67,14 @@
 
 	iov.iov_base = buf;
 	iov.iov_len = sizeof(buf);
-	
+
 	memset(buf, 0, sizeof(buf));
 
 	msg.msg_name = 0;
 	msg.msg_namelen = 0;
 	msg.msg_iov = &iov;
 	msg.msg_iovlen = 1;
-	/* old BSD implementations should use msg_accrights instead of 
+	/* old BSD implementations should use msg_accrights instead of
 	* msg_control; the interface is different. */
 	msg.msg_control = ccmsg;
 	msg.msg_controllen = sizeof(ccmsg); /* ? seems to work... */
@@ -84,7 +84,7 @@
 		NSError *error = nil;
 		if (rv < 0) {
 			int err = ev_last_error();
-			if (err == EINTR || err == EWOULDBLOCK || 
+			if (err == EINTR || err == EWOULDBLOCK ||
 				err == EAGAIN || err == EINPROGRESS) return;
 
 			error = [NSError errorWithDomain:MLFoundationErrorDomain
@@ -97,7 +97,7 @@
 				localizedDescriptionFormat: @"Socket pair teardown"];
 		}
 
-		[self stop];	
+		[self stop];
 		close([ioWatcher_ fd]);
 		[ioWatcher_ setFd:0];
 
@@ -106,7 +106,7 @@
 	}
 	if (rv == 0) {
 	}
-	
+
 	// Сначала пытаемся принять сокет, пришедший от мастера
 	cmsg = CMSG_FIRSTHDR(&msg);
 	if (cmsg) {
@@ -120,11 +120,11 @@
 			[self acceptNewConnection:connfd];
 		}
 	}
-	
+
 	// Теперь начинаем проверять ключевые сообщения
 	if (!strcmp("graceful", (char *)buf)) {
 		// Мы здесь смело уверены в том, что sharedApplication нам вернет по меньшей мере MultiWorkerApplication,
-		// потому что текущий класс занимается общением экземпляров этого класса. 
+		// потому что текущий класс занимается общением экземпляров этого класса.
 		MLMultiWorkerApplication *app = (MLMultiWorkerApplication *)[MLApplication sharedApplication];
 		[app gracefulInChild];
 	}
@@ -144,7 +144,7 @@
 
 	getpeername(connfd, (struct sockaddr *)&clientAddr, &clientLen);
 	if ([conn respondsToSelector:@selector(setDescription:)]) {
-		[conn setDescription:[NSString stringWithFormat:@"%s:%d", 
+		[conn setDescription:[NSString stringWithFormat:@"%s:%d",
 			inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port)]];
 	}
 
@@ -156,7 +156,7 @@
 			code: MLSocketListenError
 			localizedDescriptionFormat: @"Error while allocating connection"];
 
-		[self stop];	
+		[self stop];
 		close([ioWatcher_ fd]);
 		[ioWatcher_ setFd:0];
 
@@ -167,17 +167,17 @@
 	[delegate_ acceptor:self receivedConnection:conn];
 
 	[(NSObject *)conn release];
-	
+
 }
 
 - (void)updateConnectionCount:(uint32_t)connectionCount
 {
 	char buf[32];
 	memset(buf,0,sizeof(buf));
-	snprintf(buf, 31, "%d", connectionCount); 
+	snprintf(buf, 31, "%d", connectionCount);
 
 	struct msghdr msg;
-	struct iovec vec;  
+	struct iovec vec;
 	memset(&msg, 0, sizeof(msg));
 
 	vec.iov_base = buf;
